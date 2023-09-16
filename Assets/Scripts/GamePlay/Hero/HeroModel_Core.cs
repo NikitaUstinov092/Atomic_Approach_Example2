@@ -4,6 +4,10 @@ using System.Declarative.Scripts.Attributes;
 using GamePlay.Custom.Engines;
 using GamePlay.Custom.ScriptableObjects;
 using GamePlay.Custom.Sections;
+using Lesson;
+using Lessons.Character.Engines;
+using Lessons.StateMachines;
+using Lessons.StateMachines.States;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -25,6 +29,10 @@ using Object = UnityEngine.Object;
             
             [Section]
             [SerializeField]
+            public CharacterMovement CharacterMoveComp = new();
+            
+            [Section]
+            [SerializeField]
             public Rotate RotateComp = new();
             
             [Section]
@@ -39,6 +47,33 @@ using Object = UnityEngine.Object;
             [SerializeField]
             public EntityContainer EntityStorageComp = new();
         
+            
+            [Serializable]
+            public sealed class CharacterMovement
+            {
+                    public Transform transform;
+            
+                    public AtomicVariable<float> movementSpeed = new(6f);
+                    public AtomicVariable<float> rotationSpeed = new(10f);
+                    public MovementDirectionVariable movementDirection;
+            
+                    public MoveInDirectionEngine moveInDirectionEngine;
+                    public RotateInDirectionEngine rotateInDirectionEngine;
+
+                    private FixedUpdateMechanics _fixedUpdate = new ();
+            
+                    [Construct]
+                    public void Construct()
+                    {
+                        moveInDirectionEngine.Construct(transform, movementSpeed);
+                        rotateInDirectionEngine.Construct(transform, rotationSpeed);
+                        _fixedUpdate.Construct(_ =>
+                        {
+                            moveInDirectionEngine.UpdatePosition();
+                        });
+                    }
+            }
+
             
             [Serializable]
             public class Move
@@ -222,7 +257,75 @@ using Object = UnityEngine.Object;
                     }); 
                 }
             }
+    [Serializable]
+    public sealed class CharacterStates
+    {
+        public StateMachine<CharacterStateType> stateMachine;
 
+        [Section]
+        public IdleState idleState;
+
+        [Section]
+        public RunState runState;
+
+        [Section]
+        public DeadState deadState;
+        
+
+        [Construct]
+        public void Construct(HeroModel root)
+        {
+            root.onStart += () => this.stateMachine.Enter();
+        
+            stateMachine.Construct(
+                (CharacterStateType.Idle, idleState),
+                (CharacterStateType.Run, runState),
+                (CharacterStateType.Dead, deadState)
+            );
+        }
+
+        [Construct]
+        public void ConstructTransitions(LifeSection life, CharacterMovement movement)
+        {
+            life.IsDead.onChanged += isAlive =>
+            {
+                var stateType = isAlive ? CharacterStateType.Idle : CharacterStateType.Dead;
+                stateMachine.SwitchState(stateType);
+            };
+            
+            movement.movementDirection.MovementStarted.Subscribe(()=>
+            {
+                if (!life.IsDead.Value)
+                {
+                    stateMachine.SwitchState(CharacterStateType.Run);
+                }
+            }); 
+
+            movement.movementDirection.MovementStarted.Subscribe(() =>
+            {
+                if (!life.IsDead.Value && stateMachine.CurrentState == CharacterStateType.Run)
+                {
+                    stateMachine.SwitchState(CharacterStateType.Idle);
+                }
+            });
+
+            /*gathering.process.OnStarted += _ =>
+            {
+                if (life.isAlive)
+                {
+                    stateMachine.SwitchState(CharacterStateType.Gathering);
+                }
+            };
+            
+            gathering.process.OnStopped += success =>
+            {
+                if (life.isAlive)
+                {
+                    stateMachine.SwitchState(CharacterStateType.Idle);
+                }
+            };*/
+        }
+    }
             [Serializable]
             public sealed class EntityContainer
             {

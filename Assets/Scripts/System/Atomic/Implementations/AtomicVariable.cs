@@ -38,7 +38,6 @@ namespace System.Atomic.Implementations
         {
             this.value = default;
         }
-
         public AtomicVariable(T value)
         {
             this.value = value;
