@@ -41,6 +41,8 @@ namespace Lessons.StateMachines
 
         public virtual void SwitchState(T stateType)
         {
+            if(stateType.Equals(currentStateType))
+                return;
             Exit();
             currentStateType = stateType;
             Enter();

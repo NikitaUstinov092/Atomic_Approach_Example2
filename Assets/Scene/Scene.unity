@@ -4338,10 +4338,12 @@ MonoBehaviour:
         value: 0
     MoveComp:
       Speed:
-        value: 6
+        value: 5
       MoveRequired:
         value: 0
       _moveTransform: {fileID: 3587277424092816630}
+      MovementDirection:
+        value: {x: 0, y: 0, z: 0}
     CharacterMoveComp:
       transform: {fileID: 3587277424092816630}
       movementSpeed:
@@ -4350,6 +4352,10 @@ MonoBehaviour:
         value: 10
       movementDirection:
         value: {x: 0, y: 0, z: 0}
+    States:
+      stateMachine:
+        currentStateType: 0
+      runState: {}
     RotateComp:
       RotationDirection:
         value: {x: 0, y: 0, z: 0}

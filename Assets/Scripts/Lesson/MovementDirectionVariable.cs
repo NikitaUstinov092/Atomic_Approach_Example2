@@ -18,14 +18,14 @@ namespace Lesson
             var isPreviousValueZero = previousValue == Vector3.zero;
             var isCurrentValueZero = Value == Vector3.zero;
 
-            if (isPreviousValueZero && !isCurrentValueZero)
+            switch (isPreviousValueZero)
             {
-                MovementStarted?.Invoke();
-            }
-
-            if (!isPreviousValueZero && isCurrentValueZero)
-            {
-                MovementFinished?.Invoke();
+                case true when !isCurrentValueZero:
+                    MovementStarted?.Invoke();
+                    break;
+                case false when isCurrentValueZero:
+                    MovementFinished?.Invoke();
+                    break;
             }
         }
     }

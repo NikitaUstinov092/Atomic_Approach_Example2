@@ -23,13 +23,9 @@ using UnityEngine;
             Debug.Log(_direction);
         }
         
-        /*void IUpdateListener.Update()
-        {
-            
-        }*/
-
         public void SetDirection(Vector3 direction)
         {
-            _direction = direction;
+            var moveVector = _transform.forward * direction.z + _transform.right * direction.x;
+            _direction = moveVector.normalized;
         }
     }

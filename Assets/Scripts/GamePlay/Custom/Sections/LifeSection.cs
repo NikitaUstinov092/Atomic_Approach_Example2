@@ -27,7 +27,7 @@ namespace GamePlay.Custom.Sections
                     TakeDamageEngine.Invoke(damage);
                 }
             );
-            TakeDamageEngine.Use(HitPoints, TakeDamageEvent,IsDead,DeathEvent);
+            TakeDamageEngine.Use(HitPoints, TakeDamageEvent, IsDead, DeathEvent);
         }
     }
 }

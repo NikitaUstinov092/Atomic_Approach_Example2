@@ -28,7 +28,7 @@ namespace Lessons.StateMachines.States
         void IState.Exit()
         {
             _movementDirection.Unsubscribe(SetDirection);
-            SetDirection(Vector3.zero);
+             SetDirection(Vector3.zero);
         }
 
         private void SetDirection(Vector3 direction)

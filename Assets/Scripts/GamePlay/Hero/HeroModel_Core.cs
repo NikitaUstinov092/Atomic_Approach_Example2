@@ -13,6 +13,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UpdateMechanics;
 using Object = UnityEngine.Object;
+
     namespace GamePlay.Hero
     {
         [Serializable]
@@ -30,6 +31,10 @@ using Object = UnityEngine.Object;
             [Section]
             [SerializeField]
             public CharacterMovement CharacterMoveComp = new();
+            
+            [Section]
+            [SerializeField]
+            public CharacterStates States = new();
             
             [Section]
             [SerializeField]
@@ -67,6 +72,7 @@ using Object = UnityEngine.Object;
                     {
                         moveInDirectionEngine.Construct(transform, movementSpeed);
                         rotateInDirectionEngine.Construct(transform, rotationSpeed);
+                       
                         _fixedUpdate.Construct(_ =>
                         {
                             moveInDirectionEngine.UpdatePosition();
@@ -81,35 +87,49 @@ using Object = UnityEngine.Object;
                 [ShowInInspector]
                 public AtomicEvent<Vector3> OnMove = new();
                 
+                public AtomicEvent OnMoveStart = new();
+                public AtomicEvent OnMoveFinish = new();
+                
                 public AtomicVariable<float> Speed = new();
                 public AtomicVariable<bool> MoveRequired = new ();
                 
                 [SerializeField]
                 private Transform _moveTransform;
-                
-                private Vector3 _moveDirection;
+            
+                public MoveInDirectionEngine MoveInDirectionEngine;
                 
                 [Construct]
                 public void Construct(HeroModel model)
                 {
                     var isDeath = model.Core.lifeSectionComp.IsDead;
+                   
+                    MoveInDirectionEngine.Construct(_moveTransform, Speed);
+
+                    MoveRequired.onChanged += (value) =>
+                    {
+                        if(isDeath.Value)
+                            return;
+                        
+                        if(value)
+                          OnMoveStart.Invoke();
+                        else
+                          OnMoveFinish.Invoke();
+                    };
                     
                     OnMove.Subscribe(direction =>
                     {
                         if(isDeath.Value)
                             return;
-
-                        var moveVector = _moveTransform.forward * direction.z + _moveTransform.right * direction.x;
-                        _moveDirection = moveVector.normalized;
+                        MoveInDirectionEngine.SetDirection(direction);
+                        
                         MoveRequired.Value = true;
                     });
 
-                    model.onFixedUpdate += deltaTime =>
+                    model.onFixedUpdate += _ =>
                     {
                         if (!MoveRequired.Value || isDeath.Value) 
                             return;
-                    
-                        _moveTransform.position += _moveDirection * (Speed.Value * deltaTime);
+                        MoveInDirectionEngine.UpdatePosition();
                         MoveRequired.Value = false;
                     };
                 }
@@ -275,7 +295,7 @@ using Object = UnityEngine.Object;
         [Construct]
         public void Construct(HeroModel root)
         {
-            root.onStart += () => this.stateMachine.Enter();
+            root.onStart += () => stateMachine.Enter();
         
             stateMachine.Construct(
                 (CharacterStateType.Idle, idleState),
@@ -285,15 +305,13 @@ using Object = UnityEngine.Object;
         }
 
         [Construct]
-        public void ConstructTransitions(LifeSection life, CharacterMovement movement)
+        public void ConstructTransitions(LifeSection life, Move movement)
         {
-            life.IsDead.onChanged += isAlive =>
-            {
-                var stateType = isAlive ? CharacterStateType.Idle : CharacterStateType.Dead;
-                stateMachine.SwitchState(stateType);
-            };
+            var isDead = life.DeathEvent;
+            isDead.Subscribe(() => stateMachine.SwitchState(CharacterStateType.Dead));
             
-            movement.movementDirection.MovementStarted.Subscribe(()=>
+            
+            movement.OnMoveStart.Subscribe(()=>
             {
                 if (!life.IsDead.Value)
                 {
@@ -301,29 +319,13 @@ using Object = UnityEngine.Object;
                 }
             }); 
 
-            movement.movementDirection.MovementStarted.Subscribe(() =>
+            movement.OnMoveFinish.Subscribe(() =>
             {
                 if (!life.IsDead.Value && stateMachine.CurrentState == CharacterStateType.Run)
                 {
                     stateMachine.SwitchState(CharacterStateType.Idle);
                 }
             });
-
-            /*gathering.process.OnStarted += _ =>
-            {
-                if (life.isAlive)
-                {
-                    stateMachine.SwitchState(CharacterStateType.Gathering);
-                }
-            };
-            
-            gathering.process.OnStopped += success =>
-            {
-                if (life.isAlive)
-                {
-                    stateMachine.SwitchState(CharacterStateType.Idle);
-                }
-            };*/
         }
     }
             [Serializable]
