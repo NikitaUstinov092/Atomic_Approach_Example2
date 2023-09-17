@@ -10,23 +10,16 @@ namespace Lesson
         public AtomicEvent MovementStarted { get; set; } = new();
         public AtomicEvent MovementFinished { get; set; } = new();
 
-        public void SetValue(Vector3 value)
+        public void Construct(AtomicVariable<bool> moveRequired)
         {
-            var previousValue = Value;
-            Value = value;
-
-            var isPreviousValueZero = previousValue == Vector3.zero;
-            var isCurrentValueZero = Value == Vector3.zero;
-
-            switch (isPreviousValueZero)
+            moveRequired.Subscribe((Value) =>
             {
-                case true when !isCurrentValueZero:
+                if(Value)
                     MovementStarted?.Invoke();
-                    break;
-                case false when isCurrentValueZero:
-                    MovementFinished?.Invoke();
-                    break;
-            }
+                else
+                    MovementFinished.Invoke();
+            });
         }
+        
     }
 }

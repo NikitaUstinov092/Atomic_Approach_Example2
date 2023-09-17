@@ -87,9 +87,6 @@ using Object = UnityEngine.Object;
                 [ShowInInspector]
                 public AtomicEvent<Vector3> OnMove = new();
                 
-                public AtomicEvent OnMoveStart = new();
-                public AtomicEvent OnMoveFinish = new();
-                
                 public AtomicVariable<float> Speed = new();
                 public AtomicVariable<bool> MoveRequired = new ();
                 
@@ -97,6 +94,7 @@ using Object = UnityEngine.Object;
                 private Transform _moveTransform;
             
                 public MoveInDirectionEngine MoveInDirectionEngine;
+                public MovementDirectionVariable MovementDirection;
                 
                 [Construct]
                 public void Construct(HeroModel model)
@@ -104,24 +102,13 @@ using Object = UnityEngine.Object;
                     var isDeath = model.Core.lifeSectionComp.IsDead;
                    
                     MoveInDirectionEngine.Construct(_moveTransform, Speed);
-
-                    MoveRequired.onChanged += (value) =>
-                    {
-                        if(isDeath.Value)
-                            return;
-                        
-                        if(value)
-                          OnMoveStart.Invoke();
-                        else
-                          OnMoveFinish.Invoke();
-                    };
+                    MovementDirection.Construct(MoveRequired);
                     
                     OnMove.Subscribe(direction =>
                     {
                         if(isDeath.Value)
                             return;
                         MoveInDirectionEngine.SetDirection(direction);
-                        
                         MoveRequired.Value = true;
                     });
 
@@ -311,7 +298,7 @@ using Object = UnityEngine.Object;
             isDead.Subscribe(() => stateMachine.SwitchState(CharacterStateType.Dead));
             
             
-            movement.OnMoveStart.Subscribe(()=>
+            movement.MovementDirection.MovementStarted.Subscribe(()=>
             {
                 if (!life.IsDead.Value)
                 {
@@ -319,7 +306,7 @@ using Object = UnityEngine.Object;
                 }
             }); 
 
-            movement.OnMoveFinish.Subscribe(() =>
+            movement.MovementDirection.MovementFinished.Subscribe(() =>
             {
                 if (!life.IsDead.Value && stateMachine.CurrentState == CharacterStateType.Run)
                 {

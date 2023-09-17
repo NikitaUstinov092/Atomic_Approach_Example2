@@ -10,13 +10,15 @@ namespace Lessons.StateMachines.States
     {
         private MovementDirectionVariable _movementDirection;
         private MoveInDirectionEngine _moveInDirectionEngine;
+        /*
         private RotateInDirectionEngine _rotateInDirection;
+        */
 
-        public void Construct(MovementDirectionVariable movementDirection, MoveInDirectionEngine moveInDirectionEngine, RotateInDirectionEngine rotateInDirection)
+        public void Construct(MovementDirectionVariable movementDirection, MoveInDirectionEngine moveInDirectionEngine/*, RotateInDirectionEngine rotateInDirection*/)
         {
             _movementDirection = movementDirection;
             _moveInDirectionEngine = moveInDirectionEngine;
-            _rotateInDirection = rotateInDirection;
+            /*_rotateInDirection = rotateInDirection;*/
         }
         
         void IState.Enter()
@@ -34,7 +36,7 @@ namespace Lessons.StateMachines.States
         private void SetDirection(Vector3 direction)
         {
             _moveInDirectionEngine.SetDirection(direction);
-            _rotateInDirection.SetDirection(direction);
+            /*_rotateInDirection.SetDirection(direction);*/
         }
     }
 }
