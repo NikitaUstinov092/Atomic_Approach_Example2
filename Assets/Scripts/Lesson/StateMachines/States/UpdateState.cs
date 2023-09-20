@@ -1,9 +1,10 @@
+using System.Declarative.Scripts;
 using GamePlay.Custom.GameMachine;
 using UnityEngine;
 
 namespace Lessons.StateMachines.States
 {
-    public abstract class UpdateState : IState, IUpdateListener
+    public abstract class UpdateState : IState, IUpdate
     {
         private bool _enabled = false;
         
@@ -29,14 +30,15 @@ namespace Lessons.StateMachines.States
             
         }
 
-        void IUpdateListener.Update()
+        void IUpdate.Update(float deltaTime)
         {
             if (_enabled)
             {
-                OnUpdate(Time.deltaTime);
+                OnUpdate(deltaTime);
             }
         }
 
         protected abstract void OnUpdate(float deltaTime);
+       
     }
 }

@@ -15,7 +15,7 @@ namespace GamePlay.Custom.GameMachine
             Container.BindInterfacesTo<KillsCounter<Entity.Entity>>().AsSingle();
             Container.BindInterfacesTo<KillsCountView>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<MoveInput>().FromComponentsInHierarchy().AsSingle();
-            Container.BindInterfacesTo<RotationInput>().FromComponentsInHierarchy().AsSingle();
+            //Container.BindInterfacesTo<RotationInput>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<ShootInput>().FromComponentsInHierarchy().AsSingle();
         }
     }

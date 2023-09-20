@@ -20,7 +20,6 @@ using UnityEngine;
         public void UpdatePosition()
         {
             _transform.position += _direction * (_speed.Value * Time.deltaTime);
-            Debug.Log(_direction);
         }
         
         public void SetDirection(Vector3 direction)

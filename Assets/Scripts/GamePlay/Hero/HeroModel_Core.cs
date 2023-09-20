@@ -47,6 +47,10 @@ using Object = UnityEngine.Object;
             [Section]
             [SerializeField]
             public Ammo AmmoComp = new();
+           
+            [Section]
+            [SerializeField]
+            public TargetEnemyContainer EnemyTarget = new();
             
             [Section]
             [SerializeField]
@@ -146,7 +150,8 @@ using Object = UnityEngine.Object;
                 
                     _fixedUpdate.Construct(_ =>
                     {
-                        if(isDeath.Value)
+                        if(isDeath.Value 
+                           || RotationDirection.Value == Vector3.zero)
                             return;
                     
                         var cursorScreenPos = RotationDirection.Value;
@@ -315,19 +320,27 @@ using Object = UnityEngine.Object;
             });
         }
     }
-            [Serializable]
-            public sealed class EntityContainer
-            {
-                public Entity.Entity Entity;
+    
+    [Serializable]
+    public sealed class TargetEnemyContainer
+    {
+        public AtomicVariable<Entity.Entity> Enemy;
+    }
+    
+    
+    [Serializable]
+    public sealed class EntityContainer
+    {
+        public Entity.Entity Entity;
 
-                [Construct]
-                public void Construct(LifeSection lifeSection)
-                {
-                    lifeSection.DeathEvent.Subscribe(() =>
-                    {
-                        Object.Destroy(Entity);
-                    });
-                }
-            }
+        [Construct]
+        public void Construct(LifeSection lifeSection)
+        {
+            lifeSection.DeathEvent.Subscribe(() =>
+            {
+                Object.Destroy(Entity);
+            });
+        }
+    }
         }
     }
