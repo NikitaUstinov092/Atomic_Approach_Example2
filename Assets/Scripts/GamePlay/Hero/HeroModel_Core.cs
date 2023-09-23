@@ -48,10 +48,11 @@ using Object = UnityEngine.Object;
             [SerializeField]
             public Ammo AmmoComp = new();
            
+            [FormerlySerializedAs("entityTarget")]
             [FormerlySerializedAs("EnemyTarget")]
             [Section]
             [SerializeField]
-            public TargetEntitySection entityTarget = new();
+            public TargetEntitySection EntityTarget = new();
             
             [Section]
             [SerializeField]

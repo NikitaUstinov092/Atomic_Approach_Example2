@@ -16,6 +16,7 @@ namespace Entity
             Add(new RotateComponent(model.Core.RotateComp.RotationDirection));
             Add(new DeathEventComponent(model.Core.LifeSectionComp.DeathEvent, model.Core.LifeSectionComp.DeathEventData));
             Add(new ShootComponent(model.Core.ShootComp.OnGetPressedFire));
+            Add(new SetTargetEntityComponent(model.Core.EntityTarget));
         }
 
         Entity IGetEntityComponent.GetEntity()

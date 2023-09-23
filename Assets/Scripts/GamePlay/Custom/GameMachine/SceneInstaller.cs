@@ -9,14 +9,15 @@ namespace GamePlay.Custom.GameMachine
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<HeroEntity>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesTo<HeroEntity>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyFactory>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyCleaner>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<KillsCounter<Entity.Entity>>().AsSingle();
             Container.BindInterfacesTo<KillsCountView>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<MoveInput>().FromComponentsInHierarchy().AsSingle();
-            Container.BindInterfacesTo<ClosestEntitySearcher>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<ShootInput>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesAndSelfTo<ClosestEntitySearcher>().AsSingle();
+            Container.BindInterfacesTo<ClosestEntityAdapter>().AsSingle();
         }
     }
 }

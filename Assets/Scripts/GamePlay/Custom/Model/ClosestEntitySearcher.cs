@@ -1,33 +1,33 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Entity;
 using GamePlay.Components;
 using GamePlay.Custom;
 using GamePlay.Custom.GameMachine;
-using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
-public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListener, IUpdateListener
+public class ClosestEntitySearcher : IInitListener, IDisableListener, IUpdateListener
 {
     public event Action <Entity.Entity> OnClosestEntityChanged;
     
-    [Inject]
-    private IEntityFactory<Entity.Entity> _entityFactory;
-
-    [SerializeField]
-    private Entity.Entity _entitySource;
+    private readonly Dictionary<Entity.Entity, float> _entitiesDistanceData = new();
     
-    [SerializeField]
+    private IEntityFactory<Entity.Entity> _entityFactory;
+    private IGetEntityComponent _getEntityComp;
+    private Entity.Entity _sourceEntity;
     private Entity.Entity _closestEntity;
     
-    private readonly Dictionary<Entity.Entity, float> _entitiesDistanceData = new();
-
-    private float _minDistance;
-    
+    [Inject]
+    private void Construct(IEntityFactory<Entity.Entity> entityFactory, IGetEntityComponent entitySource)
+    {
+        _getEntityComp = entitySource;
+        _entityFactory = entityFactory;
+    }
     void IInitListener.OnInit()
     {
         _entityFactory.OnEntityCreated += AddEntity;
+        _sourceEntity = _getEntityComp.GetEntity();
     }
     void IDisableListener.Disable()
     {
@@ -35,7 +35,7 @@ public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListe
     }
     void IUpdateListener.Update()
     {
-        if(EntityNull(_entitySource))
+        if(EntityNull(_sourceEntity))
             return;
         
         UpdateDistance();
@@ -49,7 +49,7 @@ public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListe
             if (EntityNull(t))
                 continue;
             
-            var distance = (_entitySource.transform.position - t.transform.position).magnitude;
+            var distance = (_sourceEntity.transform.position - t.transform.position).magnitude;
             _entitiesDistanceData[t] = distance;
         }
     }
@@ -68,8 +68,8 @@ public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListe
 
     private void AddEntity(Entity.Entity entity)
     {
-        if (!entity.TryGet(out DeathEventComponent deathEvent)) 
-            throw new NullReferenceException();
+        if (!entity.TryGet(out IGetDeathEventComponent deathEvent)) 
+            throw new NullReferenceException($"Компонент DeathEventComponent не найден на сущности {entity}");
       
         deathEvent.GetDeathEventData().Subscribe(RemoveEntity);
        

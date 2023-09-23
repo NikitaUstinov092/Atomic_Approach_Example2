@@ -1,4 +1,3 @@
-using System.Atomic.Implementations;
 using GamePlay.Components.Interfaces;
 
 namespace GamePlay.Components

@@ -1,9 +1,10 @@
 using System;
-using System.Atomic.Implementations;
 using System.Collections;
+using Entity;
 using GamePlay.Components.Interfaces;
 using GamePlay.Custom.GameMachine;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace GamePlay.Custom
@@ -11,15 +12,15 @@ namespace GamePlay.Custom
     public class EnemyFactory : MonoBehaviour, IStartListener, IEntityFactory<Entity.Entity>
     {
         public event Action<Entity.Entity> OnEntityCreated;
+
+        [Inject]
+        private IGetEntityComponent _targetEntityComp;
        
         [SerializeField] 
         private string _parentName = "Enemies";
         
         [SerializeField] 
         private Entity.Entity _enemy;
-    
-        [SerializeField]  
-        private Entity.Entity _targetEntity;
 
         [SerializeField] 
         private Transform[] _spawnPoints;
@@ -28,9 +29,12 @@ namespace GamePlay.Custom
         private float _delaySpawn = 2;
 
         private GameObject _parent;
+        
+        private Entity.Entity _targetEntity;
 
         void IStartListener.StartGame()
         {
+            _targetEntity = _targetEntityComp.GetEntity();
             _parent = new GameObject(_parentName);
             StartCoroutine(Spawn());
         }
