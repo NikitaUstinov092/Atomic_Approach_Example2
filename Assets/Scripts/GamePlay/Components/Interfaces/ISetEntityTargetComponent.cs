@@ -4,6 +4,6 @@ namespace GamePlay.Components.Interfaces
 {
     public interface ISetEntityTargetComponent
     {
-        void SetEntityTarget(AtomicVariable<Entity.Entity> entity);
+        void SetEntityTarget(Entity.Entity entity);
     }
 }

@@ -12,9 +12,9 @@ namespace GamePlay.Components
             _target = target;
         }
     
-        void ISetEntityTargetComponent.SetEntityTarget(AtomicVariable<Entity.Entity> entity)
+        void ISetEntityTargetComponent.SetEntityTarget(Entity.Entity entity)
         {
-            _target.TargetEntity = entity;
+            _target.TargetEntity.Value = entity;
         }
     }
 }

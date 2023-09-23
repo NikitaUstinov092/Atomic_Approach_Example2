@@ -517,14 +517,17 @@ MonoBehaviour:
         value: 5
       IsChasing:
         value: 0
-    target:
+    DisctanceChecker:
       MoveTransform: {fileID: 574660333010864038}
       Target:
         value: {fileID: 0}
       DistanceTarget:
-        value: 1
+        value: 2
       ClosedTarget:
         value: 0
+    TargetSection:
+      TargetEntity:
+        value: {fileID: 0}
     AttackHero:
       Damage:
         value: 1

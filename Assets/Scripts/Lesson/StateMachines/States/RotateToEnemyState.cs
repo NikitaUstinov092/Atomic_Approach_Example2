@@ -17,9 +17,10 @@ namespace Lesson.StateMachines.States
         }
         protected override void OnUpdate(float deltaTime)
         {
-            if (_entitySection.TargetEntity.Value == null)
+            var target = _entitySection.TargetEntity.Value;
+            if (target == null)
                 return;
-            var enemyTransform = _entitySection.TargetEntity.Value.transform;
+            var enemyTransform = target.transform;
             _sourceTransform.Value.LookAt(enemyTransform);
         }
     }

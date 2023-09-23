@@ -21,15 +21,13 @@ using Random = UnityEngine.Random;
             [SerializeField] 
             public Chase ZombieChase = new();
             
-            
-            [FormerlySerializedAs("target")]
             [Section]
             [SerializeField] 
             public TargetChecker DisctanceChecker = new();
             
             [Section]
             [SerializeField] 
-            public TargetEntitySection targetSection = new();
+            public TargetEntitySection TargetSection = new();
         
             [Section]
             [SerializeField] 
@@ -89,12 +87,13 @@ using Random = UnityEngine.Random;
                 [Construct]
                 public void Construct(TargetEntitySection targetEntitySection)
                 {
-                    Target.Value = targetEntitySection.TargetEntity.Value;
-                  
+                    targetEntitySection.TargetEntity.onChanged += (entity) => Target.Value = entity;
+                    
                     _fixedUpdate.Construct(_ =>
                     {
-                        if(Target.Value == null)
+                        if (Target.Value == null)
                             return;
+                        
                         var distance = Vector3.Distance(MoveTransform.position, Target.Value.transform.position);
                         ClosedTarget.Value = distance < DistanceTarget.Value;
                     });

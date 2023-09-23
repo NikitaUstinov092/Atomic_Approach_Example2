@@ -53,7 +53,7 @@ namespace GamePlay.Custom
         private void AddTarget(Entity.Entity enemy)
         {
             if(enemy.TryGet(out ISetEntityTargetComponent setEntityComp))
-                setEntityComp.SetEntityTarget(new AtomicVariable<Entity.Entity>(_targetEntity));
+                setEntityComp.SetEntityTarget(_targetEntity);
             else
                 throw new NullReferenceException();
         }
