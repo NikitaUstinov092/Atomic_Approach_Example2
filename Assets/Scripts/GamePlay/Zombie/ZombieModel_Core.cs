@@ -126,7 +126,7 @@ using Random = UnityEngine.Random;
                             return;
                         
                         if (targetChecker.Target.Value != null && 
-                            targetChecker.Target.Value.TryGet(out ITakeDamagable damage))
+                            targetChecker.Target.Value.TryGet(out ITakeDamageable damage))
                             damage.TakeDamage(Damage.Value);
                         
                         _timer = 0f;

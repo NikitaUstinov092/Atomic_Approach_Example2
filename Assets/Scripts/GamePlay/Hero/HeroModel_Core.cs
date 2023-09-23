@@ -94,8 +94,7 @@ using Object = UnityEngine.Object;
                 public AtomicVariable<float> Speed = new();
                 public AtomicVariable<bool> MoveRequired = new ();
                 
-                [SerializeField]
-                private Transform _moveTransform;
+                public AtomicVariable<Transform> MoveTransform;
             
                 public MoveInDirectionEngine MoveInDirectionEngine;
                 public MovementDirectionVariable MovementDirection;
@@ -105,7 +104,7 @@ using Object = UnityEngine.Object;
                 {
                     var isDeath = model.Core.lifeSectionComp.IsDead;
                    
-                    MoveInDirectionEngine.Construct(_moveTransform, Speed);
+                    MoveInDirectionEngine.Construct(MoveTransform.Value, Speed);
                     MovementDirection.Construct(MoveRequired);
                     
                     OnMove.Subscribe(direction =>
@@ -341,6 +340,8 @@ using Object = UnityEngine.Object;
                 Object.Destroy(Entity);
             });
         }
+        
     }
+    
         }
     }

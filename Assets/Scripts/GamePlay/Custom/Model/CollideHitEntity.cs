@@ -11,7 +11,7 @@ namespace GamePlay.Custom
       {
          if (!other.gameObject.TryGetComponent(out Entity.Entity entity)) 
             return;
-         if(entity.TryGet(out ITakeDamagable damage))
+         if(entity.TryGet(out ITakeDamageable damage))
             damage.TakeDamage(_damage);
          Destroy(gameObject);
       }

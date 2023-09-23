@@ -502,7 +502,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Core:
-    Life:
+    lifeSection:
+      Entity:
+        value: {fileID: 479581115975753025}
       HitPoints:
         value: 1
       IsDead:
@@ -515,7 +517,7 @@ MonoBehaviour:
         value: 5
       IsChasing:
         value: 0
-    TargetDistance:
+    target:
       MoveTransform: {fileID: 574660333010864038}
       Target:
         value: {fileID: 0}

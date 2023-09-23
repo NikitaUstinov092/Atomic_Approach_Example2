@@ -10,6 +10,9 @@ namespace GamePlay.Custom
     public class EnemyFactory : MonoBehaviour, IStartListener, IEnemyFactory<Entity.Entity>
     {
         public event Action<Entity.Entity> OnEnemyCreated;
+       
+        [SerializeField] 
+        private string _parentName = "Enemies";
         
         [SerializeField] 
         private Entity.Entity _enemy;
@@ -27,8 +30,7 @@ namespace GamePlay.Custom
 
         void IStartListener.StartGame()
         {
-            _parent = new GameObject("Enemies");
-            TargetState();
+            _parent = new GameObject(_parentName);
             StartCoroutine(Spawn());
         }
         private IEnumerator Spawn()

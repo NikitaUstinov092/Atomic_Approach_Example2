@@ -1,7 +1,7 @@
 
     namespace GamePlay.Components.Interfaces
     {
-        public interface ITakeDamagable
+        public interface ITakeDamageable
         {
             void TakeDamage(int damage);
         }

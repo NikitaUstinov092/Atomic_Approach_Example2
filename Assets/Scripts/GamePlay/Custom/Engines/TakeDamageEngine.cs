@@ -11,17 +11,25 @@ namespace GamePlay.Custom.Engines
             private AtomicEvent<int> _takeDamageEvent;
             private AtomicVariable<bool> _isDead;
             private AtomicEvent _deathEvent;
+            private AtomicEvent<Entity.Entity> _deathEventData;
+            
+            private AtomicVariable<Entity.Entity> _entity;
            
+
             public void Use( 
                 AtomicVariable<int> hitPoints,
                 AtomicEvent<int> takeDamageEvent,
                 AtomicVariable<bool> isDead, 
-                AtomicEvent deathEvent)
+                AtomicEvent deathEvent,
+                AtomicVariable<Entity.Entity> entity,
+                AtomicEvent<Entity.Entity> deathEventData)
             {
                 _hitPoints = hitPoints;
                 _takeDamageEvent = takeDamageEvent;
                 _isDead = isDead;
                 _deathEvent = deathEvent;
+                _entity = entity;
+                _deathEventData = deathEventData;
             }
             public void Invoke(int damage)
             {
@@ -35,7 +43,7 @@ namespace GamePlay.Custom.Engines
                         
                 _isDead.Value = true;
                 _deathEvent?.Invoke();
-                
+                _deathEventData?.Invoke(_entity.Value);
             }
     }
 }
