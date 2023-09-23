@@ -2834,13 +2834,13 @@
             <note type="note">Note that this attribute only works in the editor! Values changed from scripting will not be capped at a minimum.</note>
             </remarks>
             <example>
-            <para>The following example shows a player component that must have at least 1 lifeSectionComp.</para>
+            <para>The following example shows a player component that must have at least 1 LifeSectionComp.</para>
             <code>
             public class Player : MonoBehaviour
             {
-            	// The lifeSectionComp value must be set to at least 1.
+            	// The LifeSectionComp value must be set to at least 1.
             	[MinValue(1)]
-            	public int lifeSectionComp;
+            	public int LifeSectionComp;
             }
             </code>
             </example>

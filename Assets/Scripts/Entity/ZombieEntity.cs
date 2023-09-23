@@ -12,7 +12,7 @@ namespace Entity
         {
             Add(new DeathEventComponent(model.Core.lifeSection.DeathEvent, model.Core.lifeSection.DeathEventData));
             Add(new TakeDamageRequestComponent(model.Core.lifeSection.TakeDamageRequest));
-            Add(new SetTargetEntityComponent(model.Core.target));
+            Add(new SetTargetEntityComponent(model.Core.targetSection));
         }
     }
 }

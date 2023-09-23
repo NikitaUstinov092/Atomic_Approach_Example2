@@ -1,4 +1,5 @@
 using System;
+using System.Atomic.Implementations;
 using System.Collections;
 using GamePlay.Components.Interfaces;
 using GamePlay.Custom.GameMachine;
@@ -7,9 +8,9 @@ using Random = UnityEngine.Random;
 
 namespace GamePlay.Custom
 {
-    public class EnemyFactory : MonoBehaviour, IStartListener, IEnemyFactory<Entity.Entity>
+    public class EnemyFactory : MonoBehaviour, IStartListener, IEntityFactory<Entity.Entity>
     {
-        public event Action<Entity.Entity> OnEnemyCreated;
+        public event Action<Entity.Entity> OnEntityCreated;
        
         [SerializeField] 
         private string _parentName = "Enemies";
@@ -43,7 +44,7 @@ namespace GamePlay.Custom
                 
                 AddTarget(spawnEntity);
                 
-                OnEnemyCreated?.Invoke(spawnEntity);
+                OnEntityCreated?.Invoke(spawnEntity);
                 
                 yield return new WaitForSeconds(_delaySpawn);
             }
@@ -52,7 +53,7 @@ namespace GamePlay.Custom
         private void AddTarget(Entity.Entity enemy)
         {
             if(enemy.TryGet(out ISetEntityTargetComponent setEntityComp))
-                setEntityComp.SetEntityTarget(_targetEntity);
+                setEntityComp.SetEntityTarget(new AtomicVariable<Entity.Entity>(_targetEntity));
             else
                 throw new NullReferenceException();
         }
@@ -63,8 +64,8 @@ namespace GamePlay.Custom
         }
     }
 
-    public interface IEnemyFactory<T>
+    public interface IEntityFactory<T>
     {
-       event Action<T> OnEnemyCreated;
+       event Action<T> OnEntityCreated;
     }
 }

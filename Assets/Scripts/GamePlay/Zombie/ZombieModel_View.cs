@@ -27,7 +27,7 @@ namespace GamePlay.Zombie
             var isDeath = core.lifeSection.IsDead;
             var isChasing = core.ZombieChase.IsChasing;
             var stopAttack = core.AttackHero.StopAttack;
-            var distanceChecker = core.target;
+            var distanceChecker = core.DisctanceChecker;
             
             isDeath.Subscribe((state)=>  Animator.SetInteger(State, DEATH_STATE));
             

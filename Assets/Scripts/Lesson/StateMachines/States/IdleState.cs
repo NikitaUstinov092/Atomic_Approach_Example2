@@ -20,8 +20,8 @@ namespace Lessons.StateMachines.States
         [Construct]
         public void ConstructSubStates(HeroModel_View visual, HeroModel_Core core)
         {
-            ShootState.Construct(core.EnemyTarget, core.ShootComp);
-            RotateToEnemyState.Construct(core.EnemyTarget, core.MoveComp.MoveTransform);
+            ShootState.Construct(core.entityTarget, core.ShootComp);
+            RotateToEnemyState.Construct(core.entityTarget, core.MoveComp.MoveTransform);
         }
     }
 }

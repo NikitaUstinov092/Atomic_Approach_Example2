@@ -19,10 +19,10 @@ using Object = UnityEngine.Object;
         [Serializable]
         public sealed class HeroModel_Core
         {
-            [FormerlySerializedAs("LifeComp")]
+            [FormerlySerializedAs("lifeSectionComp")]
             [Section]
             [SerializeField]
-            public LifeSection lifeSectionComp = new();
+            public LifeSection LifeSectionComp = new();
             
             [Section]
             [SerializeField]
@@ -48,9 +48,10 @@ using Object = UnityEngine.Object;
             [SerializeField]
             public Ammo AmmoComp = new();
            
+            [FormerlySerializedAs("EnemyTarget")]
             [Section]
             [SerializeField]
-            public TargetEnemyContainer EnemyTarget = new();
+            public TargetEntitySection entityTarget = new();
             
             [Section]
             [SerializeField]
@@ -102,7 +103,7 @@ using Object = UnityEngine.Object;
                 [Construct]
                 public void Construct(HeroModel model)
                 {
-                    var isDeath = model.Core.lifeSectionComp.IsDead;
+                    var isDeath = model.Core.LifeSectionComp.IsDead;
                    
                     MoveInDirectionEngine.Construct(MoveTransform.Value, Speed);
                     MovementDirection.Construct(MoveRequired);
@@ -318,12 +319,6 @@ using Object = UnityEngine.Object;
                 }
             });
         }
-    }
-    
-    [Serializable]
-    public sealed class TargetEnemyContainer
-    {
-        public AtomicVariable<Entity.Entity> Enemy;
     }
     
     

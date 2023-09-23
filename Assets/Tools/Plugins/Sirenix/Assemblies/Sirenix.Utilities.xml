@@ -613,7 +613,7 @@
         </member>
         <member name="M:Sirenix.Utilities.MethodInfoExtensions.GetParamsNames(System.Reflection.MethodBase)">
             <summary>
-            Returns a string representing the passed method parameters names. Ex "int num, float damage, Transform target"
+            Returns a string representing the passed method parameters names. Ex "int num, float damage, Transform DisctanceChecker"
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.MethodInfoExtensions.GetFullName(System.Reflection.MethodBase)">
@@ -2696,7 +2696,7 @@
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.PointDistanceToLine(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)">
             <summary>
-            target from a point to a line.
+            DisctanceChecker from a point to a line.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.Hermite(System.Single,System.Single,System.Single)">
@@ -2868,7 +2868,7 @@
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.LineDistToPlane(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)">
             <summary>
-            target from line to plane.
+            DisctanceChecker from line to plane.
             </summary>
             <param name="planeOrigin">Position of the plane.</param>
             <param name="planeNormal">Surface normal of the plane.</param>
@@ -2877,7 +2877,7 @@
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.RayDistToPlane(UnityEngine.Ray,UnityEngine.Plane)">
             <summary>
-            target from ray to plane.
+            DisctanceChecker from ray to plane.
             </summary>
             <param name="ray">The ray.</param>
             <param name="plane">The plane.</param>

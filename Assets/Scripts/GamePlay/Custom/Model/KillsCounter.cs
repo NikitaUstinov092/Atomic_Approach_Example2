@@ -14,13 +14,13 @@ namespace GamePlay.Custom
         public event Action<int> OnValueChanged;
     
         [Inject]
-        private IEnemyFactory<T> _enemyFactory;
+        private IEntityFactory<T> _enemyFactory;
     
         private T _enemy;
         private int _deathCount;
         void IInitListener.OnInit()
         {
-            _enemyFactory.OnEnemyCreated += CheckLifeComponent;
+            _enemyFactory.OnEntityCreated += CheckLifeComponent;
         }
         void IStartListener.StartGame()
         {
@@ -28,7 +28,7 @@ namespace GamePlay.Custom
         }
         void IDisableListener.Disable()
         {
-            _enemyFactory.OnEnemyCreated -= CheckLifeComponent;
+            _enemyFactory.OnEntityCreated -= CheckLifeComponent;
         }
         private void CheckLifeComponent(T enemy)
         {

@@ -5299,7 +5299,7 @@
         </member>
         <member name="F:Sirenix.Serialization.PrefabModification.ReferencePaths">
             <summary>
-            A list of all deep reflection paths in the target object where the value referenced by this modification was also located.
+            A list of all deep reflection paths in the DisctanceChecker object where the value referenced by this modification was also located.
             </summary>
         </member>
         <member name="F:Sirenix.Serialization.PrefabModification.ModifiedValue">
@@ -7851,7 +7851,7 @@
         </member>
         <member name="M:Sirenix.Serialization.Utilities.MethodInfoExtensions.GetParamsNames(System.Reflection.MethodBase)">
             <summary>
-            Returns a string representing the passed method parameters names. Ex "int num, float damage, Transform target"
+            Returns a string representing the passed method parameters names. Ex "int num, float damage, Transform DisctanceChecker"
             </summary>
         </member>
         <member name="M:Sirenix.Serialization.Utilities.MethodInfoExtensions.GetFullName(System.Reflection.MethodBase)">

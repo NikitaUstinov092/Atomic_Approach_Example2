@@ -13,7 +13,6 @@ using Random = UnityEngine.Random;
         [Serializable]
         public sealed class ZombieModel_Core
         {
-            [FormerlySerializedAs("Life")]
             [Section]
             [SerializeField]
             public LifeSection lifeSection = new();
@@ -22,10 +21,15 @@ using Random = UnityEngine.Random;
             [SerializeField] 
             public Chase ZombieChase = new();
             
-            [FormerlySerializedAs("TargetDistance")]
+            
+            [FormerlySerializedAs("target")]
             [Section]
             [SerializeField] 
-            public TargetChecker target = new();
+            public TargetChecker DisctanceChecker = new();
+            
+            [Section]
+            [SerializeField] 
+            public TargetEntitySection targetSection = new();
         
             [Section]
             [SerializeField] 
@@ -83,8 +87,10 @@ using Random = UnityEngine.Random;
                 private readonly FixedUpdateMechanics _fixedUpdate = new();
 
                 [Construct]
-                public void Construct()
+                public void Construct(TargetEntitySection targetEntitySection)
                 {
+                    Target.Value = targetEntitySection.TargetEntity.Value;
+                  
                     _fixedUpdate.Construct(_ =>
                     {
                         if(Target.Value == null)
@@ -94,6 +100,7 @@ using Random = UnityEngine.Random;
                     });
                 }
             }
+            
         
             [Serializable]
             public sealed class Attack

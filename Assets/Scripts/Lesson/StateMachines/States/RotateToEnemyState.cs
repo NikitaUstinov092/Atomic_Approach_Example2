@@ -7,19 +7,19 @@ namespace Lesson.StateMachines.States
 {
     public class RotateToEnemyState : UpdateState
     {
-        private HeroModel_Core.TargetEnemyContainer _enemyContainer;
+        private TargetEntitySection _entitySection;
         private AtomicVariable<Transform> _sourceTransform;
-        public void Construct(HeroModel_Core.TargetEnemyContainer enemyContainer,
+        public void Construct(TargetEntitySection entitySection,
             AtomicVariable<Transform> sourceTransform)
         {
-            _enemyContainer = enemyContainer;
+            _entitySection = entitySection;
             _sourceTransform = sourceTransform;
         }
         protected override void OnUpdate(float deltaTime)
         {
-            if (_enemyContainer.Enemy.Value == null)
+            if (_entitySection.TargetEntity.Value == null)
                 return;
-            var enemyTransform = _enemyContainer.Enemy.Value.transform;
+            var enemyTransform = _entitySection.TargetEntity.Value.transform;
             _sourceTransform.Value.LookAt(enemyTransform);
         }
     }

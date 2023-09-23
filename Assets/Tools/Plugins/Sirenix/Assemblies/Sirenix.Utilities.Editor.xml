@@ -7600,7 +7600,7 @@
             Determines whether if the source is within the search.
             </summary>
             <param name="source">The source string.</param>
-            <param name="target">The target string.</param>
+            <param name="DisctanceChecker">The DisctanceChecker string.</param>
             <param name="ignoreCase">Should the algorithm ignore letter case?.</param>
             <param name="abbreviation">Should the algorithm attempt to search on an abbreviation of the source?.</param>
             <param name="threshold">Threshold for what is considered to be within the search. 0 will return everything and 1 will only return exact matches.</param>
@@ -7608,13 +7608,13 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.FuzzySearch.Compare(System.String@,System.String@,System.Boolean,System.Boolean)">
             <summary>
-            Compares the target to the source and returns a distance score.
+            Compares the DisctanceChecker to the source and returns a distance score.
             </summary>
             <param name="source">The source string.</param>
-            <param name="target">The target string.</param>
+            <param name="DisctanceChecker">The DisctanceChecker string.</param>
             <param name="ignoreCase"></param>
             <param name="abbreviation"></param>
-            <returns>target score. 0 is no match, and 1 is exact match.</returns>
+            <returns>DisctanceChecker score. 0 is no match, and 1 is exact match.</returns>
         </member>
         <member name="T:Sirenix.Utilities.Editor.GUIFrameCounter">
             <summary>

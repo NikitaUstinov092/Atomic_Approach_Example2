@@ -1146,7 +1146,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060751495}
-  m_LocalRotation: {x: 0.6391203, y: -0.020339444, z: 0.016911888, w: 0.7686518}
+  m_LocalRotation: {x: 0.6391203, y: -0.020339474, z: 0.01691191, w: 0.7686518}
   m_LocalPosition: {x: 36.358883, y: 2.0651627, z: -1.4362711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1542,8 +1542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f6b1bba7b35e04a81f18a987e663b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityTarget: {fileID: 3587277424092816633}
-  _entitiesSearch: []
+  _entitySource: {fileID: 3587277424092816633}
   _closestEntity: {fileID: 0}
 --- !u!1 &1454330479
 GameObject:
@@ -1927,7 +1926,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779381465}
-  m_LocalRotation: {x: 0.6391203, y: -0.020339444, z: 0.016911888, w: 0.7686518}
+  m_LocalRotation: {x: 0.6391203, y: -0.020339474, z: 0.01691191, w: 0.7686518}
   m_LocalPosition: {x: 36.358883, y: 2.0651627, z: -1.4362711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4320,7 +4319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Core:
-    lifeSectionComp:
+    LifeSectionComp:
       Entity:
         value: {fileID: 3587277424092816633}
       HitPoints:
@@ -4370,8 +4369,8 @@ MonoBehaviour:
         value: 10
       ReloadTime:
         value: 2
-    EnemyTarget:
-      Enemy:
+    entityTarget:
+      TargetEntity:
         value: {fileID: 0}
     EntityStorageComp:
       Entity: {fileID: 3587277424092816633}

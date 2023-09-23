@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GamePlay.Components;
-using GamePlay.Components.Interfaces;
 using GamePlay.Custom;
 using GamePlay.Custom.GameMachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListener, IUpdateListener
@@ -12,73 +13,67 @@ public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListe
     public event Action <Entity.Entity> OnClosestEntityChanged;
     
     [Inject]
-    private IEnemyFactory<Entity.Entity> _enemyFactory;
+    private IEntityFactory<Entity.Entity> _entityFactory;
 
     [SerializeField]
-    private Entity.Entity _entityTarget;
-    
-    [SerializeField]
-    private List<Entity.Entity> _entitiesSearch = new();
+    private Entity.Entity _entitySource;
     
     [SerializeField]
     private Entity.Entity _closestEntity;
     
-    /*private float _closestDistance = float.MaxValue; */
-    [SerializeField]
-    private Dictionary<Entity.Entity, float> __entitiesDistanceData = new();
+    private readonly Dictionary<Entity.Entity, float> _entitiesDistanceData = new();
+
+    private float _minDistance;
+    
     void IInitListener.OnInit()
     {
-        _enemyFactory.OnEnemyCreated += AddEntity;
+        _entityFactory.OnEntityCreated += AddEntity;
     }
     void IDisableListener.Disable()
     {
-        _enemyFactory.OnEnemyCreated -= AddEntity;
+        _entityFactory.OnEntityCreated -= AddEntity;
     }
     void IUpdateListener.Update()
     {
-       
+        if(EntityNull(_entitySource))
+            return;
         
+        UpdateDistance();
+        FindClosest();
     }
 
-    /*
-    void IUpdateListener.Update()
+    private void UpdateDistance()
     {
-        foreach (var t in _entitiesSearch)
+        foreach (var t in _entitiesDistanceData.Keys.ToList())
         {
-            if (t == null)
-            {
-                _entitiesSearch.Remove(t);
-                return;
-            }
-            
-            var distance = (_entityTarget.transform.position - t.transform.position).magnitude;
-
-            if (!(distance < _closestDistance)) 
+            if (EntityNull(t))
                 continue;
             
-            _closestDistance = distance;// Обновляем ближайшую дистанцию
-            
-            if(t == _closestEntity)
-                return;
-            
-            _closestEntity = t;
-            
-            OnClosestEntityChanged?.Invoke(_closestEntity);
-            Debug.Log($"Новый приследуемый враг {_closestEntity.name}");
+            var distance = (_entitySource.transform.position - t.transform.position).magnitude;
+            _entitiesDistanceData[t] = distance;
         }
     }
-    */
+
+    private void FindClosest()
+    {
+        var sortedDictionary = _entitiesDistanceData.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+        var firstElement = sortedDictionary.Keys.FirstOrDefault();
+        
+         if(_closestEntity == firstElement)
+             return;
+         
+         _closestEntity = firstElement;
+         OnClosestEntityChanged?.Invoke(_closestEntity);
+    }
 
     private void AddEntity(Entity.Entity entity)
     {
-        if(EntityNull(_entityTarget))
-            return;
-
         if (!entity.TryGet(out DeathEventComponent deathEvent)) 
             throw new NullReferenceException();
       
         deathEvent.GetDeathEventData().Subscribe(RemoveEntity);
-        _entitiesSearch.Add(entity);
+       
+        _entitiesDistanceData.Add(entity,new float());
     }
 
     private bool EntityNull(Entity.Entity entity)
@@ -88,6 +83,6 @@ public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListe
     
     private void RemoveEntity(Entity.Entity entity)
     {
-        _entitiesSearch.Remove(entity);
+        _entitiesDistanceData.Remove(entity);
     }
 }

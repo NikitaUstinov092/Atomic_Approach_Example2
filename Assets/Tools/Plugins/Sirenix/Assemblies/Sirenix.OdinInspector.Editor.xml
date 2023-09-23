@@ -1362,7 +1362,7 @@
             Gets the Unity PropertyModification for the property at this path, if there are any.
             </summary>
             <param name="path">The property path to get the modification for.</param>
-            <param name="selectionIndex">The index of the tree target to get the modification for.</param>
+            <param name="selectionIndex">The index of the tree DisctanceChecker to get the modification for.</param>
             <param name="childrenHaveModifications">Whether any children of the path have modifications registered.</param>
             <returns></returns>
         </member>
@@ -1381,7 +1381,7 @@
             Registers a modification of type <see cref="F:Sirenix.Serialization.PrefabModificationType.ListLength" /> for a given property.
             </summary>
             <param name="property">The property to register a modification for.</param>
-            <param name="targetIndex">Selection index of the target to register a modification for.</param>
+            <param name="targetIndex">Selection index of the DisctanceChecker to register a modification for.</param>
             <param name="newLength">The modified list length.</param>
             <exception cref="T:System.ArgumentException">
             Property " + property.Path + " does not have a value entry; cannot register prefab modification to this property.
@@ -1394,7 +1394,7 @@
             Registers a modification of type <see cref="F:Sirenix.Serialization.PrefabModificationType.Value" /> for a given property.
             </summary>
             <param name="property">The property to register a modification for.</param>
-            <param name="targetIndex">Selection index of the target to register a modification for.</param>
+            <param name="targetIndex">Selection index of the DisctanceChecker to register a modification for.</param>
             <param name="forceImmediate">Whether to force the change to be registered immediately, rather than at the end of frame.</param>
             <exception cref="T:System.ArgumentException">Property " + property.Path + " does not have a value entry; cannot register prefab modification to this property.</exception>
         </member>
@@ -1403,7 +1403,7 @@
             Calculates a delta between the current dictionary property and its prefab counterpart, and registers that delta as a <see cref="F:Sirenix.Serialization.PrefabModificationType.Dictionary" /> modification.
             </summary>
             <param name="property">The property to register a modification for.</param>
-            <param name="targetIndex">Selection index of the target.</param>
+            <param name="targetIndex">Selection index of the DisctanceChecker.</param>
             <exception cref="T:System.ArgumentException">Property " + property.Path + " does not have a value entry; cannot register prefab modification to this property.</exception>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PrefabModificationHandler.RegisterPrefabDictionaryRemoveKeyModification(Sirenix.OdinInspector.Editor.InspectorProperty,System.Int32,System.Object)">
@@ -1411,7 +1411,7 @@
             Adds a remove key modification to the dictionary modifications of a given property.
             </summary>
             <param name="property">The property to register a modification for.</param>
-            <param name="targetIndex">Selection index of the target.</param>
+            <param name="targetIndex">Selection index of the DisctanceChecker.</param>
             <param name="key">The key to be removed.</param>
             <exception cref="T:System.ArgumentException">Property " + property.Path + " does not have a value entry; cannot register prefab modification to this property.</exception>
         </member>
@@ -1420,7 +1420,7 @@
             Adds an add key modification to the dictionary modifications of a given property.
             </summary>
             <param name="property">The property to register a modification for.</param>
-            <param name="targetIndex">Selection index of the target.</param>
+            <param name="targetIndex">Selection index of the DisctanceChecker.</param>
             <param name="key">The key to be added.</param>
             <exception cref="T:System.ArgumentException">Property " + property.Path + " does not have a value entry; cannot register prefab modification to this property.</exception>
         </member>
@@ -1429,7 +1429,7 @@
             Removes all dictionary modifications on a property for a given dictionary key value.
             </summary>
             <param name="property">The property to remove a key modification for.</param>
-            <param name="targetIndex">Selection index of the target.</param>
+            <param name="targetIndex">Selection index of the DisctanceChecker.</param>
             <param name="key">The key to remove modifications for.</param>
             <exception cref="T:System.ArgumentNullException">key</exception>
         </member>
@@ -1438,7 +1438,7 @@
             Removes all prefab modifications of a given type on a given property.
             </summary>
             <param name="property">The property to remove modifications for.</param>
-            <param name="targetIndex">Selection index of the target.</param>
+            <param name="targetIndex">Selection index of the DisctanceChecker.</param>
             <param name="modificationType">Type of the modification to remove.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PrefabModificationHandler.GetPrefabModifications(System.Int32)">
@@ -1772,7 +1772,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.#ctor">
             <summary>
-            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for all target values of a <see cref="T:UnityEditor.SerializedObject" />.
+            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for all DisctanceChecker values of a <see cref="T:UnityEditor.SerializedObject" />.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.PropertyTree.RootProperty">
@@ -1923,7 +1923,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.ApplyChanges">
             <summary>
-            Applies all changes made with properties to the inspected target tree values, and marks all changed Unity objects dirty.
+            Applies all changes made with properties to the inspected DisctanceChecker tree values, and marks all changed Unity objects dirty.
             </summary>
             <returns>true if any values were changed, otherwise false</returns>
         </member>
@@ -1948,22 +1948,22 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.Create(System.Object)">
             <summary>
-            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for a given target value.
+            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for a given DisctanceChecker value.
             </summary>
-            <param name="target">The target to create a tree for.</param>
-            <exception cref="T:System.ArgumentNullException">target is null</exception>
+            <param name="DisctanceChecker">The DisctanceChecker to create a tree for.</param>
+            <exception cref="T:System.ArgumentNullException">DisctanceChecker is null</exception>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.Create(System.Object,Sirenix.OdinInspector.Editor.SerializationBackend)">
             <summary>
-            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for a given target value.
+            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for a given DisctanceChecker value.
             </summary>
-            <param name="target">The target to create a tree for.</param>
+            <param name="DisctanceChecker">The DisctanceChecker to create a tree for.</param>
             <param name="backend">The serialization backend to use for the tree root.</param>
-            <exception cref="T:System.ArgumentNullException">target is null</exception>
+            <exception cref="T:System.ArgumentNullException">DisctanceChecker is null</exception>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.Create(System.Object[])">
             <summary>
-            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for a set of given target values.</para>
+            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for a set of given DisctanceChecker values.</para>
             <para>Note that the targets all need to be of the same type.</para>
             </summary>
             <param name="targets">The targets to create a tree for.</param>
@@ -1971,14 +1971,14 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.Create(UnityEditor.SerializedObject)">
             <summary>
-            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for all target values of a <see cref="T:UnityEditor.SerializedObject" />.
+            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for all DisctanceChecker values of a <see cref="T:UnityEditor.SerializedObject" />.
             </summary>
             <param name="serializedObject">The serialized object to create a tree for.</param>
             <exception cref="T:System.ArgumentNullException">serializedObject is null</exception>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.Create(UnityEditor.SerializedObject,Sirenix.OdinInspector.Editor.SerializationBackend)">
             <summary>
-            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for all target values of a <see cref="T:UnityEditor.SerializedObject" />.
+            Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree" /> for all DisctanceChecker values of a <see cref="T:UnityEditor.SerializedObject" />.
             </summary>
             <param name="serializedObject">The serialized object to create a tree for.</param>
             <exception cref="T:System.ArgumentNullException">serializedObject is null</exception>
@@ -1986,14 +1986,14 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.Create(System.Collections.IList)">
             <summary>
-            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/> for a set of given target values.</para>
+            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/> for a set of given DisctanceChecker values.</para>
             <para>Note that the targets all need to be of the same type.</para>
             </summary>
             <param name="targets">The targets to create a tree for.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.Create(System.Collections.IList,Sirenix.OdinInspector.Editor.SerializationBackend)">
             <summary>
-            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/> for a set of given target values.</para>
+            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/> for a set of given DisctanceChecker values.</para>
             <para>Note that the targets all need to be of the same type.</para>
             </summary>
             <param name="targets">The targets to create a tree for.</param>
@@ -2001,19 +2001,19 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.Create(System.Collections.IList,UnityEditor.SerializedObject)">
             <summary>
-            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/> for a set of given target values, represented by a given <see cref="T:UnityEditor.SerializedObject"/>.</para>
+            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/> for a set of given DisctanceChecker values, represented by a given <see cref="T:UnityEditor.SerializedObject"/>.</para>
             <para>Note that the targets all need to be of the same type.</para>
             </summary>
             <param name="targets">The targets to create a tree for.</param>
-            <param name="serializedObject">The serialized object to create a tree for. Note that the target values of the given <see cref="T:UnityEditor.SerializedObject"/> must be the same values given in the targets parameter.</param>
+            <param name="serializedObject">The serialized object to create a tree for. Note that the DisctanceChecker values of the given <see cref="T:UnityEditor.SerializedObject"/> must be the same values given in the targets parameter.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.Create(System.Collections.IList,UnityEditor.SerializedObject,Sirenix.OdinInspector.Editor.SerializationBackend)">
             <summary>
-            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/> for a set of given target values, represented by a given <see cref="T:UnityEditor.SerializedObject"/>.</para>
+            <para>Creates a new <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree"/> for a set of given DisctanceChecker values, represented by a given <see cref="T:UnityEditor.SerializedObject"/>.</para>
             <para>Note that the targets all need to be of the same type.</para>
             </summary>
             <param name="targets">The targets to create a tree for.</param>
-            <param name="serializedObject">The serialized object to create a tree for. Note that the target values of the given <see cref="T:UnityEditor.SerializedObject"/> must be the same values given in the targets parameter.</param>
+            <param name="serializedObject">The serialized object to create a tree for. Note that the DisctanceChecker values of the given <see cref="T:UnityEditor.SerializedObject"/> must be the same values given in the targets parameter.</param>
             <param name="backend">The serialization backend to use for the tree root.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree.SetSearchable(System.Boolean,Sirenix.OdinInspector.SearchableAttribute)">
@@ -2081,7 +2081,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree`1.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree`1"/> class, inspecting only the target (<see cref="!:T"/>) type's static members.
+            Initializes a new instance of the <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree`1"/> class, inspecting only the DisctanceChecker (<see cref="!:T"/>) type's static members.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree`1.#ctor(UnityEditor.SerializedObject)">
@@ -2101,12 +2101,12 @@
             Initializes a new instance of the <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree`1"/> class.
             </summary>
             <param name="targets">The targets to represent.</param>
-            <param name="serializedObject">The serialized object to represent. Note that the target values of the given <see cref="T:UnityEditor.SerializedObject"/> must be the same values given in the targets parameter.</param>
+            <param name="serializedObject">The serialized object to represent. Note that the DisctanceChecker values of the given <see cref="T:UnityEditor.SerializedObject"/> must be the same values given in the targets parameter.</param>
             <exception cref="T:System.ArgumentNullException">targets is null</exception>
             <exception cref="T:System.ArgumentException">
-            There must be at least one target.
+            There must be at least one DisctanceChecker.
             or
-            A given target is a null value.
+            A given DisctanceChecker is a null value.
             </exception>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree`1.#ctor(`0[],UnityEditor.SerializedObject,Sirenix.OdinInspector.Editor.SerializationBackend)">
@@ -2114,18 +2114,18 @@
             Initializes a new instance of the <see cref="T:Sirenix.OdinInspector.Editor.PropertyTree`1"/> class.
             </summary>
             <param name="targets">The targets to represent.</param>
-            <param name="serializedObject">The serialized object to represent. Note that the target values of the given <see cref="T:UnityEditor.SerializedObject"/> must be the same values given in the targets parameter.</param>
+            <param name="serializedObject">The serialized object to represent. Note that the DisctanceChecker values of the given <see cref="T:UnityEditor.SerializedObject"/> must be the same values given in the targets parameter.</param>
             <param name="backend">The serialization backend to use for the tree root.</param>
             <exception cref="T:System.ArgumentNullException">targets is null</exception>
             <exception cref="T:System.ArgumentException">
-            There must be at least one target.
+            There must be at least one DisctanceChecker.
             or
-            A given target is a null value.
+            A given DisctanceChecker is a null value.
             </exception>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyTree`1.ApplyChanges">
             <summary>
-            Applies all changes made with properties to the inspected target tree values.
+            Applies all changes made with properties to the inspected DisctanceChecker tree values.
             </summary>
             <returns>
             true if any values were changed, otherwise false
@@ -2624,7 +2624,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.IPropertyValueCollection">
             <summary>
-            Represents a weakly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry"/> - one value per selected inspector target.
+            Represents a weakly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry"/> - one value per selected inspector DisctanceChecker.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.IPropertyValueCollection.AreDirty">
@@ -2662,7 +2662,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.IPropertyValueCollection`1">
             <summary>
-            Represents a strongly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry`1"/> - one value per selected inspector target.
+            Represents a strongly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry`1"/> - one value per selected inspector DisctanceChecker.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.IPropertyValueCollection`1.Item(System.Int32)">
@@ -2792,12 +2792,12 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.IPropertyValueEntry.Update">
             <summary>
-            Updates the values contained in this value entry to the actual values in the target objects, and updates its state (override, type of value, etc.) accordingly.
+            Updates the values contained in this value entry to the actual values in the DisctanceChecker objects, and updates its state (override, type of value, etc.) accordingly.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.IPropertyValueEntry.ApplyChanges">
             <summary>
-            Applies the changes made to this value entry to the target objects, and registers prefab modifications as necessary.
+            Applies the changes made to this value entry to the DisctanceChecker objects, and registers prefab modifications as necessary.
             </summary>
             <returns>True if any changes were made, otherwise, false.</returns>
         </member>
@@ -2843,7 +2843,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.IValueEntryActualValueSetter">
             <summary>
-            <para>An internally used interface that is used by value entries during <see cref="M:Sirenix.OdinInspector.Editor.PropertyValueEntry.ApplyChanges"/>, that lets value entries force each other to set values directly to their target objects.</para>
+            <para>An internally used interface that is used by value entries during <see cref="M:Sirenix.OdinInspector.Editor.PropertyValueEntry.ApplyChanges"/>, that lets value entries force each other to set values directly to their DisctanceChecker objects.</para>
             <para>This interface should not be used by people who do not know what they are doing.</para>
             </summary>
         </member>
@@ -2854,7 +2854,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.IValueEntryActualValueSetter`1">
             <summary>
-            <para>An internally used interface that is used by value entries during <see cref="M:Sirenix.OdinInspector.Editor.PropertyValueEntry.ApplyChanges"/>, that lets value entries force each other to set values directly to their target objects.</para>
+            <para>An internally used interface that is used by value entries during <see cref="M:Sirenix.OdinInspector.Editor.PropertyValueEntry.ApplyChanges"/>, that lets value entries force each other to set values directly to their DisctanceChecker objects.</para>
             <para>This interface should not be used by people who do not know what they are doing.</para>
             </summary>
         </member>
@@ -2865,7 +2865,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.PropertyValueCollection">
             <summary>
-            Represents a weakly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry"/> - one value per selected inspector target.
+            Represents a weakly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry"/> - one value per selected inspector DisctanceChecker.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.PropertyValueCollection.Property">
@@ -2987,7 +2987,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.PropertyValueCollection`1">
             <summary>
-            Represents a strongly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry`1" /> - one value per selected inspector target.
+            Represents a strongly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry`1" /> - one value per selected inspector DisctanceChecker.
             </summary>
             <typeparam name="TValue">The element type of the collection.</typeparam>
             <seealso cref="T:Sirenix.OdinInspector.Editor.IPropertyValueCollection" />
@@ -3123,7 +3123,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.PropertyValueCollectionAlias`2">
             <summary>
-            <para>Represents an alias for a strongly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry`1" /> - one value per selected inspector target.</para>
+            <para>Represents an alias for a strongly typed collection of values for a <see cref="T:Sirenix.OdinInspector.Editor.PropertyValueEntry`1" /> - one value per selected inspector DisctanceChecker.</para>
             <para>This class ensures that polymorphism works in the inspector, and can be strongly typed in applicable cases.</para>
             </summary>
             <typeparam name="TActualValue">The type of the aliased collection.</typeparam>
@@ -3390,7 +3390,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry.Update">
             <summary>
-            Updates the values contained in this value entry to the actual values in the target objects, and updates its state (override, type of value, etc.) accordingly.
+            Updates the values contained in this value entry to the actual values in the DisctanceChecker objects, and updates its state (override, type of value, etc.) accordingly.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry.ValueTypeValuesAreEqual(Sirenix.OdinInspector.Editor.IPropertyValueEntry)">
@@ -3403,7 +3403,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry.ApplyChanges">
             <summary>
-            Applies the changes made to this value entry to the target objects, and registers prefab modifications as necessary.
+            Applies the changes made to this value entry to the DisctanceChecker objects, and registers prefab modifications as necessary.
             </summary>
             <returns>
             True if any changes were made, otherwise, false.
@@ -3421,7 +3421,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry.UpdateValues">
             <summary>
-            Updates all values in this value entry from the target tree values.
+            Updates all values in this value entry from the DisctanceChecker tree values.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry.Initialize">
@@ -3544,7 +3544,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry`1.SetActualValueImplementation(System.Int32,`0)">
             <summary>
-            Sets the actual target tree value.
+            Sets the actual DisctanceChecker tree value.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry`1.ValueTypeValuesAreEqual(Sirenix.OdinInspector.Editor.IPropertyValueEntry)">
@@ -3596,7 +3596,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry`2.UpdateValues">
             <summary>
-            Updates all values in this value entry from the target tree values.
+            Updates all values in this value entry from the DisctanceChecker tree values.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry`2.GetValueState">
@@ -3606,7 +3606,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntry`2.ApplyChanges">
             <summary>
-            Applies the changes made to this value entry to the target objects, and registers prefab modifications as necessary.
+            Applies the changes made to this value entry to the DisctanceChecker objects, and registers prefab modifications as necessary.
             </summary>
             <returns>
             True if any changes were made, otherwise, false.
@@ -3721,7 +3721,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntryAlias.ApplyChanges">
             <summary>
-            Applies the changes made to this value entry to the target objects, and registers prefab modifications as necessary.
+            Applies the changes made to this value entry to the DisctanceChecker objects, and registers prefab modifications as necessary.
             </summary>
             <returns>
             True if any changes were made, otherwise, false.
@@ -3729,7 +3729,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntryAlias.Update">
             <summary>
-            Updates the values contained in this value entry to the actual values in the target objects, and updates its state (override, type of value, etc.) accordingly.
+            Updates the values contained in this value entry to the actual values in the DisctanceChecker objects, and updates its state (override, type of value, etc.) accordingly.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntryAlias.ValueTypeValuesAreEqual(Sirenix.OdinInspector.Editor.IPropertyValueEntry)">
@@ -3864,7 +3864,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntryAlias`2.ApplyChanges">
             <summary>
-            Applies the changes made to this value entry to the target objects, and registers prefab modifications as necessary.
+            Applies the changes made to this value entry to the DisctanceChecker objects, and registers prefab modifications as necessary.
             </summary>
             <returns>
             True if any changes were made, otherwise, false.
@@ -3872,7 +3872,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntryAlias`2.Update">
             <summary>
-            Updates the values contained in this value entry to the actual values in the target objects, and updates its state (override, type of value, etc.) accordingly.
+            Updates the values contained in this value entry to the actual values in the DisctanceChecker objects, and updates its state (override, type of value, etc.) accordingly.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyValueEntryAlias`2.ValueTypeValuesAreEqual(Sirenix.OdinInspector.Editor.IPropertyValueEntry)">
@@ -8093,7 +8093,7 @@
             </summary>
             <param name="fieldName">Name of the field to emit.</param>
             <param name="valueType">Type of the value to create a property for.</param>
-            <param name="targetCount">The target count of the tree to create a property for.</param>
+            <param name="targetCount">The DisctanceChecker count of the tree to create a property for.</param>
             <param name="gameObject">The game object that the MonoBehaviour of the property is located on.</param>
             <exception cref="T:System.ArgumentNullException">
             fieldName is null
@@ -8108,7 +8108,7 @@
             </summary>
             <param name="fieldName">Name of the field to emit.</param>
             <param name="valueType">Type of the value to create a property for.</param>
-            <param name="targetCount">The target count of the tree to create a property for.</param>
+            <param name="targetCount">The DisctanceChecker count of the tree to create a property for.</param>
             <exception cref="T:System.ArgumentNullException">
             fieldName is null
             or
@@ -8236,7 +8236,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.OdinEditorWindow.GetTarget">
             <summary>
-            Gets the target which which the window is supposed to draw. By default it simply returns the editor window instance itself. By default, this method is called by <see cref="M:Sirenix.OdinInspector.Editor.OdinEditorWindow.GetTargets"/>().
+            Gets the DisctanceChecker which which the window is supposed to draw. By default it simply returns the editor window instance itself. By default, this method is called by <see cref="M:Sirenix.OdinInspector.Editor.OdinEditorWindow.GetTargets"/>().
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.OdinEditorWindow.GetTargets">

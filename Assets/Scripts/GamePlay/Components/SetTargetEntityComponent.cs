@@ -1,20 +1,20 @@
+using System.Atomic.Implementations;
 using GamePlay.Components.Interfaces;
-using GamePlay.Zombie;
 
 namespace GamePlay.Components
 {
     public class SetTargetEntityComponent: ISetEntityTargetComponent
     {
-        private readonly ZombieModel_Core.TargetChecker _targetChecker;
+        private readonly TargetEntitySection _target;
     
-        public SetTargetEntityComponent(ZombieModel_Core.TargetChecker targetChecker)
+        public SetTargetEntityComponent(TargetEntitySection target)
         {
-            _targetChecker = targetChecker;
+            _target = target;
         }
     
-        void ISetEntityTargetComponent.SetEntityTarget(Entity.Entity entity)
+        void ISetEntityTargetComponent.SetEntityTarget(AtomicVariable<Entity.Entity> entity)
         {
-            _targetChecker.Target.Value = entity;
+            _target.TargetEntity = entity;
         }
     }
 }

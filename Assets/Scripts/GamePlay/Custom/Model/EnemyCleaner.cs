@@ -9,22 +9,22 @@ namespace GamePlay.Custom
     public class EnemyCleaner: MonoBehaviour, IInitListener, IDisableListener
     {
         [Inject]
-        private IEnemyFactory<Entity.Entity> _enemyFactory;
+        private IEntityFactory<Entity.Entity> _enemyFactory;
 
         [SerializeField]
         private float _destroyDelay = 2f;
 
         void IInitListener.OnInit()
         {
-            _enemyFactory.OnEnemyCreated += HandleEnemyCreated;
+            _enemyFactory.OnEntityCreated += HandleEntityCreated;
         }
 
         void IDisableListener.Disable()
         {
-            _enemyFactory.OnEnemyCreated -= HandleEnemyCreated;
+            _enemyFactory.OnEntityCreated -= HandleEntityCreated;
         }
 
-        private void HandleEnemyCreated(Entity.Entity enemy)
+        private void HandleEntityCreated(Entity.Entity enemy)
         {
             if (enemy.TryGet(out IGetDeathEventComponent lifeComp))
                 lifeComp.GetDeathEvent().Subscribe(() => StartCoroutine(DestroyEnemyAfterDelay(enemy.gameObject)));

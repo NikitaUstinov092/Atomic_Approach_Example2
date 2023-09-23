@@ -1,9 +1,9 @@
-using GamePlay.Zombie;
+using System.Atomic.Implementations;
 
 namespace GamePlay.Components.Interfaces
 {
     public interface ISetEntityTargetComponent
     {
-        void SetEntityTarget(Entity.Entity entity);
+        void SetEntityTarget(AtomicVariable<Entity.Entity> entity);
     }
 }
