@@ -1,6 +1,8 @@
 using System;
 using System.Atomic.Implementations;
 using System.Declarative.Scripts.Attributes;
+using Lessons.Character.Animations;
+using Lessons.StateMachines.States;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,6 +14,8 @@ using Vector3 = UnityEngine.Vector3;
         [Serializable]
         public sealed class HeroModel_View
         {
+            public AnimatorStateMachine<AnimatorStateType> AnimMachine = new();
+            
             [Section]
             [SerializeField]
             public HeroAnimation_View AnimationView = new();
@@ -38,6 +42,20 @@ using Vector3 = UnityEngine.Vector3;
             
                 [SerializeField]
                 public Animator animator;
+                
+                [Construct]
+                public void ConstructStates()
+                {
+                    AnimMachine.Construct(
+                
+                        (AnimatorStateType.Idle, null),
+                
+                        (AnimatorStateType.Run, null),
+                
+                        (AnimatorStateType.Dead, null)
+                    );
+                }
+                
                 
                 [Construct]
                 public void Construct(HeroModel_Core core)
