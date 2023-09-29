@@ -2,8 +2,7 @@ using System;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Lessons.Character.Animations
-{
+
     internal sealed class AnimatorDispatcher : MonoBehaviour
     {
         internal event Action<string> OnMessageReceived; 
@@ -15,4 +14,3 @@ namespace Lessons.Character.Animations
             this.OnMessageReceived?.Invoke(message);
         }
     }
-}

@@ -10,12 +10,8 @@ namespace System.Atomic.Implementations
     {
         public T Value
         {
-            get { return this.value; }
-            set
-            {
-                this.value = value;
-                this.onChanged?.Invoke(value);
-            }
+            get => value;
+            set => SetValue(value);
         }
 
         public void Subscribe(Action<T> listener)
@@ -41,6 +37,12 @@ namespace System.Atomic.Implementations
         public AtomicVariable(T value)
         {
             this.value = value;
+        }
+        
+        protected virtual void SetValue(T value)
+        {
+            this.value = value;
+            onChanged?.Invoke(value);
         }
 
 #if UNITY_EDITOR

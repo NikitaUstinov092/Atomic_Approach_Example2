@@ -1,9 +1,7 @@
 using System;
-using Lessons.StateMachines;
 using UnityEngine;
 
-namespace Lessons.Character.Animations
-{
+
     
     [Serializable]
     public sealed class AnimatorStateMachine<T> : TransitionableStateMachine<T> where T : Enum
@@ -28,4 +26,3 @@ namespace Lessons.Character.Animations
             this.animator.SetInteger(State, Convert.ToInt32(stateType));
         }
     }
-}

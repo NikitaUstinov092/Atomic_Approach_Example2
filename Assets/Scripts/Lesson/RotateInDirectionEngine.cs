@@ -1,12 +1,12 @@
 using System;
 using System.Atomic.Implementations;
-using GamePlay.Custom.GameMachine;
+using System.Declarative.Scripts;
 using UnityEngine;
 
 namespace Lessons.Character.Engines
 {
     [Serializable]
-    public sealed class RotateInDirectionEngine : IUpdateListener
+    public sealed class RotateInDirectionEngine : IUpdate
     {
         private Transform _targetTransform;
         private AtomicVariable<float> _speed;
@@ -19,7 +19,7 @@ namespace Lessons.Character.Engines
             _speed = speed;
         }
         
-        void IUpdateListener.Update()
+        void IUpdate.Update(float deltaTime)
         {
             if (_direction == Vector3.zero)
             {
@@ -27,8 +27,8 @@ namespace Lessons.Character.Engines
             }
             
             var currentRotation = _targetTransform.rotation;
-            var targetRotation = Quaternion.LookRotation(_direction);
-            _targetTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _speed.Value * Time.deltaTime);
+            var targetRotation = Quaternion.LookRotation(-_direction);
+            _targetTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _speed.Value * deltaTime);
         }
         
         public void SetDirection(Vector3 direction)

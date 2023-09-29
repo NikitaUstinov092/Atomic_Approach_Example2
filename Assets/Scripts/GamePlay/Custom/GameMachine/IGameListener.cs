@@ -4,6 +4,7 @@ namespace GamePlay.Custom.GameMachine
     {
 
     }
+    
     public interface IStartListener: IGameListener
     {
         void StartGame();

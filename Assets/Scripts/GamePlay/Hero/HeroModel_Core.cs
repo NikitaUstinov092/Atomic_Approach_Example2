@@ -6,11 +6,8 @@ using GamePlay.Custom.ScriptableObjects;
 using GamePlay.Custom.Sections;
 using Lesson;
 using Lessons.Character.Engines;
-using Lessons.StateMachines;
 using Lessons.StateMachines.States;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UpdateMechanics;
 using Object = UnityEngine.Object;
 
@@ -19,14 +16,9 @@ using Object = UnityEngine.Object;
         [Serializable]
         public sealed class HeroModel_Core
         {
-            [FormerlySerializedAs("lifeSectionComp")]
             [Section]
             [SerializeField]
             public LifeSection LifeSectionComp = new();
-            
-            [Section]
-            [SerializeField]
-            public Move MoveComp = new();
             
             [Section]
             [SerializeField]
@@ -47,9 +39,7 @@ using Object = UnityEngine.Object;
             [Section]
             [SerializeField]
             public Ammo AmmoComp = new();
-           
-            [FormerlySerializedAs("entityTarget")]
-            [FormerlySerializedAs("EnemyTarget")]
+            
             [Section]
             [SerializeField]
             public TargetEntitySection EntityTarget = new();
@@ -62,7 +52,7 @@ using Object = UnityEngine.Object;
             [Serializable]
             public sealed class CharacterMovement
             {
-                    public Transform transform;
+                    public Transform Transform;
             
                     public AtomicVariable<float> movementSpeed = new(6f);
                     public AtomicVariable<float> rotationSpeed = new(10f);
@@ -70,62 +60,15 @@ using Object = UnityEngine.Object;
             
                     public MoveInDirectionEngine moveInDirectionEngine;
                     public RotateInDirectionEngine rotateInDirectionEngine;
-
-                    private FixedUpdateMechanics _fixedUpdate = new ();
             
                     [Construct]
                     public void Construct()
                     {
-                        moveInDirectionEngine.Construct(transform, movementSpeed);
-                        rotateInDirectionEngine.Construct(transform, rotationSpeed);
-                       
-                        _fixedUpdate.Construct(_ =>
-                        {
-                            moveInDirectionEngine.UpdatePosition();
-                        });
+                        moveInDirectionEngine.Construct(Transform, movementSpeed);
+                        rotateInDirectionEngine.Construct(Transform, rotationSpeed);
                     }
             }
-
             
-            [Serializable]
-            public class Move
-            {
-                [ShowInInspector]
-                public AtomicEvent<Vector3> OnMove = new();
-                
-                public AtomicVariable<float> Speed = new();
-                public AtomicVariable<bool> MoveRequired = new ();
-                
-                public AtomicVariable<Transform> MoveTransform;
-            
-                public MoveInDirectionEngine MoveInDirectionEngine;
-                public MovementDirectionVariable MovementDirection;
-                
-                [Construct]
-                public void Construct(HeroModel model)
-                {
-                    var isDeath = model.Core.LifeSectionComp.IsDead;
-                   
-                    MoveInDirectionEngine.Construct(MoveTransform.Value, Speed);
-                    MovementDirection.Construct(MoveRequired);
-                    
-                    OnMove.Subscribe(direction =>
-                    {
-                        if(isDeath.Value)
-                            return;
-                        MoveInDirectionEngine.SetDirection(direction);
-                        MoveRequired.Value = true;
-                    });
-
-                    model.onFixedUpdate += _ =>
-                    {
-                        if (!MoveRequired.Value || isDeath.Value) 
-                            return;
-                        MoveInDirectionEngine.UpdatePosition();
-                        MoveRequired.Value = false;
-                    };
-                }
-            }
             [Serializable]
             public sealed class Rotate
             {
@@ -252,6 +195,7 @@ using Object = UnityEngine.Object;
                     {
                         if(AmmoCount.Value <= 0 || !_canReload)
                             return;
+                        
                         AmmoCount.Value--;
                     });
                     
@@ -298,13 +242,13 @@ using Object = UnityEngine.Object;
         }
 
         [Construct]
-        public void ConstructTransitions(LifeSection life, Move movement)
+        public void ConstructTransitions(LifeSection life, CharacterMovement movement)
         {
             var isDead = life.DeathEvent;
             isDead.Subscribe(() => stateMachine.SwitchState(CharacterStateType.Dead));
             
             
-            movement.MovementDirection.MovementStarted.Subscribe(()=>
+            movement.movementDirection.MovementStarted.Subscribe(()=>
             {
                 if (!life.IsDead.Value)
                 {
@@ -312,7 +256,7 @@ using Object = UnityEngine.Object;
                 }
             }); 
 
-            movement.MovementDirection.MovementFinished.Subscribe(() =>
+            movement.movementDirection.MovementFinished.Subscribe(() =>
             {
                 if (!life.IsDead.Value && stateMachine.CurrentState == CharacterStateType.Run)
                 {
@@ -338,6 +282,5 @@ using Object = UnityEngine.Object;
         }
         
     }
-    
         }
     }

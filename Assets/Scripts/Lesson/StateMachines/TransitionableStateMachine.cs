@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Declarative.Scripts;
 using GamePlay.Custom.GameMachine;
 
-namespace Lessons.StateMachines
-{
-    public class TransitionableStateMachine<T> : StateMachine<T>, IUpdateListener
+    public class TransitionableStateMachine<T> : StateMachine<T>, IUpdate
     {
         public delegate bool Predicate();
 
@@ -15,7 +14,7 @@ namespace Lessons.StateMachines
             transitions.Add(new ValueTuple<T, Predicate>(key, predicate));
         }
 
-        void IUpdateListener.Update()
+        void IUpdate.Update(float deltaTime)
         {
             foreach (var (stateType, condition) in transitions)
             {
@@ -26,4 +25,3 @@ namespace Lessons.StateMachines
             }
         }
     }
-}

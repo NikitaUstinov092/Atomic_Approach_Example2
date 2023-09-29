@@ -16,9 +16,9 @@ using Lessons.StateMachines.States;
         }
         
         [Construct]
-        public void ConstructSubStates(HeroModel_View visual, HeroModel_Core.Move movement)
+        public void ConstructSubStates(HeroModel_View visual, HeroModel_Core.CharacterMovement movement)
         {
-            moveState.Construct(movement.MovementDirection, movement.MoveInDirectionEngine);
-                /*movement.rotateInDirectionEngine*/;
+            moveState.Construct(movement.movementDirection, movement.moveInDirectionEngine,
+                movement.rotateInDirectionEngine);
         }
     }

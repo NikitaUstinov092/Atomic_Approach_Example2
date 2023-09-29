@@ -8,9 +8,9 @@ namespace Lesson.StateMachines.States
     public class RotateToEnemyState : UpdateState
     {
         private TargetEntitySection _entitySection;
-        private AtomicVariable<Transform> _sourceTransform;
+        private Transform _sourceTransform;
         public void Construct(TargetEntitySection entitySection,
-            AtomicVariable<Transform> sourceTransform)
+            Transform sourceTransform)
         {
             _entitySection = entitySection;
             _sourceTransform = sourceTransform;
@@ -21,7 +21,7 @@ namespace Lesson.StateMachines.States
             if (target == null)
                 return;
             var enemyTransform = target.transform;
-            _sourceTransform.Value.LookAt(enemyTransform);
+            _sourceTransform.LookAt(enemyTransform);
         }
     }
 }

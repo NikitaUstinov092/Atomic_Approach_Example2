@@ -5,6 +5,5 @@ namespace Lessons.StateMachines.States
         Idle,
         Run,
         Dead,
-        Gathering
     }
 }

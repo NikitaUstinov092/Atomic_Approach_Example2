@@ -191,7 +191,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 55608880}
-  - component: {fileID: 55608881}
+  - component: {fileID: 55608882}
+  - component: {fileID: 55608883}
   m_Layer: 0
   m_Name: MoveController
   m_TagString: Untagged
@@ -214,7 +215,7 @@ Transform:
   m_Father: {fileID: 1321374130}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &55608881
+--- !u!114 &55608882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,14 +224,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 55608878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e789310b4221544b9cb4c57109d9819, type: 3}
+  m_Script: {fileID: 11500000, guid: ca1d71396c65c0b46b233c525122957b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entity: {fileID: 3587277424092816633}
-  _leftKey: 97
-  _rightKey: 100
-  _forwardKey: 119
-  _backKey: 115
+--- !u!114 &55608883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55608878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0470ff67c1c27b46993e0379c875c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementInput: {fileID: 55608882}
+  character: {fileID: 3587277424092816633}
 --- !u!1 &91941558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,7 +1154,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060751495}
-  m_LocalRotation: {x: 0.6391203, y: -0.020339254, z: 0.01691173, w: 0.7686518}
+  m_LocalRotation: {x: 0.6391203, y: -0.020339258, z: 0.016911732, w: 0.7686518}
   m_LocalPosition: {x: 36.358883, y: 2.0651627, z: -1.4362711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1878,7 +1888,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779381465}
-  m_LocalRotation: {x: 0.6391203, y: -0.020339254, z: 0.01691173, w: 0.7686518}
+  m_LocalRotation: {x: 0.6391203, y: -0.020339258, z: 0.016911732, w: 0.7686518}
   m_LocalPosition: {x: 36.358883, y: 2.0651627, z: -1.4362711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3207,6 +3217,7 @@ GameObject:
   - component: {fileID: 3587277424092816633}
   - component: {fileID: 3587277424092816635}
   - component: {fileID: 3587277424092816637}
+  - component: {fileID: 3587277424092816639}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -4278,17 +4289,8 @@ MonoBehaviour:
         value: 5
       IsDead:
         value: 0
-    MoveComp:
-      Speed:
-        value: 5
-      MoveRequired:
-        value: 0
-      MoveTransform:
-        value: {fileID: 3587277424092816630}
-      MovementDirection:
-        value: {x: 0, y: 0, z: 0}
     CharacterMoveComp:
-      transform: {fileID: 3587277424092816630}
+      Transform: {fileID: 3587277424092816630}
       movementSpeed:
         value: 6
       rotationSpeed:
@@ -4327,8 +4329,10 @@ MonoBehaviour:
     EntityStorageComp:
       Entity: {fileID: 3587277424092816633}
   View:
-    AnimationView:
+    AnimMachine:
+      currentStateType: 0
       animator: {fileID: 3587277424083225450}
+      dispatcher: {fileID: 3587277424092816639}
     HpView:
       TextHp:
         value: {fileID: 6615131717051902429}
@@ -4443,6 +4447,18 @@ Transform:
   m_Father: {fileID: 3587277424092816592}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3587277424092816639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587277424092723478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bec6642ef6c7b34d8ddb2fbaddfc148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3587277424092816648
 Transform:
   m_ObjectHideFlags: 0

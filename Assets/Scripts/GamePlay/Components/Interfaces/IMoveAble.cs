@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GamePlay.Components.Interfaces
 {
-    public interface IMoveable
+    public interface IMoveAble
     {
         void Move(Vector3 direction);
     }

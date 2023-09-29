@@ -9,7 +9,7 @@ namespace GamePlay.Hero
 
         private void Update()
         {
-            var onMove = this.hero.Core.MoveComp.OnMove;
+            /*var onMove = this.hero.Core.CharacterMoveComp.OnMove;
             
             if (Input.GetKey(KeyCode.LeftArrow))
             {
@@ -26,7 +26,7 @@ namespace GamePlay.Hero
             else if (Input.GetKey(KeyCode.DownArrow))
             {
                 onMove.Invoke(Vector3.back);
-            }
+            }*/
         }
     }
 }

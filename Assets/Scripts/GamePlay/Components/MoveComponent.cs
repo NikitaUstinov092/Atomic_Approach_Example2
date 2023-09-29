@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace GamePlay.Components
 {
-    public sealed class MoveComponent : IMoveable
+    public sealed class MoveComponent : IMoveAble
     {
-        private readonly IAtomicAction<Vector3> onMove;
+        private readonly IAtomicAction<Vector3> OnMove;
 
         public MoveComponent(IAtomicAction<Vector3> onMove)
         {
-            this.onMove = onMove;
+            OnMove = onMove;
         }
 
-        void IMoveable.Move(Vector3 direction)
+        void IMoveAble.Move(Vector3 direction)
         {
-            this.onMove.Invoke(direction);
+           OnMove.Invoke(direction);
         }
     }
 }

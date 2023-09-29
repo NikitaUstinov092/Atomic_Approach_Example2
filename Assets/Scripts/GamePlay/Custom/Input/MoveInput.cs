@@ -46,7 +46,7 @@ namespace GamePlay.Custom.Input
 
         private void ApplyMove(Vector3 direction)
         {
-            if (!_entity.TryGet(out IMoveable moveComponent))
+            if (!_entity.TryGet(out IMoveAble moveComponent))
                 return;
             
             moveComponent.Move(direction);

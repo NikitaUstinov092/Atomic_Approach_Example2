@@ -4,8 +4,7 @@ using Lessons.StateMachines.States;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Lessons.StateMachines
-{
+
     [Serializable]
     public class StateMachine<T> : IState
     {
@@ -41,8 +40,6 @@ namespace Lessons.StateMachines
 
         public virtual void SwitchState(T stateType)
         {
-            if(stateType.Equals(currentStateType))
-                return;
             Exit();
             currentStateType = stateType;
             Enter();
@@ -61,4 +58,3 @@ namespace Lessons.StateMachines
             return null;
         }
     }
-}
