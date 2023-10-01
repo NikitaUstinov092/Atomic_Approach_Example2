@@ -220,7 +220,7 @@ using Object = UnityEngine.Object;
     {
         public StateMachine<CharacterStateType> stateMachine;
 
-        [FormerlySerializedAs("idleAutoState")] [FormerlySerializedAs("shootAutoState")] [Section]
+        [Section]
         public IdleState idleState;
 
         [Section]

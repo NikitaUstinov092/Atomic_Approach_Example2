@@ -157,8 +157,8 @@ using Random = UnityEngine.Random;
                 /*[Section]
                 public RunState runState;*/
 
-                [Section]
-                public DeadState deadState;
+                /*[Section]
+                public DeadState deadState;*/
         
 
                 [Construct]

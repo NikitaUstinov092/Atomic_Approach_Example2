@@ -1,29 +1,33 @@
+using System;
 using System.Atomic.Implementations;
-using System.Declarative.Scripts.Attributes;
-using GamePlay.Custom.Sections;
 using GamePlay.Zombie;
 using Lessons.StateMachines.States;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-
+[Serializable]
 public class ChaseTarget : UpdateState
 {
     private Transform _moveTransform;
-    private Transform _targetTransform;
+    private Transform Target;
 
     private float _speed;
     
     protected override void OnUpdate(float deltaTime)
     {
-        var targetPos = _targetTransform.position;
+        Debug.Log("+");
+        /*if(_moveTransform ==null || Target == null )
+            return;
+        var targetPos = Target.position;
         var movePos = _moveTransform.position;
         Vector3.MoveTowards( movePos, targetPos, _speed * deltaTime);
-        _moveTransform.LookAt(targetPos);
+        _moveTransform.LookAt(targetPos);*/
     }
     
     public void Construct(ZombieModel_Core.Chase chase, ZombieModel_Core.TargetChecker targetChecker)
     {
-        _targetTransform = targetChecker.Target.Value.transform;
+        Target = targetChecker.Target.Value.transform;
+        _moveTransform = chase.MoveTransform;
         _speed = Random.Range(chase.MinSpeed.Value, chase.MaxSpeed.Value);
     }
 }
