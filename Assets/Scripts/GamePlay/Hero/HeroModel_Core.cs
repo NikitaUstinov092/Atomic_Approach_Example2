@@ -8,6 +8,7 @@ using Lesson;
 using Lessons.Character.Engines;
 using Lessons.StateMachines.States;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UpdateMechanics;
 using Object = UnityEngine.Object;
 
@@ -219,7 +220,7 @@ using Object = UnityEngine.Object;
     {
         public StateMachine<CharacterStateType> stateMachine;
 
-        [Section]
+        [FormerlySerializedAs("idleAutoState")] [FormerlySerializedAs("shootAutoState")] [Section]
         public IdleState idleState;
 
         [Section]

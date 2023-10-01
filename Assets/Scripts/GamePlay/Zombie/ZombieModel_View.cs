@@ -25,7 +25,7 @@ namespace GamePlay.Zombie
         public void Construct(ZombieModel_Core core)
         {
             var isDeath = core.lifeSection.IsDead;
-            var isChasing = core.ZombieChase.IsChasing;
+            /*var isChasing = core.ZombieChase.IsChasing;*/
             var stopAttack = core.AttackHero.StopAttack;
             var distanceChecker = core.DisctanceChecker;
             
@@ -42,7 +42,7 @@ namespace GamePlay.Zombie
                     return;
                 }
                 
-                switch (isChasing.Value)
+                /*switch (isChasing.Value)
                 {
                     case true:
                         Animator.SetInteger(State, MOVE_STATE);
@@ -51,7 +51,7 @@ namespace GamePlay.Zombie
                     case false:
                         Animator.SetInteger(State, ATTACK_STATE);
                         break;
-                }
+                }*/
             });
         }
     }

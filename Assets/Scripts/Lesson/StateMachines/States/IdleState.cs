@@ -2,9 +2,9 @@ using System;
 using System.Declarative.Scripts.Attributes;
 using GamePlay.Hero;
 using Lesson.StateMachines.States;
+using Lessons.StateMachines.States;
 
-namespace Lessons.StateMachines.States
-{
+
     [Serializable]
     public sealed class IdleState : CompositeState
     {
@@ -24,4 +24,3 @@ namespace Lessons.StateMachines.States
             RotateToEnemyState.Construct(core.EntityTarget, core.CharacterMoveComp.Transform);
         }
     }
-}

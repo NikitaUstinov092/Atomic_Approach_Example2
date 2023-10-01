@@ -27,7 +27,7 @@ namespace Lessons.Character.Engines
             }
             
             var currentRotation = _targetTransform.rotation;
-            var targetRotation = Quaternion.LookRotation(-_direction);
+            var targetRotation = Quaternion.LookRotation(_direction);
             _targetTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _speed.Value * deltaTime);
         }
         

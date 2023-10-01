@@ -3,6 +3,8 @@ using System.Atomic.Implementations;
 using System.Declarative.Scripts.Attributes;
 using GamePlay.Components.Interfaces;
 using GamePlay.Custom.Sections;
+using GamePlay.Hero;
+using Lessons.StateMachines.States;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UpdateMechanics;
@@ -32,6 +34,10 @@ using Random = UnityEngine.Random;
             [Section]
             [SerializeField] 
             public Attack AttackHero = new();
+            
+            [Section] 
+            [SerializeField] 
+            public ZombieStates ZombieState = new();
         
             [Serializable]
             public sealed class Chase
@@ -41,10 +47,10 @@ using Random = UnityEngine.Random;
                 
                 public AtomicVariable<float> MinSpeed = new();
                 public AtomicVariable<float> MaxSpeed = new();
-                public AtomicVariable<bool> IsChasing = new();
+                /*public AtomicVariable<bool> IsChasing = new();*/
             
-                private float _speed;
-                private readonly FixedUpdateMechanics _fixedUpdate = new();
+                /*private float _speed;
+                private readonly FixedUpdateMechanics _fixedUpdate = new();*/
 
                 [Construct]
                 public void Construct(LifeSection lifeSection, TargetChecker targetChecker)
@@ -52,7 +58,7 @@ using Random = UnityEngine.Random;
                     var isDeath = lifeSection.IsDead;
                     var closedToTarget = targetChecker.ClosedTarget;
                     
-                    _speed = Random.Range(MinSpeed.Value, MaxSpeed.Value);
+                    /*_speed = Random.Range(MinSpeed.Value, MaxSpeed.Value);
 
                     _fixedUpdate.Construct(deltaTime =>
                     {
@@ -66,7 +72,7 @@ using Random = UnityEngine.Random;
                         MoveTransform.position = Vector3.MoveTowards( MoveTransform.position, targetPosition, _speed * deltaTime);
                         MoveTransform.LookAt(targetPosition);
                         IsChasing.Value = true;
-                    });
+                    });*/
                 }
             }
         
@@ -139,5 +145,54 @@ using Random = UnityEngine.Random;
                     });
                 }
             }
+            
+            [Serializable]
+            public sealed class ZombieStates
+            {
+                public StateMachine<EnemyStatesType> stateMachine;
+
+                [Section]
+                public ChaseState chase;
+
+                /*[Section]
+                public RunState runState;*/
+
+                [Section]
+                public DeadState deadState;
+        
+
+                [Construct]
+                public void Construct(ZombieModel root)
+                {
+                    root.onStart += () => stateMachine.Enter();
+        
+                    stateMachine.Construct(
+                        (EnemyStatesType.Chase, chase)/*,
+                        (EnemyStatesType.Attack, runState),
+                        (EnemyStatesType.Death, deadState)*/
+                    );
+                }
+
+                [Construct]
+                public void ConstructTransitions(LifeSection life, TargetChecker targetChecker)
+                {
+                    var isDead = life.DeathEvent;
+                    isDead.Subscribe(() => stateMachine.SwitchState(EnemyStatesType.Death));
+            
+            
+                    targetChecker.ClosedTarget.Subscribe((value)=>
+                    {
+                        switch (life.IsDead.Value)
+                        {
+                            case false when !value:
+                            case false when true:
+                                stateMachine.SwitchState(EnemyStatesType.Attack);
+                                break;
+                        }
+                    }); 
+                    
+                }
+            }
+
         }
     }
