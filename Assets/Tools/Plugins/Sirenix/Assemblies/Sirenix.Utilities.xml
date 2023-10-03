@@ -1168,105 +1168,105 @@
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SetMin(UnityEngine.Rect,UnityEngine.Vector2)">
             <summary>
-            Sets the min position of a Rect.
+            Sets the minSpeed position of a Rect.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="min">The desired min position.</param>
+            <param name="minSpeed">The desired minSpeed position.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.AddMin(UnityEngine.Rect,UnityEngine.Vector2)">
             <summary>
-            Adds to a Rect's min position.
+            Adds to a Rect's minSpeed position.
             </summary>
             <param name="rect">The original rect.</param>
             <param name="value">The value to add.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SubMin(UnityEngine.Rect,UnityEngine.Vector2)">
             <summary>
-            Subtracts a Rect's min position.
+            Subtracts a Rect's minSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The vlaue to subtract.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SetMax(UnityEngine.Rect,UnityEngine.Vector2)">
             <summary>
-            Sets a Rect's max position.
+            Sets a Rect's maxSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="max">The desired max position.</param>
+            <param name="maxSpeed">The desired maxSpeed position.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.AddMax(UnityEngine.Rect,UnityEngine.Vector2)">
             <summary>
-            Adds to a Rect's max position.
+            Adds to a Rect's maxSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to add.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SubMax(UnityEngine.Rect,UnityEngine.Vector2)">
             <summary>
-            Subtracts a Rect's max position.
+            Subtracts a Rect's maxSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to add.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SetXMin(UnityEngine.Rect,System.Single)">
             <summary>
-            Sets a Rect's X min position.
+            Sets a Rect's X minSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="xMin">The desired min X position.</param>
+            <param name="xMin">The desired minSpeed X position.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.AddXMin(UnityEngine.Rect,System.Single)">
             <summary>
-            Adds to a Rect's X min position.
+            Adds to a Rect's X minSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to add.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SubXMin(UnityEngine.Rect,System.Single)">
             <summary>
-            Subtracts from a Rect's X min position.
+            Subtracts from a Rect's X minSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to subtract.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SetXMax(UnityEngine.Rect,System.Single)">
             <summary>
-            Sets a Rect's X max position.
+            Sets a Rect's X maxSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="xMax">The desired X max position.</param>
+            <param name="xMax">The desired X maxSpeed position.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.AddXMax(UnityEngine.Rect,System.Single)">
             <summary>
-            Adds to a Rect's X max position.
+            Adds to a Rect's X maxSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to add.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SubXMax(UnityEngine.Rect,System.Single)">
             <summary>
-            Subtracts a Rect's X max position.
+            Subtracts a Rect's X maxSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to subtract.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SetYMin(UnityEngine.Rect,System.Single)">
             <summary>
-            Sets a Rect's Y min position.
+            Sets a Rect's Y minSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="yMin">The desired Y min.</param>
+            <param name="yMin">The desired Y minSpeed.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.AddYMin(UnityEngine.Rect,System.Single)">
             <summary>
-            Adds to a Rect's Y min position.
+            Adds to a Rect's Y minSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to add.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SubYMin(UnityEngine.Rect,System.Single)">
             <summary>
-            Subtracts a Rect's Y min position.
+            Subtracts a Rect's Y minSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to subtract.</param>
@@ -1274,21 +1274,21 @@
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SetYMax(UnityEngine.Rect,System.Single)">
             <summary>
-            Sets a Rect's Y max position.
+            Sets a Rect's Y maxSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="yMax">The desired Y max position.</param>
+            <param name="yMax">The desired Y maxSpeed position.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.AddYMax(UnityEngine.Rect,System.Single)">
             <summary>
-            Adds to a Rect's Y max position.
+            Adds to a Rect's Y maxSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to add.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.SubYMax(UnityEngine.Rect,System.Single)">
             <summary>
-            Subtracts from a Rect's Y max position.
+            Subtracts from a Rect's Y maxSpeed position.
             </summary>
             <param name="rect">The original Rect.</param>
             <param name="value">The value to subtract.</param>
@@ -1298,28 +1298,28 @@
             Sets a Rect's width, if it is less than the specified value.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="minWidth">The desired min width.</param>
+            <param name="minWidth">The desired minSpeed width.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.MaxWidth(UnityEngine.Rect,System.Single)">
             <summary>
             Sets a Rect's width, if it is greater than the specified value.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="maxWidth">The desired max width.</param>
+            <param name="maxWidth">The desired maxSpeed width.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.MinHeight(UnityEngine.Rect,System.Single)">
             <summary>
             Sets a Rect's height, if it is less than the specified value.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="minHeight">The desired min height.</param>
+            <param name="minHeight">The desired minSpeed height.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.MaxHeight(UnityEngine.Rect,System.Single)">
             <summary>
             Sets a Rect's height, if it is greater than the specified value.
             </summary>
             <param name="rect">The original Rect.</param>
-            <param name="maxHeight">The desired max height.</param>
+            <param name="maxHeight">The desired maxSpeed height.</param>
         </member>
         <member name="M:Sirenix.Utilities.RectExtensions.ExpandTo(UnityEngine.Rect,UnityEngine.Vector2)">
             <summary>
@@ -2821,16 +2821,16 @@
             Clamps the value of a Vector3.
             </summary>
             <param name="value">The vector to clamp.</param>
-            <param name="min">The min value.</param>
-            <param name="max">The max value.</param>
+            <param name="minSpeed">The minSpeed value.</param>
+            <param name="maxSpeed">The maxSpeed value.</param>
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.Clamp(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.Vector2)">
             <summary>
             Clamps the value of a Vector2.
             </summary>
             <param name="value">The vector to clamp.</param>
-            <param name="min">The min value.</param>
-            <param name="max">The max value.</param>
+            <param name="minSpeed">The minSpeed value.</param>
+            <param name="maxSpeed">The maxSpeed value.</param>
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.ComputeByteArrayHash(System.Byte[])">
             <summary>
@@ -2917,34 +2917,34 @@
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.Wrap(System.Double,System.Double,System.Double)">
             <summary>
-            Wraps a value between min and max.
+            Wraps a value between minSpeed and maxSpeed.
             </summary>
             <param name="value">The value to wrap.</param>
-            <param name="min">The minimum value.</param>
-            <param name="max">The maximum value.</param>
+            <param name="minSpeed">The minimum value.</param>
+            <param name="maxSpeed">The maximum value.</param>
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.Wrap(System.Single,System.Single,System.Single)">
             <summary>
-            Wraps a value between min and max.
+            Wraps a value between minSpeed and maxSpeed.
             </summary>
             <param name="value">The value to wrap.</param>
-            <param name="min">The minimum value.</param>
-            <param name="max">The maximum value.</param>
+            <param name="minSpeed">The minimum value.</param>
+            <param name="maxSpeed">The maximum value.</param>
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.Wrap(System.Int32,System.Int32,System.Int32)">
             <summary>
-            Wraps a value between min and max.
+            Wraps a value between minSpeed and maxSpeed.
             </summary>
             <param name="value">The value to wrap.</param>
-            <param name="min">The minimum value.</param>
-            <param name="max">The maximum value.</param>
+            <param name="minSpeed">The minimum value.</param>
+            <param name="maxSpeed">The maximum value.</param>
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.RoundBasedOnMinimumDifference(System.Double,System.Double)">
             <summary>
             Rounds a number based on a mininum difference.
             </summary>
             <param name="valueToRound">The value to round.</param>
-            <param name="minDifference">The min difference.</param>
+            <param name="minDifference">The minSpeed difference.</param>
             <returns>The rounded value.</returns>
         </member>
         <member name="M:Sirenix.Utilities.MathUtilities.DiscardLeastSignificantDecimal(System.Double)">

@@ -42,38 +42,9 @@ using Random = UnityEngine.Random;
             [Serializable]
             public sealed class Chase
             {
-                [SerializeField]
-                public Transform MoveTransform;
-                
+                public AtomicVariable<Transform> MoveTransform;
                 public AtomicVariable<float> MinSpeed = new();
                 public AtomicVariable<float> MaxSpeed = new();
-                /*public AtomicVariable<bool> IsChasing = new();*/
-            
-                /*private float _speed;
-                private readonly FixedUpdateMechanics _fixedUpdate = new();*/
-
-                [Construct]
-                public void Construct(LifeSection lifeSection, TargetChecker targetChecker)
-                {
-                    var isDeath = lifeSection.IsDead;
-                    var closedToTarget = targetChecker.ClosedTarget;
-                    
-                    /*_speed = Random.Range(MinSpeed.Value, MaxSpeed.Value);
-
-                    _fixedUpdate.Construct(deltaTime =>
-                    {
-                        if (isDeath.Value || closedToTarget.Value || targetChecker.Target.Value == null)
-                        {
-                            IsChasing.Value = false;
-                            return;
-                        }
-                        var targetPosition = targetChecker.Target.Value.transform.position;
-                    
-                        MoveTransform.position = Vector3.MoveTowards( MoveTransform.position, targetPosition, _speed * deltaTime);
-                        MoveTransform.LookAt(targetPosition);
-                        IsChasing.Value = true;
-                    });*/
-                }
             }
         
             [Serializable]
@@ -154,8 +125,8 @@ using Random = UnityEngine.Random;
                 [Section]
                 public ChaseState chase;
 
-                /*[Section]
-                public RunState runState;*/
+                [Section]
+                public AttackState runState;
 
                 /*[Section]
                 public DeadState deadState;*/
@@ -178,16 +149,12 @@ using Random = UnityEngine.Random;
                 {
                     var isDead = life.DeathEvent;
                     isDead.Subscribe(() => stateMachine.SwitchState(EnemyStatesType.Death));
-            
-            
+                    
                     targetChecker.ClosedTarget.Subscribe((value)=>
                     {
-                        switch (life.IsDead.Value)
+                        if (!life.IsDead.Value)
                         {
-                            case false when !value:
-                            case false when true:
-                                stateMachine.SwitchState(EnemyStatesType.Attack);
-                                break;
+                            stateMachine.SwitchState(value ? EnemyStatesType.Attack : EnemyStatesType.Chase);
                         }
                     }); 
                     

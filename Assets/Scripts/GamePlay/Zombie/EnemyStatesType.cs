@@ -2,5 +2,6 @@ public enum EnemyStatesType
 {
     Chase,
     Attack,
-    Death
+    Death,
+    Idle,
 }

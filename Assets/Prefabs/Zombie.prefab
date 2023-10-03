@@ -510,13 +510,12 @@ MonoBehaviour:
       IsDead:
         value: 0
     ZombieChase:
-      MoveTransform: {fileID: 574660333010864038}
+      MoveTransform:
+        value: {fileID: 574660333010864038}
       MinSpeed:
         value: 2
       MaxSpeed:
         value: 5
-      IsChasing:
-        value: 0
     DisctanceChecker:
       MoveTransform: {fileID: 574660333010864038}
       Target:
@@ -535,6 +534,9 @@ MonoBehaviour:
         value: 2
       StopAttack:
         value: 0
+    ZombieState:
+      stateMachine:
+        currentStateType: 0
   View:
     Animator: {fileID: 479581115975753030}
 --- !u!114 &479581115975753025

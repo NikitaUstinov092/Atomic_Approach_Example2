@@ -2717,7 +2717,7 @@
             <summary>
             Sets a maximum value for the property in the inspector.
             </summary>
-            <param name="maxValue">The max value.</param>
+            <param name="maxValue">The maxSpeed value.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.MaxValueAttribute.#ctor(System.String)">
             <summary>
@@ -2727,8 +2727,8 @@
         </member>
         <member name="T:Sirenix.OdinInspector.MinMaxSliderAttribute">
             <summary>
-            <para>Draw a special slider the user can use to specify a range between a min and a max value.</para>
-            <para>Uses a Vector2 where x is min and y is max.</para>
+            <para>Draw a special slider the user can use to specify a range between a minSpeed and a maxSpeed value.</para>
+            <para>Uses a Vector2 where x is minSpeed and y is maxSpeed.</para>
             </summary>
             <example>
             <para>The following example shows how MinMaxSlider is used.</para>
@@ -2743,86 +2743,86 @@
         </member>
         <member name="F:Sirenix.OdinInspector.MinMaxSliderAttribute.MinValue">
             <summary>
-            The hardcoded min value for the slider.
+            The hardcoded minSpeed value for the slider.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.MinMaxSliderAttribute.MaxValue">
             <summary>
-            The hardcoded max value for the slider.
+            The hardcoded maxSpeed value for the slider.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.MinMaxSliderAttribute.MinMember">
             <summary>
-            The name of a field, property or method to get the min value from. Obsolete; use MinValueGetter instead.
+            The name of a field, property or method to get the minSpeed value from. Obsolete; use MinValueGetter instead.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.MinMaxSliderAttribute.MinValueGetter">
             <summary>
-            A resolved string that should evaluate to a float value, which is used as the min bounds.
+            A resolved string that should evaluate to a float value, which is used as the minSpeed bounds.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.MinMaxSliderAttribute.MaxMember">
             <summary>
-            The name of a field, property or method to get the max value from. Obsolete; use MaxValueGetter instead.
+            The name of a field, property or method to get the maxSpeed value from. Obsolete; use MaxValueGetter instead.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.MinMaxSliderAttribute.MaxValueGetter">
             <summary>
-            A resolved string that should evaluate to a float value, which is used as the max bounds.
+            A resolved string that should evaluate to a float value, which is used as the maxSpeed bounds.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.MinMaxSliderAttribute.MinMaxMember">
             <summary>
-            The name of a Vector2 field, property or method to get the min max values from. Obsolete; use MinMaxValueGetter instead.
+            The name of a Vector2 field, property or method to get the minSpeed maxSpeed values from. Obsolete; use MinMaxValueGetter instead.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.MinMaxSliderAttribute.MinMaxValueGetter">
             <summary>
-            A resolved string that should evaluate to a Vector2 value, which is used as the min/max bounds. If this is non-null, it overrides the behaviour of the MinValue, MinValueGetter, MaxValue and MaxValueGetter members.
+            A resolved string that should evaluate to a Vector2 value, which is used as the minSpeed/maxSpeed bounds. If this is non-null, it overrides the behaviour of the MinValue, MinValueGetter, MaxValue and MaxValueGetter members.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.MinMaxSliderAttribute.ShowFields">
             <summary>
-            Draw float fields for min and max value.
+            Draw float fields for minSpeed and maxSpeed value.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.MinMaxSliderAttribute.#ctor(System.Single,System.Single,System.Boolean)">
             <summary>
-            Draws a min-max slider in the inspector. X will be set to min, and Y will be set to max.
+            Draws a minSpeed-maxSpeed slider in the inspector. X will be set to minSpeed, and Y will be set to maxSpeed.
             </summary>
-            <param name="minValue">The min value.</param>
-            <param name="maxValue">The max value.</param>
+            <param name="minValue">The minSpeed value.</param>
+            <param name="maxValue">The maxSpeed value.</param>
             <param name="showFields">If <c>true</c> number fields will drawn next to the MinMaxSlider.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.MinMaxSliderAttribute.#ctor(System.String,System.Single,System.Boolean)">
             <summary>
-            Draws a min-max slider in the inspector. X will be set to min, and Y will be set to max.
+            Draws a minSpeed-maxSpeed slider in the inspector. X will be set to minSpeed, and Y will be set to maxSpeed.
             </summary>
-            <param name="minValueGetter">A resolved string that should evaluate to a float value, which is used as the min bounds.</param>
-            <param name="maxValue">The max value.</param>
+            <param name="minValueGetter">A resolved string that should evaluate to a float value, which is used as the minSpeed bounds.</param>
+            <param name="maxValue">The maxSpeed value.</param>
             <param name="showFields">If <c>true</c> number fields will drawn next to the MinMaxSlider.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.MinMaxSliderAttribute.#ctor(System.Single,System.String,System.Boolean)">
             <summary>
-            Draws a min-max slider in the inspector. X will be set to min, and Y will be set to max.
+            Draws a minSpeed-maxSpeed slider in the inspector. X will be set to minSpeed, and Y will be set to maxSpeed.
             </summary>
-            <param name="minValue">The min value.</param>
-            <param name="maxValueGetter">A resolved string that should evaluate to a float value, which is used as the max bounds.</param>
+            <param name="minValue">The minSpeed value.</param>
+            <param name="maxValueGetter">A resolved string that should evaluate to a float value, which is used as the maxSpeed bounds.</param>
             <param name="showFields">If <c>true</c> number fields will drawn next to the MinMaxSlider.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.MinMaxSliderAttribute.#ctor(System.String,System.String,System.Boolean)">
             <summary>
-            Draws a min-max slider in the inspector. X will be set to min, and Y will be set to max.
+            Draws a minSpeed-maxSpeed slider in the inspector. X will be set to minSpeed, and Y will be set to maxSpeed.
             </summary>
-            <param name="minValueGetter">A resolved string that should evaluate to a float value, which is used as the min bounds.</param>
-            <param name="maxValueGetter">A resolved string that should evaluate to a float value, which is used as the max bounds.</param>
+            <param name="minValueGetter">A resolved string that should evaluate to a float value, which is used as the minSpeed bounds.</param>
+            <param name="maxValueGetter">A resolved string that should evaluate to a float value, which is used as the maxSpeed bounds.</param>
             <param name="showFields">If <c>true</c> number fields will drawn next to the MinMaxSlider.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.MinMaxSliderAttribute.#ctor(System.String,System.Boolean)">
             <summary>
-            Draws a min-max slider in the inspector. X will be set to min, and Y will be set to max.
+            Draws a minSpeed-maxSpeed slider in the inspector. X will be set to minSpeed, and Y will be set to maxSpeed.
             </summary>
-            <param name="minMaxValueGetter">A resolved string that should evaluate to a Vector2 value, which is used as the min/max bounds. If this is non-null, it overrides the behaviour of the MinValue, MinValueGetter, MaxValue and MaxValueGetter members.</param>
+            <param name="minMaxValueGetter">A resolved string that should evaluate to a Vector2 value, which is used as the minSpeed/maxSpeed bounds. If this is non-null, it overrides the behaviour of the MinValue, MinValueGetter, MaxValue and MaxValueGetter members.</param>
             <param name="showFields">If <c>true</c> number fields will drawn next to the MinMaxSlider.</param>
         </member>
         <member name="T:Sirenix.OdinInspector.MinValueAttribute">
@@ -3427,7 +3427,7 @@
             		[ProgressBar(-100, 100, r: 1, g: 1, b: 1, Height = 30)]
             		public short BigProgressBar = 50;
             		
-                 // You can also reference members by name to dynamically assign the min and max progress bar values.
+                 // You can also reference members by name to dynamically assign the minSpeed and maxSpeed progress bar values.
                  [ProgressBar("DynamicMin", "DynamicMax")]
                  public float DynamicProgressBar;
                  
@@ -3451,22 +3451,22 @@
         </member>
         <member name="P:Sirenix.OdinInspector.ProgressBarAttribute.MinMember">
             <summary>
-            The name of a field, property or method to get the min values from. Obsolete; use the MinGetter member instead.
+            The name of a field, property or method to get the minSpeed values from. Obsolete; use the MinGetter member instead.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.ProgressBarAttribute.MinGetter">
             <summary>
-            A resolved string that should evaluate to a float value, and will be used as the min bounds.
+            A resolved string that should evaluate to a float value, and will be used as the minSpeed bounds.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.ProgressBarAttribute.MaxMember">
             <summary>
-            The name of a field, property or method to get the max values from. Obsolete; use the MaxGetter member instead.
+            The name of a field, property or method to get the maxSpeed values from. Obsolete; use the MaxGetter member instead.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.ProgressBarAttribute.MaxGetter">
             <summary>
-            A resolved string that should evaluate to a float value, and will be used as the max bounds.
+            A resolved string that should evaluate to a float value, and will be used as the maxSpeed bounds.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.ProgressBarAttribute.R">
@@ -3526,8 +3526,8 @@
             <summary>
             Draws a progress bar for the value.
             </summary>
-            <param name="min">The minimum value.</param>
-            <param name="max">The maximum value.</param>
+            <param name="minSpeed">The minimum value.</param>
+            <param name="maxSpeed">The maximum value.</param>
             <param name="r">The red channel of the color of the progress bar.</param>
             <param name="g">The green channel of the color of the progress bar.</param>
             <param name="b">The blue channel of the color of the progress bar.</param>
@@ -3536,8 +3536,8 @@
             <summary>
             Draws a progress bar for the value.
             </summary>
-            <param name="minGetter">A resolved string that should evaluate to a float value, and will be used as the min bounds.</param>
-            <param name="max">The maximum value.</param>
+            <param name="minGetter">A resolved string that should evaluate to a float value, and will be used as the minSpeed bounds.</param>
+            <param name="maxSpeed">The maximum value.</param>
             <param name="r">The red channel of the color of the progress bar.</param>
             <param name="g">The green channel of the color of the progress bar.</param>
             <param name="b">The blue channel of the color of the progress bar.</param>
@@ -3546,8 +3546,8 @@
             <summary>
             Draws a progress bar for the value.
             </summary>
-            <param name="min">The minimum value.</param>
-            <param name="maxGetter">A resolved string that should evaluate to a float value, and will be used as the max bounds.</param>
+            <param name="minSpeed">The minimum value.</param>
+            <param name="maxGetter">A resolved string that should evaluate to a float value, and will be used as the maxSpeed bounds.</param>
             <param name="r">The red channel of the color of the progress bar.</param>
             <param name="g">The green channel of the color of the progress bar.</param>
             <param name="b">The blue channel of the color of the progress bar.</param>
@@ -3556,8 +3556,8 @@
             <summary>
             Draws a progress bar for the value.
             </summary>
-            <param name="minGetter">A resolved string that should evaluate to a float value, and will be used as the min bounds.</param>
-            <param name="maxGetter">A resolved string that should evaluate to a float value, and will be used as the max bounds.</param>
+            <param name="minGetter">A resolved string that should evaluate to a float value, and will be used as the minSpeed bounds.</param>
+            <param name="maxGetter">A resolved string that should evaluate to a float value, and will be used as the maxSpeed bounds.</param>
             <param name="r">The red channel of the color of the progress bar.</param>
             <param name="g">The green channel of the color of the progress bar.</param>
             <param name="b">The blue channel of the color of the progress bar.</param>
@@ -3777,7 +3777,7 @@
             	[PropertyRange(-100, -50)]
             	public decimal MyDouble;
             	
-                // This attribute also supports dynamically referencing members by name to assign the min and max values for the range field.
+                // This attribute also supports dynamically referencing members by name to assign the minSpeed and maxSpeed values for the range field.
                 [PropertyRange("DynamicMin", "DynamicMax"]
                 public float MyDynamicValue;
                 
@@ -3801,51 +3801,51 @@
         </member>
         <member name="P:Sirenix.OdinInspector.PropertyRangeAttribute.MinMember">
             <summary>
-            The name of a field, property or method to get the min value from. Obsolete; use the MinGetter member instead.
+            The name of a field, property or method to get the minSpeed value from. Obsolete; use the MinGetter member instead.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.PropertyRangeAttribute.MinGetter">
             <summary>
-            A resolved string that should evaluate to a float value, and will be used as the min bounds.
+            A resolved string that should evaluate to a float value, and will be used as the minSpeed bounds.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.PropertyRangeAttribute.MaxMember">
             <summary>
-            The name of a field, property or method to get the max value from. Obsolete; use the MaxGetter member instead.
+            The name of a field, property or method to get the maxSpeed value from. Obsolete; use the MaxGetter member instead.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.PropertyRangeAttribute.MaxGetter">
             <summary>
-            A resolved string that should evaluate to a float value, and will be used as the max bounds.
+            A resolved string that should evaluate to a float value, and will be used as the maxSpeed bounds.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.PropertyRangeAttribute.#ctor(System.Double,System.Double)">
             <summary>
             Creates a slider control to set the value of the property to between the specified range..
             </summary>
-            <param name="min">The minimum value.</param>
-            <param name="max">The maximum value.</param>
+            <param name="minSpeed">The minimum value.</param>
+            <param name="maxSpeed">The maximum value.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.PropertyRangeAttribute.#ctor(System.String,System.Double)">
             <summary>
             Creates a slider control to set the value of the property to between the specified range..
             </summary>
-            <param name="minGetter">A resolved string that should evaluate to a float value, and will be used as the min bounds.</param>
-            <param name="max">The maximum value.</param>
+            <param name="minGetter">A resolved string that should evaluate to a float value, and will be used as the minSpeed bounds.</param>
+            <param name="maxSpeed">The maximum value.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.PropertyRangeAttribute.#ctor(System.Double,System.String)">
             <summary>
             Creates a slider control to set the value of the property to between the specified range..
             </summary>
-            <param name="min">The minimum value.</param>
-            <param name="maxGetter">A resolved string that should evaluate to a float value, and will be used as the max bounds.</param>
+            <param name="minSpeed">The minimum value.</param>
+            <param name="maxGetter">A resolved string that should evaluate to a float value, and will be used as the maxSpeed bounds.</param>
         </member>
         <member name="M:Sirenix.OdinInspector.PropertyRangeAttribute.#ctor(System.String,System.String)">
             <summary>
             Creates a slider control to set the value of the property to between the specified range..
             </summary>
-            <param name="minGetter">A resolved string that should evaluate to a float value, and will be used as the min bounds.</param>
-            <param name="maxGetter">A resolved string that should evaluate to a float value, and will be used as the max bounds.</param>
+            <param name="minGetter">A resolved string that should evaluate to a float value, and will be used as the minSpeed bounds.</param>
+            <param name="maxGetter">A resolved string that should evaluate to a float value, and will be used as the maxSpeed bounds.</param>
         </member>
         <member name="T:Sirenix.OdinInspector.PropertySpaceAttribute">
             <summary>
@@ -5813,8 +5813,8 @@
             <summary>
             Wraps the value of the property round when the values goes out of range.
             </summary>
-            <param name="min">The lowest value for the property.</param>
-            <param name="max">The highest value for the property.</param>
+            <param name="minSpeed">The lowest value for the property.</param>
+            <param name="maxSpeed">The highest value for the property.</param>
         </member>
         <member name="T:Sirenix.OdinInspector.AttributeTargetFlags">
             <summary>

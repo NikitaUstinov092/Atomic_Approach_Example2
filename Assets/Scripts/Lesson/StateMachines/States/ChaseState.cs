@@ -15,9 +15,9 @@ public class ChaseState : CompositeState
    }
    
    [Construct]
-   public void ConstructSubStates(ZombieModel_Core.TargetChecker targetChecker, ZombieModel_Core.Chase chase)
+   public void ConstructSubStates(ZombieModel_Core.Chase chase, ZombieModel_Core.TargetChecker targetChecker)
    {
-      _chaseTarget.Construct(chase, targetChecker);
+      _chaseTarget.Construct(chase.MoveTransform,targetChecker.Target,chase.MinSpeed.Value,chase.MaxSpeed.Value);
    }
 }
 

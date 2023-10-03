@@ -201,7 +201,7 @@
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.ColorPaletteManager.SwatchSize">
             <summary>
-            Specify the width of each color in a color palette. If StretchPalette is set to true, this will become the min-width.
+            Specify the width of each color in a color palette. If StretchPalette is set to true, this will become the minSpeed-width.
             </summary>
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.ColorPaletteManager.StretchPalette">
@@ -5475,7 +5475,7 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.Drawers.Vector2IntMinMaxAttributeDrawer.Initialize">
             <summary>
-            Initializes the drawer by resolving any optional references to members for min/max value.
+            Initializes the drawer by resolving any optional references to members for minSpeed/maxSpeed value.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.Drawers.Vector2IntMinMaxAttributeDrawer.DrawPropertyLayout(UnityEngine.GUIContent)">
@@ -6350,10 +6350,10 @@
                  public float Min;
                  public float Max;
             
-                 public CustomRangeAttribute(float min, float max)
+                 public CustomRangeAttribute(float minSpeed, float maxSpeed)
                  {
-                     this.Min = min;
-                     this.Max = max;
+                     this.Min = minSpeed;
+                     this.Max = maxSpeed;
                  }
              }
             
@@ -6529,10 +6529,10 @@
                  public float Min;
                  public float Max;
             
-                 public CustomRangeAttribute(float min, float max)
+                 public CustomRangeAttribute(float minSpeed, float maxSpeed)
                  {
-                     this.Min = min;
-                     this.Max = max;
+                     this.Min = minSpeed;
+                     this.Max = maxSpeed;
                  }
              }
             
@@ -6769,7 +6769,7 @@
         <member name="M:Sirenix.OdinInspector.Editor.OdinDrawerExtensions.GetPersistentValue``1(Sirenix.OdinInspector.Editor.OdinDrawer,System.String,``0)">
             <summary>
             Gets a persistent value that will survive past multiple Unity Editor Application sessions. 
-            The value is stored in the PersistentContextCache, which has a customizable max cache size.
+            The value is stored in the PersistentContextCache, which has a customizable maxSpeed cache size.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.OdinEditor.DrawDefaultInspector">
@@ -8263,7 +8263,7 @@
             Measures the GUILayout content height and adjusts the window height accordingly.
             Note that this feature becomes pointless if any layout group expands vertically.
             </summary>
-            <param name="maxHeight">The max height of the window.</param>
+            <param name="maxHeight">The maxSpeed height of the window.</param>
             <param name="retainInitialWindowPosition">When the window height expands below the screen bounds, it will MoveComp the window 
             upwards when needed, enabling this will MoveComp it back down when the window height is decreased. </param>
         </member>
@@ -10415,7 +10415,7 @@
         </member>
         <member name="P:Sirenix.OdinInspector.Editor.PersistentContextCache.MaxCacheByteSize">
             <summary>
-            The max size of the cache in bytes.
+            The maxSpeed size of the cache in bytes.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PersistentContextCache.DeleteCache">

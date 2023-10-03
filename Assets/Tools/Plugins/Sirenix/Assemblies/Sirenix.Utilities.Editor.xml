@@ -3341,8 +3341,8 @@
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="style">GUIStyle for drawing the field. Set to <c>null</c> for default.</param>
             <returns>Value assigned to the field.</returns>
         </member>
@@ -3353,8 +3353,8 @@
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <returns>Value assigned to the field.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.RangeIntField(UnityEngine.Rect,System.String,System.Int32,System.Int32,System.Int32)">
@@ -3364,8 +3364,8 @@
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <returns>Value assigned to the field.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.RangeIntField(UnityEngine.Rect,System.Int32,System.Int32,System.Int32)">
@@ -3374,8 +3374,8 @@
             </summary>
             <param name="rect">Position and size of the field.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <returns>Value assigned to the field.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.RangeIntField(UnityEngine.GUIContent,System.Int32,System.Int32,System.Int32,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
@@ -3384,8 +3384,8 @@
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="style">GUIStyle for drawing the field. Set to <c>null</c> for default.</param>
             <param name="options">Layout options.</param>
             <returns>Value assigned to the field.</returns>
@@ -3396,8 +3396,8 @@
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="options">Layout options.</param>
             <returns>Value assigned to the field.</returns>
         </member>
@@ -3407,8 +3407,8 @@
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="options">Layout options.</param>
             <returns>Value assigned to the field.</returns>
         </member>
@@ -3417,8 +3417,8 @@
             Draws a range field for ints.
             </summary>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="options">Layout options.</param>
             <returns>Value assigned to the field.</returns>
         </member>
@@ -4003,8 +4003,8 @@
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="style">GUIStyle for drawing the field. Set to <c>null</c> for default.</param>
             <returns>Value assigned to the field.</returns>
         </member>
@@ -4015,8 +4015,8 @@
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <returns>Value assigned to the field.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.RangeFloatField(UnityEngine.Rect,System.String,System.Single,System.Single,System.Single)">
@@ -4026,8 +4026,8 @@
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <returns>Value assigned to the field.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.RangeFloatField(UnityEngine.Rect,System.Single,System.Single,System.Single)">
@@ -4036,8 +4036,8 @@
             </summary>
             <param name="rect">Position and size of the field.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <returns>Value assigned to the field.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.RangeFloatField(UnityEngine.GUIContent,System.Single,System.Single,System.Single,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
@@ -4046,8 +4046,8 @@
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="style">GUIStyle for drawing the field. Set to <c>null</c> for default.</param>
             <param name="options">Layout options.</param>
             <returns>Value assigned to the field.</returns>
@@ -4058,8 +4058,8 @@
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="options">Layout options.</param>
             <returns>Value assigned to the field.</returns>
         </member>
@@ -4069,8 +4069,8 @@
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="options">Layout options.</param>
             <returns>Value assigned to the field.</returns>
         </member>
@@ -4079,8 +4079,8 @@
             Draws a range field for floats.
             </summary>
             <param name="value">Current value.</param>
-            <param name="min">Minimum value.</param>
-            <param name="max">Maximum value.</param>
+            <param name="minSpeed">Minimum value.</param>
+            <param name="maxSpeed">Maximum value.</param>
             <param name="options">Layout options.</param>
             <returns>Value assigned to the field.</returns>
         </member>
@@ -4789,136 +4789,136 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.Vector2,UnityEngine.Vector2,System.Boolean)">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="limits">The min and max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
-            <returns>A Vector2 with X set as min value, and Y to set as max value.</returns>
+            <param name="limits">The minSpeed and maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
+            <returns>A Vector2 with X set as minSpeed value, and Y to set as maxSpeed value.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(UnityEngine.Rect,System.String,UnityEngine.Vector2,UnityEngine.Vector2,System.Boolean)">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="limits">The min and max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
-            <returns>A Vector2 with X set as min value, and Y to set as max value.</returns>
+            <param name="limits">The minSpeed and maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
+            <returns>A Vector2 with X set as minSpeed value, and Y to set as maxSpeed value.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(UnityEngine.Rect,UnityEngine.Vector2,UnityEngine.Vector2,System.Boolean)">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="rect">Position and size of the field.</param>
             <param name="value">Current value.</param>
-            <param name="limits">The min and max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
-            <returns>A Vector2 with X set as min value, and Y to set as max value.</returns>
+            <param name="limits">The minSpeed and maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
+            <returns>A Vector2 with X set as minSpeed value, and Y to set as maxSpeed value.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(UnityEngine.GUIContent,UnityEngine.Vector2,UnityEngine.Vector2,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="limits">The min and max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
+            <param name="limits">The minSpeed and maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
             <param name="options">Layout options.</param>
-            <returns>A Vector2 with X set as min value, and Y to set as max value.</returns>
+            <returns>A Vector2 with X set as minSpeed value, and Y to set as maxSpeed value.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(System.String,UnityEngine.Vector2,UnityEngine.Vector2,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="value">Current value.</param>
-            <param name="limits">The min and max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
+            <param name="limits">The minSpeed and maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
             <param name="options">Layout options.</param>
-            <returns>A Vector2 with X set as min value, and Y to set as max value.</returns>
+            <returns>A Vector2 with X set as minSpeed value, and Y to set as maxSpeed value.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(UnityEngine.Vector2,UnityEngine.Vector2,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="value">Current value.</param>
-            <param name="limits">The min and max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
+            <param name="limits">The minSpeed and maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
             <param name="options">Layout options.</param>
-            <returns>A Vector2 with X set as min value, and Y to set as max value.</returns>
+            <returns>A Vector2 with X set as minSpeed value, and Y to set as maxSpeed value.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(UnityEngine.Rect,UnityEngine.GUIContent,System.Single@,System.Single@,System.Single,System.Single,System.Boolean)">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
-            <param name="minValue">Current min value.</param>
-            <param name="maxValue">Current max value.</param>
-            <param name="minLimit">The min limit for the value.</param>
-            <param name="maxLimit">The max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
+            <param name="minValue">Current minSpeed value.</param>
+            <param name="maxValue">Current maxSpeed value.</param>
+            <param name="minLimit">The minSpeed limit for the value.</param>
+            <param name="maxLimit">The maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(UnityEngine.Rect,System.String,System.Single@,System.Single@,System.Single,System.Single,System.Boolean)">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
-            <param name="minValue">Current min value.</param>
-            <param name="maxValue">Current max value.</param>
-            <param name="minLimit">The min limit for the value.</param>
-            <param name="maxLimit">The max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
+            <param name="minValue">Current minSpeed value.</param>
+            <param name="maxValue">Current maxSpeed value.</param>
+            <param name="minLimit">The minSpeed limit for the value.</param>
+            <param name="maxLimit">The maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(UnityEngine.Rect,System.Single@,System.Single@,System.Single,System.Single,System.Boolean)">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="rect">Position and size of the field.</param>
-            <param name="minValue">Current min value.</param>
-            <param name="maxValue">Current max value.</param>
-            <param name="minLimit">The min limit for the value.</param>
-            <param name="maxLimit">The max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
+            <param name="minValue">Current minSpeed value.</param>
+            <param name="maxValue">Current maxSpeed value.</param>
+            <param name="minLimit">The minSpeed limit for the value.</param>
+            <param name="maxLimit">The maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(UnityEngine.GUIContent,System.Single@,System.Single@,System.Single,System.Single,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
-            <param name="minValue">Current min value.</param>
-            <param name="maxValue">Current max value.</param>
-            <param name="minLimit">The min limit for the value.</param>
-            <param name="maxLimit">The max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
+            <param name="minValue">Current minSpeed value.</param>
+            <param name="maxValue">Current maxSpeed value.</param>
+            <param name="minLimit">The minSpeed limit for the value.</param>
+            <param name="maxLimit">The maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
             <param name="options">Layout options.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(System.String,System.Single@,System.Single@,System.Single,System.Single,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
-            <param name="minValue">Current min value.</param>
-            <param name="maxValue">Current max value.</param>
-            <param name="minLimit">The min limit for the value.</param>
-            <param name="maxLimit">The max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
+            <param name="minValue">Current minSpeed value.</param>
+            <param name="maxValue">Current maxSpeed value.</param>
+            <param name="minLimit">The minSpeed limit for the value.</param>
+            <param name="maxLimit">The maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
             <param name="options">Layout options.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.MinMaxSlider(System.Single@,System.Single@,System.Single,System.Single,System.Boolean,UnityEngine.GUILayoutOption[])">
             <summary>
-            Draws a slider for setting two values between a min and a max limit.
+            Draws a slider for setting two values between a minSpeed and a maxSpeed limit.
             </summary>
-            <param name="minValue">Current min value.</param>
-            <param name="maxValue">Current max value.</param>
-            <param name="minLimit">The min limit for the value.</param>
-            <param name="maxLimit">The max limit for the value.</param>
-            <param name="showFields">Show fields for min and max value.</param>
+            <param name="minValue">Current minSpeed value.</param>
+            <param name="maxValue">Current maxSpeed value.</param>
+            <param name="minLimit">The minSpeed limit for the value.</param>
+            <param name="maxLimit">The maxSpeed limit for the value.</param>
+            <param name="showFields">Show fields for minSpeed and maxSpeed value.</param>
             <param name="options">Layout options.</param>
         </member>
         <member name="M:Sirenix.Utilities.Editor.SirenixEditorFields.RotationField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.Quaternion,Sirenix.Utilities.Editor.QuaternionDrawMode)">
