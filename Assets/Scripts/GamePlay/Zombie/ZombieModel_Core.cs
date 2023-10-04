@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Atomic.Implementations;
 using System.Declarative.Scripts.Attributes;
+using GamePlay.Components;
 using GamePlay.Components.Interfaces;
 using GamePlay.Custom.Sections;
 using GamePlay.Hero;
@@ -84,14 +85,23 @@ using Random = UnityEngine.Random;
                 public AtomicVariable<int> Damage = new();
                 public AtomicVariable<float> AttackDelay = new();
                 public AtomicVariable<bool> StopAttack = new();
+                public AttackEngine AttackEngine = new();
                 
-                private readonly LateUpdateMechanics _lateUpdate = new();
-                private float _timer;
-            
                 [Construct]
-                public void Construct(TargetChecker targetChecker, LifeSection lifeSection)
+                public void Construct(TargetChecker targetChecker)
                 {
                     var target =  targetChecker.Target;
+                    AttackEngine.Construct(AttackDelay, Damage, target);
+                }
+                
+                /*
+                private readonly LateUpdateMechanics _lateUpdate = new();
+                private float _timer;*/
+            
+                /*[Construct]
+                public void Construct(TargetChecker targetChecker, LifeSection lifeSection)
+                {
+                    /*var target =  targetChecker.Target;
                     target.Subscribe((entity) => StopAttack.Value = entity == null);
                     lifeSection.IsDead.Subscribe((dead) => StopAttack.Value = dead);
                     
@@ -113,8 +123,8 @@ using Random = UnityEngine.Random;
                             damage.TakeDamage(Damage.Value);
                         
                         _timer = 0f;
-                    });
-                }
+                    });#1#
+                }*/
             }
             
             [Serializable]
@@ -123,13 +133,13 @@ using Random = UnityEngine.Random;
                 public StateMachine<EnemyStatesType> stateMachine;
 
                 [Section]
-                public ChaseState chase;
+                public ChaseState Сhase;
 
                 [Section]
-                public AttackState runState;
+                public AttackState StateAttack;
 
-                /*[Section]
-                public DeadState deadState;*/
+                [Section]
+                public DeadState DeadState;
         
 
                 [Construct]
@@ -138,9 +148,9 @@ using Random = UnityEngine.Random;
                     root.onStart += () => stateMachine.Enter();
         
                     stateMachine.Construct(
-                        (EnemyStatesType.Chase, chase)/*,
-                        (EnemyStatesType.Attack, runState),
-                        (EnemyStatesType.Death, deadState)*/
+                        (EnemyStatesType.Chase, Сhase),
+                        (EnemyStatesType.Attack, StateAttack),
+                        (EnemyStatesType.Death, DeadState)
                     );
                 }
 
@@ -156,8 +166,17 @@ using Random = UnityEngine.Random;
                         {
                             stateMachine.SwitchState(value ? EnemyStatesType.Attack : EnemyStatesType.Chase);
                         }
-                    }); 
-                    
+                    });
+
+                    targetChecker.Target.Subscribe(entity =>
+                    {
+                        if (entity.TryGet(out DeathEventComponent deathEventComponent))
+                        {
+                            Debug.Log("Магия");
+                            deathEventComponent.GetDeathEvent().Subscribe(() => stateMachine.SwitchState(EnemyStatesType.Idle));
+                        }
+                    });
+
                 }
             }
 

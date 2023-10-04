@@ -513,9 +513,9 @@ MonoBehaviour:
       MoveTransform:
         value: {fileID: 574660333010864038}
       MinSpeed:
-        value: 2
+        value: 10
       MaxSpeed:
-        value: 5
+        value: 10
     DisctanceChecker:
       MoveTransform: {fileID: 574660333010864038}
       Target:

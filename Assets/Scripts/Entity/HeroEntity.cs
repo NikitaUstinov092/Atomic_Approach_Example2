@@ -1,3 +1,4 @@
+using System.Atomic.Implementations;
 using GamePlay.Components;
 using GamePlay.Custom.GameMachine;
 using GamePlay.Hero;
@@ -11,10 +12,8 @@ namespace Entity
         private HeroModel model;
         void IInitListener.OnInit()
         {
-           // Add(new MoveComponent(model.Core.MoveComp.OnMove));
             Add(new MoveInDirectionComponent(model.Core.CharacterMoveComp.movementDirection));
             Add(new TakeDamageRequestComponent(model.Core.LifeSectionComp.TakeDamageRequest));
-            /*Add(new RotateComponent(model.Core.RotateComp.RotationDirection));*/
             Add(new DeathEventComponent(model.Core.LifeSectionComp.DeathEvent, model.Core.LifeSectionComp.DeathEventData));
             Add(new ShootComponent(model.Core.ShootComp.OnGetPressedFire));
             Add(new SetTargetEntityComponent(model.Core.EntityTarget));

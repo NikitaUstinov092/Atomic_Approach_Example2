@@ -105,7 +105,7 @@ namespace Lessons.Character.Model
         public RunState runState;
 
         [Section]
-        public DeadState deadState;
+        public DeadState DeadState;
 
         [Section]
         public GatherCompositeState gatherState;
@@ -118,7 +118,7 @@ namespace Lessons.Character.Model
             stateMachine.Construct(
                 (CharacterStateType.Idle, idleState),
                 (CharacterStateType.Run, runState),
-                (CharacterStateType.Dead, deadState),
+                (CharacterStateType.Dead, DeadState),
                 (CharacterStateType.Gathering, gatherState)
             );
         }

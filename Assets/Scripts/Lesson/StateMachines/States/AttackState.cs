@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
+using System.Declarative.Scripts.Attributes;
+using GamePlay.Zombie;
+using Lessons.StateMachines.States;
 
-public class AttackState : MonoBehaviour
+[Serializable]
+public class AttackState : CompositeState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public KickState KickState = new();
         
+    [Construct]
+    public void ConstructSelf()
+    {
+        SetStates(KickState);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
         
+    [Construct]
+    public void ConstructSubStates(ZombieModel_Core.Attack attack)
+    {
+        KickState.Construct(attack.AttackEngine);
     }
 }
