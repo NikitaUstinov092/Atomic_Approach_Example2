@@ -172,7 +172,6 @@ using Random = UnityEngine.Random;
                     {
                         if (entity.TryGet(out DeathEventComponent deathEventComponent))
                         {
-                            Debug.Log("Магия");
                             deathEventComponent.GetDeathEvent().Subscribe(() => stateMachine.SwitchState(EnemyStatesType.Idle));
                         }
                     });

@@ -1,58 +1,51 @@
 ﻿using System;
 using System.Declarative.Scripts.Attributes;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UpdateMechanics;
 
 namespace GamePlay.Zombie
 {
     [Serializable]
     public class ZombieModel_View
     {
-        private static readonly int State = Animator.StringToHash("State");
-        
-        private const int MOVE_STATE = 1;
-        private const int IDLE_STATE = 2;
-        private const int ATTACK_STATE = 3;
-        private const int DEATH_STATE = 4;
+        [Section] 
+        [SerializeField] 
+        public AnimatorStateMachine<AnimatorStateType> AnimMachine = new();
         
         [SerializeField]
         public Animator Animator;
         
-        private readonly LateUpdateMechanics _lateUpdate = new();
 
         [Construct]
-        public void Construct(ZombieModel_Core core)
+        public void ConstructStates()
         {
-            var isDeath = core.lifeSection.IsDead;
-            /*var isChasing = core.ZombieChase.IsChasing;*/
-            var stopAttack = core.AttackHero.StopAttack;
-            var distanceChecker = core.DisctanceChecker;
-            
-            isDeath.Subscribe((state)=>  Animator.SetInteger(State, DEATH_STATE));
-            
-            _lateUpdate.Construct(_ =>
-            {
-                if (isDeath.Value)
-                    return;
+            AnimMachine.Construct(  
+                (AnimatorStateType.Idle, null),
 
-                if (stopAttack.Value || !distanceChecker.Target.Value)
-                {
-                    Animator.SetInteger(State, IDLE_STATE);
-                    return;
-                }
+                (AnimatorStateType.Run, null), 
                 
-                /*switch (isChasing.Value)
-                {
-                    case true:
-                        Animator.SetInteger(State, MOVE_STATE);
-                        break;
-                    
-                    case false:
-                        Animator.SetInteger(State, ATTACK_STATE);
-                        break;
-                }*/
-            });
+                (AnimatorStateType.Attack, null),
+
+                (AnimatorStateType.Dead, null)
+            );
+        }
+
+        [Construct]
+        public void ConstructTransitions(ZombieModel_Core.ZombieStates states)
+        {
+            var coreFSM = states.stateMachine;
+
+            AnimMachine.AddTransition(AnimatorStateType.Idle, () =>
+                coreFSM.CurrentState == EnemyStatesType.Idle);
+
+            AnimMachine.AddTransition(AnimatorStateType.Run,
+                () => coreFSM.CurrentState == EnemyStatesType.Chase);
+            
+            AnimMachine.AddTransition(AnimatorStateType.Attack,
+                () => coreFSM.CurrentState == EnemyStatesType.Attack);
+
+            AnimMachine.AddTransition(AnimatorStateType.Dead,
+                () => coreFSM.CurrentState == EnemyStatesType.Death);
+        
         }
     }
 }
