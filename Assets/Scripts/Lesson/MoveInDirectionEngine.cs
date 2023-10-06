@@ -5,7 +5,7 @@ using UnityEngine;
 
 
     [Serializable]
-    public sealed class MoveInDirectionEngine: IFixedUpdate
+    public sealed class MoveInDirectionEngine: IUpdate
     {
         private Transform _transform;
         private AtomicVariable<float> _speed;
@@ -17,15 +17,15 @@ using UnityEngine;
             _transform = transform;
             _speed = speed;
         }
+        void IUpdate.Update(float deltaTime)
+        {
+            _transform.position += _direction * (_speed * deltaTime);
+        }
         
         public void SetDirection(Vector3 direction)
         {
-            var moveVector = _transform.forward * direction.z + _transform.right * direction.x;
-            _direction = moveVector.normalized;
-        }
-
-        void IFixedUpdate.FixedUpdate(float deltaTime)
-        {
-            _transform.position += _direction * (_speed.Value * deltaTime);
+            _direction = direction;
+            /*var moveVector = _transform.forward * direction.z + _transform.right * direction.x;
+            _direction = moveVector.normalized;*/
         }
     }

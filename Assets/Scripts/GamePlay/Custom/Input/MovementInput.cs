@@ -9,27 +9,39 @@ namespace Lessons
         public event Action<Vector3> MovementDirectionChanged;
         
         private Vector3 _previousMovement;
+        
+        [SerializeField] 
+        private KeyCode _leftKey;
+        
+        [SerializeField] 
+        private KeyCode _rightKey;
+        
+        [SerializeField] 
+        private KeyCode _forwardKey;
+       
+        [SerializeField] 
+        private KeyCode _backKey;
 
         void IUpdateListener.Update()
         {
             var movement = new Vector3();
             
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(_forwardKey))
             {
                 movement.z += 1;
             }
             
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(_backKey))
             {
                 movement.z -= 1;
             }
             
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(_rightKey))
             {
                 movement.x += 1;
             }
             
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(_leftKey))
             {
                 movement.x -= 1;
             }

@@ -44,6 +44,16 @@ namespace System.Atomic.Implementations
             this.value = value;
             onChanged?.Invoke(value);
         }
+        
+        public static implicit operator T(AtomicVariable<T> value)
+        {
+            return value.value;
+        }
+
+        public static implicit operator AtomicVariable<T>(T value)
+        {
+            return new AtomicVariable<T>(value);
+        }
 
 #if UNITY_EDITOR
         private void OnValueChanged(T value)

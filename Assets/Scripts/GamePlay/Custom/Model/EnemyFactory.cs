@@ -40,6 +40,8 @@ namespace GamePlay.Custom
         }
         private IEnumerator Spawn()
         {
+            yield return new WaitForSeconds(_delaySpawn);
+            
             while (TargetState())
             {
                 var spawnPosition = _spawnPoints[Random.Range(0, _spawnPoints.Length)];

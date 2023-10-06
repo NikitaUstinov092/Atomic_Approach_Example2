@@ -31,10 +31,6 @@ using Object = UnityEngine.Object;
             
             [Section]
             [SerializeField]
-            public Rotate RotateComp = new();
-            
-            [Section]
-            [SerializeField]
             public Shoot ShootComp = new();
             
             [Section]
@@ -57,10 +53,10 @@ using Object = UnityEngine.Object;
             
                     public AtomicVariable<float> movementSpeed = new(6f);
                     public AtomicVariable<float> rotationSpeed = new(10f);
-                    public MovementDirectionVariable movementDirection;
+                    public MovementDirectionVariable movementDirection = new();
             
-                    public MoveInDirectionEngine moveInDirectionEngine;
-                    public RotateInDirectionEngine rotateInDirectionEngine;
+                    public MoveInDirectionEngine moveInDirectionEngine = new();
+                    public RotateInDirectionEngine rotateInDirectionEngine = new();
             
                     [Construct]
                     public void Construct()
@@ -70,40 +66,6 @@ using Object = UnityEngine.Object;
                     }
             }
             
-            [Serializable]
-            public sealed class Rotate
-            {
-                public AtomicVariable<Vector3> RotationDirection;
-            
-                public AtomicVariable<float> RotationSpeed;
-           
-                [SerializeField]
-                private Camera _playerCamera;
-                
-                [SerializeField]
-                private Transform _playerTransform;
-                
-                private readonly FixedUpdateMechanics _fixedUpdate = new();
-                private RotationEngine _rotationMotor = new();
-
-                [Construct]
-                public void Construct(LifeSection lifeSection)
-                {
-                    var isDeath = lifeSection.IsDead;
-
-                    _rotationMotor.Construct(_playerTransform, _playerCamera, RotationSpeed.Value);
-                
-                    _fixedUpdate.Construct(_ =>
-                    {
-                        if(isDeath.Value 
-                           || RotationDirection.Value == Vector3.zero)
-                            return;
-                    
-                        var cursorScreenPos = RotationDirection.Value;
-                        _rotationMotor.UpdateRotation(cursorScreenPos);
-                    });
-                }
-            }
 
             [Serializable]
             public sealed class Shoot

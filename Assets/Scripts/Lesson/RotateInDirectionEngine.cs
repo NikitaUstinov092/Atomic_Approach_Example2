@@ -20,7 +20,7 @@ namespace Lessons.Character.Engines
         }
         
         void IUpdate.Update(float deltaTime)
-        {
+        { 
             if (_direction == Vector3.zero)
             {
                 return;
@@ -28,7 +28,7 @@ namespace Lessons.Character.Engines
             
             var currentRotation = _targetTransform.rotation;
             var targetRotation = Quaternion.LookRotation(_direction);
-            _targetTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _speed.Value * deltaTime);
+            _targetTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _speed * deltaTime);
         }
         
         public void SetDirection(Vector3 direction)
