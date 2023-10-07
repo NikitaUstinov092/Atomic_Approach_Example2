@@ -2,14 +2,11 @@
 using System.Atomic.Implementations;
 using System.Declarative.Scripts.Attributes;
 using GamePlay.Components;
-using GamePlay.Components.Interfaces;
 using GamePlay.Custom.Sections;
-using GamePlay.Hero;
 using Lessons.StateMachines.States;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UpdateMechanics;
-using Random = UnityEngine.Random;
+
 
     namespace GamePlay.Zombie
     {
@@ -18,7 +15,7 @@ using Random = UnityEngine.Random;
         {
             [Section]
             [SerializeField]
-            public LifeSection lifeSection = new();
+            public LifeSection LifeSection = new();
 
             [Section]
             [SerializeField] 
@@ -78,7 +75,6 @@ using Random = UnityEngine.Random;
                 }
             }
             
-        
             [Serializable]
             public sealed class Attack
             {
@@ -93,44 +89,12 @@ using Random = UnityEngine.Random;
                     var target =  targetChecker.Target;
                     AttackEngine.Construct(AttackDelay, Damage, target);
                 }
-                
-                /*
-                private readonly LateUpdateMechanics _lateUpdate = new();
-                private float _timer;*/
-            
-                /*[Construct]
-                public void Construct(TargetChecker targetChecker, LifeSection lifeSection)
-                {
-                    /*var target =  targetChecker.Target;
-                    target.Subscribe((entity) => StopAttack.Value = entity == null);
-                    lifeSection.IsDead.Subscribe((dead) => StopAttack.Value = dead);
-                    
-                    _lateUpdate.Construct(deltaTime=>
-                    {
-                        if(StopAttack.Value)
-                            return;
-                       
-                        if (!targetChecker.ClosedTarget.Value)
-                            return;
-                      
-                        _timer += deltaTime;
-                        
-                        if (!(_timer >= AttackDelay.Value || lifeSection.IsDead.Value)) 
-                            return;
-                        
-                        if (targetChecker.Target.Value != null && 
-                            targetChecker.Target.Value.TryGet(out ITakeDamageable damage))
-                            damage.TakeDamage(Damage.Value);
-                        
-                        _timer = 0f;
-                    });#1#
-                }*/
             }
             
             [Serializable]
             public sealed class ZombieStates
             {
-                public StateMachine<EnemyStatesType> stateMachine;
+                public StateMachine<EnemyStatesType> StateMachine;
 
                 [Section]
                 public ChaseState Сhase;
@@ -145,9 +109,9 @@ using Random = UnityEngine.Random;
                 [Construct]
                 public void Construct(ZombieModel root)
                 {
-                    root.onStart += () => stateMachine.Enter();
+                    root.onStart += () => StateMachine.Enter();
         
-                    stateMachine.Construct(
+                    StateMachine.Construct(
                         (EnemyStatesType.Chase, Сhase),
                         (EnemyStatesType.Attack, StateAttack),
                         (EnemyStatesType.Death, DeadState)
@@ -158,13 +122,13 @@ using Random = UnityEngine.Random;
                 public void ConstructTransitions(LifeSection life, TargetChecker targetChecker)
                 {
                     var isDead = life.DeathEvent;
-                    isDead.Subscribe(() => stateMachine.SwitchState(EnemyStatesType.Death));
+                    isDead.Subscribe(() => StateMachine.SwitchState(EnemyStatesType.Death));
                     
                     targetChecker.ClosedTarget.Subscribe((value)=>
                     {
                         if (!life.IsDead.Value)
                         {
-                            stateMachine.SwitchState(value ? EnemyStatesType.Attack : EnemyStatesType.Chase);
+                            StateMachine.SwitchState(value ? EnemyStatesType.Attack : EnemyStatesType.Chase);
                         }
                     });
 
@@ -172,7 +136,7 @@ using Random = UnityEngine.Random;
                     {
                         if (entity.TryGet(out DeathEventComponent deathEventComponent))
                         {
-                            deathEventComponent.GetDeathEvent().Subscribe(() => stateMachine.SwitchState(EnemyStatesType.Idle));
+                            deathEventComponent.GetDeathEvent().Subscribe(() => StateMachine.SwitchState(EnemyStatesType.Idle));
                         }
                     });
 

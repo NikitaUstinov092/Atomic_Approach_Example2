@@ -503,11 +503,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Core:
-    lifeSection:
+    LifeSection:
       Entity:
         value: {fileID: 479581115975753025}
       HitPoints:
-        value: 1
+        value: 0
       IsDead:
         value: 0
     ZombieChase:
@@ -536,7 +536,7 @@ MonoBehaviour:
       StopAttack:
         value: 0
     ZombieState:
-      stateMachine:
+      StateMachine:
         currentStateType: 0
   View:
     AnimMachine:

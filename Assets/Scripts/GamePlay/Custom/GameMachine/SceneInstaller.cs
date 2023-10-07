@@ -15,7 +15,8 @@ namespace GamePlay.Custom.GameMachine
             Container.BindInterfacesAndSelfTo<EnemyCleaner>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<KillsCounter<Entity.Entity>>().AsSingle();
             Container.BindInterfacesTo<KillsCountView>().FromComponentsInHierarchy().AsSingle();
-           // Container.BindInterfacesTo<MoveInput>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesTo<ShootInput>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesTo<EntityDestroyer>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<MovementInput>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<CharacterMovementController>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<ClosestEntitySearcher>().AsSingle();

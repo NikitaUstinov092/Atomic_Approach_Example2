@@ -1,21 +1,21 @@
 using System;
-using GamePlay.Hero;
+using GamePlay.Custom.Engines;
 using Lessons.StateMachines.States;
 
 [Serializable]
 public class AutoShootState : UpdateState
 {
     private TargetEntitySection _entitySection;
-    private HeroModel_Core.Shoot _shoot;
+    private ShootController _shootController;
     
     private const float TimeDelay = 2f;
     private float _timer;
     
     public void Construct(TargetEntitySection entitySection,
-      HeroModel_Core.Shoot shoot)
+        ShootController shootController)
     {
         _entitySection = entitySection;
-        _shoot = shoot;
+        _shootController = shootController;
     }
     protected override void OnUpdate(float deltaTime)
     {
@@ -27,7 +27,7 @@ public class AutoShootState : UpdateState
         if (_timer < TimeDelay)
             return;
         
-        _shoot.OnGetPressedFire.Invoke();
+        _shootController.OnGetPressedFire.Invoke();
         _timer = 0;
     }
 }

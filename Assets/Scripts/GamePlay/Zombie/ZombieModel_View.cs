@@ -32,7 +32,7 @@ namespace GamePlay.Zombie
         [Construct]
         public void ConstructTransitions(ZombieModel_Core.ZombieStates states)
         {
-            var coreFSM = states.stateMachine;
+            var coreFSM = states.StateMachine;
 
             AnimMachine.AddTransition(AnimatorStateType.Idle, () =>
                 coreFSM.CurrentState == EnemyStatesType.Idle);

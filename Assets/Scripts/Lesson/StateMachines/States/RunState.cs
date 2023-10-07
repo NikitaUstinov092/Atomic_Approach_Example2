@@ -7,18 +7,18 @@ using Lessons.StateMachines.States;
 [Serializable]
     public sealed class RunState : CompositeState
     {
-        public MoveState moveState;
+        public MoveState MoveState;
         
         [Construct]
         public void ConstructSelf()
         {
-            SetStates(moveState);
+            SetStates(MoveState);
         }
         
         [Construct]
         public void ConstructSubStates(HeroModel_View visual, HeroModel_Core.CharacterMovement movement)
         {
-            moveState.Construct(movement.movementDirection, movement.moveInDirectionEngine,
-                movement.rotateInDirectionEngine);
+            MoveState.Construct(movement.MovementDirection, movement.MoveInDirectionEngine,
+                movement.RotateInDirectionEngine);
         }
     }

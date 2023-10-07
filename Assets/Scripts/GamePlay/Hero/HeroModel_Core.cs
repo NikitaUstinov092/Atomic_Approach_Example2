@@ -8,9 +8,7 @@ using Lesson;
 using Lessons.Character.Engines;
 using Lessons.StateMachines.States;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UpdateMechanics;
-using Object = UnityEngine.Object;
 
     namespace GamePlay.Hero
     {
@@ -41,92 +39,45 @@ using Object = UnityEngine.Object;
             [SerializeField]
             public TargetEntitySection EntityTarget = new();
             
-            [Section]
-            [SerializeField]
-            public EntityContainer EntityStorageComp = new();
-        
             
             [Serializable]
             public sealed class CharacterMovement
             {
                     public Transform Transform;
             
-                    public AtomicVariable<float> movementSpeed = new(6f);
-                    public AtomicVariable<float> rotationSpeed = new(10f);
-                    public MovementDirectionVariable movementDirection = new();
-            
-                    public MoveInDirectionEngine moveInDirectionEngine = new();
-                    public RotateInDirectionEngine rotateInDirectionEngine = new();
+                    public AtomicVariable<float> MovementSpeed = new(6f);
+                    public AtomicVariable<float> RotationSpeed = new(10f);
+                    
+                    public MovementDirectionVariable MovementDirection = new();
+                    public MoveInDirectionEngine MoveInDirectionEngine = new();
+                    public RotateInDirectionEngine RotateInDirectionEngine = new();
             
                     [Construct]
                     public void Construct()
                     {
-                        moveInDirectionEngine.Construct(Transform, movementSpeed);
-                        rotateInDirectionEngine.Construct(Transform, rotationSpeed);
+                        MoveInDirectionEngine.Construct(Transform, MovementSpeed);
+                        RotateInDirectionEngine.Construct(Transform, RotationSpeed);
                     }
             }
-            
 
             [Serializable]
             public sealed class Shoot
             {
-                public AtomicEvent OnGetPressedFire = new();
-                public AtomicEvent OnBulletCreated = new();
-                
                 public AtomicVariable<BulletConfig> BulletConfig = new();
                 public AtomicVariable<float> CoolDown = new();
                 
-                [SerializeField]
-                private ShootEngine _shootEngine;
-                
-                [SerializeField]
-                private Transform _spawnPointShoot;
-                
-                private readonly FixedUpdateMechanics _fixedUpdate = new();
-                
-                private bool _canShoot = true;
-                private bool _coolDown;
-                private float _timer;
+                public AtomicVariable<Transform> SpawnPointShoot = new();
+                public ShootController ShootController;
+                public ShootEngine ShootEngine = new();
                 
                 [Construct]
-                public void Construct(Ammo ammo, LifeSection lifeSection)
+                public void Construct(Ammo ammo, LifeSection life)
                 {
-                    _shootEngine.Construct(BulletConfig.Value, _spawnPointShoot);
-                
-                    var isDead = lifeSection.IsDead;
-                    var ammoCount = ammo.AmmoCount;
-                    
-                    isDead.Subscribe((data) => _canShoot = !data);
-                    ammoCount.Subscribe((count) => _canShoot = (count > 0));
-
-                    if (ammoCount.Value <= 0)
-                        _canShoot = false;
-                
-                    OnGetPressedFire.Subscribe(() =>
-                    {
-                        if(!_canShoot || _coolDown)
-                            return;
-                    
-                        _coolDown = true;
-                        _shootEngine.CreateBullet();
-                        OnBulletCreated?.Invoke();
-                    });
-                
-                    _fixedUpdate.Construct(deltaTime => 
-                    {
-                        if(!_canShoot || !_coolDown)
-                            return;
-                        
-                        _timer += deltaTime;
-
-                        if (_timer <= CoolDown.Value || !_canShoot) 
-                            return;
-                        
-                        _timer = 0;
-                        _coolDown = false;
-                    }); 
+                    ShootEngine.Construct(BulletConfig.Value, SpawnPointShoot.Value);
+                    ShootController.Construct(this, ammo.AmmoCount, life.IsDead);
                 }
             }
+            
         
             [Serializable]
             public sealed class Ammo
@@ -145,7 +96,7 @@ using Object = UnityEngine.Object;
                 public void Construct(Shoot shootComp, LifeSection lifeSectionComp)
                 {
                     var isDead = lifeSectionComp.IsDead;
-                    var shoot = shootComp.OnBulletCreated;
+                    var shoot = shootComp.ShootController.OnBulletCreated;
                     
                     isDead.Subscribe((data) => _canReload = !data);
                     
@@ -173,6 +124,7 @@ using Object = UnityEngine.Object;
                             return;
                         
                         AmmoCount.Value++;
+                        
                         _timer = 0;
                     }); 
                 }
@@ -211,7 +163,7 @@ using Object = UnityEngine.Object;
             isDead.Subscribe(() => stateMachine.SwitchState(CharacterStateType.Dead));
             
             
-            movement.movementDirection.MovementStarted.Subscribe(()=>
+            movement.MovementDirection.MovementStarted.Subscribe(()=>
             {
                 if (!life.IsDead.Value)
                 {
@@ -219,7 +171,7 @@ using Object = UnityEngine.Object;
                 }
             }); 
 
-            movement.movementDirection.MovementFinished.Subscribe(() =>
+            movement.MovementDirection.MovementFinished.Subscribe(() =>
             {
                 if (!life.IsDead.Value && stateMachine.CurrentState == CharacterStateType.Run)
                 {
@@ -229,21 +181,5 @@ using Object = UnityEngine.Object;
         }
     }
     
-    
-    [Serializable]
-    public sealed class EntityContainer
-    {
-        public Entity.Entity Entity;
-
-        [Construct]
-        public void Construct(LifeSection lifeSection)
-        {
-            lifeSection.DeathEvent.Subscribe(() =>
-            {
-                Object.Destroy(Entity);
-            });
-        }
-        
-    }
         }
     }

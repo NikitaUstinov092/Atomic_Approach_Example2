@@ -12,10 +12,10 @@ namespace Entity
         private HeroModel model;
         void IInitListener.OnInit()
         {
-            Add(new MoveInDirectionComponent(model.Core.CharacterMoveComp.movementDirection));
+            Add(new MoveInDirectionComponent(model.Core.CharacterMoveComp.MovementDirection));
             Add(new TakeDamageRequestComponent(model.Core.LifeSectionComp.TakeDamageRequest));
             Add(new DeathEventComponent(model.Core.LifeSectionComp.DeathEvent, model.Core.LifeSectionComp.DeathEventData));
-            Add(new ShootComponent(model.Core.ShootComp.OnGetPressedFire));
+            Add(new ShootComponent(model.Core.ShootComp.ShootController.OnGetPressedFire));
             Add(new SetTargetEntityComponent(model.Core.EntityTarget));
         }
 

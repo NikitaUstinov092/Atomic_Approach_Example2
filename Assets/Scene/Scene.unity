@@ -4063,8 +4063,10 @@ MonoBehaviour:
         value: {fileID: 11400000, guid: f770c32a8305b554c82fe0762a9374b8, type: 2}
       CoolDown:
         value: 0.3
-      _shootEngine: {fileID: 1586887916}
-      _spawnPointShoot: {fileID: 286967597}
+      SpawnPointShoot:
+        value: {fileID: 286967597}
+      ShootController: {}
+      ShootEngine: {fileID: 1586887916}
     AmmoComp:
       AmmoCount:
         value: 1

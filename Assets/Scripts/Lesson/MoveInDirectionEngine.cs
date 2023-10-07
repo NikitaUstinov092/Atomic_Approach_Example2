@@ -25,7 +25,5 @@ using UnityEngine;
         public void SetDirection(Vector3 direction)
         {
             _direction = direction;
-            /*var moveVector = _transform.forward * direction.z + _transform.right * direction.x;
-            _direction = moveVector.normalized;*/
         }
     }

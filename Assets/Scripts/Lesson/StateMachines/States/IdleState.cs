@@ -18,9 +18,11 @@ using Lessons.StateMachines.States;
         }
         
         [Construct]
-        public void ConstructSubStates(HeroModel_View visual, HeroModel_Core core)
+        public void ConstructSubStates(HeroModel_Core core)
         {
-            ShootState.Construct(core.EntityTarget, core.ShootComp);
+            ShootState.Construct(core.EntityTarget, core.ShootComp.ShootController);
             RotateToEnemyState.Construct(core.EntityTarget, core.CharacterMoveComp.Transform);
         }
+        
+        
     }

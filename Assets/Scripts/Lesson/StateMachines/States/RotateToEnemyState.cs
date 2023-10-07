@@ -1,5 +1,4 @@
-using System.Atomic.Implementations;
-using GamePlay.Hero;
+using Lessons.Character.Engines;
 using Lessons.StateMachines.States;
 using UnityEngine;
 
@@ -15,13 +14,16 @@ namespace Lesson.StateMachines.States
             _entitySection = entitySection;
             _sourceTransform = sourceTransform;
         }
+
         protected override void OnUpdate(float deltaTime)
         {
             var target = _entitySection.TargetEntity.Value;
             if (target == null)
                 return;
             var enemyTransform = target.transform;
-            _sourceTransform.LookAt(enemyTransform);
+            var targetRotation = Quaternion.LookRotation(enemyTransform.position);
+            _sourceTransform.rotation = Quaternion.Slerp(_sourceTransform.rotation, targetRotation, 10 * deltaTime);
+            //TO DO убрать хардкод
         }
     }
 }

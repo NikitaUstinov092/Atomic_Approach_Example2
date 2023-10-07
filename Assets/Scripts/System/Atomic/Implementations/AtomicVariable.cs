@@ -16,12 +16,12 @@ namespace System.Atomic.Implementations
 
         public void Subscribe(Action<T> listener)
         {
-            this.onChanged += listener;
+            onChanged += listener;
         }
 
         public void Unsubscribe(Action<T> listener)
         {
-            this.onChanged -= listener;
+            onChanged -= listener;
         }
 
         public Action<T> onChanged;
@@ -32,7 +32,7 @@ namespace System.Atomic.Implementations
 
         public AtomicVariable()
         {
-            this.value = default;
+            value = default;
         }
         public AtomicVariable(T value)
         {
@@ -58,12 +58,12 @@ namespace System.Atomic.Implementations
 #if UNITY_EDITOR
         private void OnValueChanged(T value)
         {
-            this.onChanged?.Invoke(value);
+            onChanged?.Invoke(value);
         }
 #endif
         public void Dispose()
         {
-            DelegateUtils.Dispose(ref this.onChanged);
+            DelegateUtils.Dispose(ref onChanged);
         }
     }
 }

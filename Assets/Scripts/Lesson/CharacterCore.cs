@@ -43,18 +43,18 @@ namespace Lessons.Character.Model
     {
         public Transform transform;
 
-        public AtomicVariable<float> movementSpeed = new(6f);
-        public AtomicVariable<float> rotationSpeed = new(10f);
-        public MovementDirectionVariable movementDirection;
+        public AtomicVariable<float> MovementSpeed = new(6f);
+        public AtomicVariable<float> RotationSpeed = new(10f);
+        public MovementDirectionVariable MovementDirection;
 
-        public MoveInDirectionEngine moveInDirectionEngine;
-        public RotateInDirectionEngine rotateInDirectionEngine;
+        public MoveInDirectionEngine MoveInDirectionEngine;
+        public RotateInDirectionEngine RotateInDirectionEngine;
 
         [Construct]
         public void Construct()
         {
-            moveInDirectionEngine.Construct(transform, movementSpeed);
-            rotateInDirectionEngine.Construct(transform, rotationSpeed);
+            MoveInDirectionEngine.Construct(transform, MovementSpeed);
+            RotateInDirectionEngine.Construct(transform, RotationSpeed);
         }
     }
 
@@ -96,7 +96,7 @@ namespace Lessons.Character.Model
     [Serializable]
     public sealed class CharacterStates
     {
-        public StateMachine<CharacterStateType> stateMachine;
+        public StateMachine<CharacterStateType> StateMachine;
 
         [Section]
         public IdleState idleState;
@@ -113,9 +113,9 @@ namespace Lessons.Character.Model
         [Construct]
         public void Construct(CharacterModel root)
         {
-            root.onStart += () => this.stateMachine.Enter();
+            root.onStart += () => this.StateMachine.Enter();
         
-            stateMachine.Construct(
+            StateMachine.Construct(
                 (CharacterStateType.Idle, idleState),
                 (CharacterStateType.Run, runState),
                 (CharacterStateType.Dead, DeadState),
@@ -129,22 +129,22 @@ namespace Lessons.Character.Model
             life.isAlive.ValueChanged += isAlive =>
             {
                 var stateType = isAlive ? CharacterStateType.Idle : CharacterStateType.Dead;
-                stateMachine.SwitchState(stateType);
+                StateMachine.SwitchState(stateType);
             };
 
-            movement.movementDirection.MovementStarted += () =>
+            movement.MovementDirection.MovementStarted += () =>
             {
                 if (life.isAlive)
                 {
-                    stateMachine.SwitchState(CharacterStateType.Run);
+                    StateMachine.SwitchState(CharacterStateType.Run);
                 }
             };
 
-            movement.movementDirection.MovementFinished += () =>
+            movement.MovementDirection.MovementFinished += () =>
             {
-                if (life.isAlive && stateMachine.CurrentState == CharacterStateType.Run)
+                if (life.isAlive && StateMachine.CurrentState == CharacterStateType.Run)
                 {
-                    stateMachine.SwitchState(CharacterStateType.Idle);
+                    StateMachine.SwitchState(CharacterStateType.Idle);
                 }
             };
 
@@ -152,7 +152,7 @@ namespace Lessons.Character.Model
             {
                 if (life.isAlive)
                 {
-                    stateMachine.SwitchState(CharacterStateType.Gathering);
+                    StateMachine.SwitchState(CharacterStateType.Gathering);
                 }
             };
             
@@ -160,7 +160,7 @@ namespace Lessons.Character.Model
             {
                 if (life.isAlive)
                 {
-                    stateMachine.SwitchState(CharacterStateType.Idle);
+                    StateMachine.SwitchState(CharacterStateType.Idle);
                 }
             };
         }

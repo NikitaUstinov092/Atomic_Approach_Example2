@@ -1,18 +1,18 @@
-﻿using GamePlay.Custom.ScriptableObjects;
+﻿using System;
+using GamePlay.Custom.ScriptableObjects;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GamePlay.Custom.Engines
 {
+    [Serializable]
     public class ShootEngine: MonoBehaviour
     {
         private Transform _spawnPoint;
         private Rigidbody _bullet;
-        private BulletConfig _config;
         private GameObject _parent;
         
         private float _shootSpeed;
-        private float _nextFireTime;
         
         public void Construct(BulletConfig bulletConfig, Transform spawnPoint)
         {
