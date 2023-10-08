@@ -7,23 +7,32 @@ namespace Lesson.StateMachines.States
     public class RotateToEnemyState : UpdateState
     {
         private TargetEntitySection _entitySection;
-        private Transform _sourceTransform;
+        private RotateInDirectionEngine _rotateInDirection;
+        private Vector3 _positionEnemy;
         public void Construct(TargetEntitySection entitySection,
-            Transform sourceTransform)
+            RotateInDirectionEngine rotateInDirection)
         {
+            _rotateInDirection = rotateInDirection;
             _entitySection = entitySection;
-            _sourceTransform = sourceTransform;
         }
-
+        protected override void OnEnter()
+        {
+            _entitySection.TargetEntity.Subscribe(SetDirection);
+            SetDirection(_entitySection.TargetEntity.Value);
+        }
+        protected override void OnExit()
+        {
+            _entitySection.TargetEntity.Unsubscribe(SetDirection);
+            _rotateInDirection.SetDirection(Vector3.zero);
+        }
         protected override void OnUpdate(float deltaTime)
         {
-            var target = _entitySection.TargetEntity.Value;
-            if (target == null)
-                return;
-            var enemyTransform = target.transform;
-            var targetRotation = Quaternion.LookRotation(enemyTransform.position);
-            _sourceTransform.rotation = Quaternion.Slerp(_sourceTransform.rotation, targetRotation, 10 * deltaTime);
-            //TO DO убрать хардкод
+            _rotateInDirection.SetDirection(_positionEnemy);
+        }
+        private void SetDirection(Entity.Entity entity)
+        {
+            if (entity != null)
+                _positionEnemy = entity.transform.position;
         }
     }
 }

@@ -104,8 +104,7 @@ using UpdateMechanics;
 
                 [Section]
                 public DeadState DeadState;
-        
-
+                
                 [Construct]
                 public void Construct(ZombieModel root)
                 {
@@ -139,9 +138,7 @@ using UpdateMechanics;
                             deathEventComponent.GetDeathEvent().Subscribe(() => StateMachine.SwitchState(EnemyStatesType.Idle));
                         }
                     });
-
                 }
             }
-
         }
     }

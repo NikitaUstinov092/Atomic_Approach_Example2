@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &4530348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4530349}
+  - component: {fileID: 4530350}
+  m_Layer: 0
+  m_Name: PlayerEntityDestroyer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4530349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 988932726}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4530350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c530f6ca762864094f3b64dbd531f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entity: {fileID: 3587277424092816633}
 --- !u!1 &46121391
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +960,7 @@ Transform:
   - {fileID: 1586887915}
   - {fileID: 465959963}
   - {fileID: 498802397}
+  - {fileID: 4530349}
   m_Father: {fileID: 1605240824}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4047,11 +4093,11 @@ MonoBehaviour:
         value: 0
     CharacterMoveComp:
       Transform: {fileID: 3587277424092816630}
-      movementSpeed:
+      MovementSpeed:
         value: 6
-      rotationSpeed:
+      RotationSpeed:
         value: 10
-      movementDirection:
+      MovementDirection:
         value: {x: 0, y: 0, z: 0}
     States:
       stateMachine:
@@ -4077,8 +4123,6 @@ MonoBehaviour:
     EntityTarget:
       TargetEntity:
         value: {fileID: 0}
-    EntityStorageComp:
-      Entity: {fileID: 3587277424092816633}
   View:
     AnimMachine:
       currentStateType: 0

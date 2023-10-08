@@ -16,6 +16,7 @@ public class ChaseTarget : UpdateState
     {
         if (Target.Value == null) 
             return;
+        
         var targetPos = Target.Value.transform.position;
         var movePos = _moveTransform.Value;
         movePos.position = Vector3.MoveTowards( movePos.position, targetPos, _speed * deltaTime);
