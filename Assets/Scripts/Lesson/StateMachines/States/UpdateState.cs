@@ -1,6 +1,4 @@
 using System.Declarative.Scripts;
-using GamePlay.Custom.GameMachine;
-using UnityEngine;
 
 namespace Lessons.StateMachines.States
 {
