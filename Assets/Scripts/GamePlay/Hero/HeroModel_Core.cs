@@ -132,27 +132,27 @@ using UpdateMechanics;
     [Serializable]
     public sealed class CharacterStates
     {
-        public StateMachine<CharacterStateType> stateMachine;
+        public StateMachine<CharacterStateType> StateMachine;
 
         [Section]
-        public IdleState idleState;
+        public IdleState IdleState;
 
         [Section]
-        public RunState runState;
+        public RunState RunState;
 
         [Section]
-        public DeadState deadState;
+        public DeadState DeadState;
         
 
         [Construct]
         public void Construct(HeroModel root)
         {
-            root.onStart += () => stateMachine.Enter();
+            root.onStart += () => StateMachine.Enter();
         
-            stateMachine.Construct(
-                (CharacterStateType.Idle, idleState),
-                (CharacterStateType.Run, runState),
-                (CharacterStateType.Dead, deadState)
+            StateMachine.Construct(
+                (CharacterStateType.Idle, IdleState),
+                (CharacterStateType.Run, RunState),
+                (CharacterStateType.Dead, DeadState)
             );
         }
 
@@ -160,26 +160,26 @@ using UpdateMechanics;
         public void ConstructTransitions(LifeSection life, CharacterMovement movement)
         {
             var isDead = life.DeathEvent;
-            isDead.Subscribe(() => stateMachine.SwitchState(CharacterStateType.Dead));
+            isDead.Subscribe(() => StateMachine.SwitchState(CharacterStateType.Dead));
             
             
             movement.MovementDirection.MovementStarted.Subscribe(()=>
             {
                 if (!life.IsDead.Value)
                 {
-                    stateMachine.SwitchState(CharacterStateType.Run);
+                    StateMachine.SwitchState(CharacterStateType.Run);
                 }
             }); 
 
             movement.MovementDirection.MovementFinished.Subscribe(() =>
             {
-                if (!life.IsDead.Value && stateMachine.CurrentState == CharacterStateType.Run)
+                if (!life.IsDead.Value && StateMachine.CurrentState == CharacterStateType.Run)
                 {
-                    stateMachine.SwitchState(CharacterStateType.Idle);
+                    StateMachine.SwitchState(CharacterStateType.Idle);
                 }
             });
         }
+        
     }
-    
         }
     }

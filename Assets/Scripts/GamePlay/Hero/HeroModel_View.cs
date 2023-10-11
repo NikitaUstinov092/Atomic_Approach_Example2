@@ -35,7 +35,7 @@ namespace GamePlay.Hero
         [Construct]
         public void ConstructTransitions(HeroModel_Core.CharacterStates states)
         {
-            var coreFSM = states.stateMachine;
+            var coreFSM = states.StateMachine;
 
             AnimMachine.AddTransition(AnimatorStateType.Idle, () =>
                 coreFSM.CurrentState == CharacterStateType.Idle);

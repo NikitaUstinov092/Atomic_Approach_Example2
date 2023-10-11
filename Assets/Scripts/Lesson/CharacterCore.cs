@@ -99,10 +99,10 @@ namespace Lessons.Character.Model
         public StateMachine<CharacterStateType> StateMachine;
 
         [Section]
-        public IdleState idleState;
+        public IdleState IdleState;
 
         [Section]
-        public RunState runState;
+        public RunState RunState;
 
         [Section]
         public DeadState DeadState;
@@ -116,8 +116,8 @@ namespace Lessons.Character.Model
             root.onStart += () => this.StateMachine.Enter();
         
             StateMachine.Construct(
-                (CharacterStateType.Idle, idleState),
-                (CharacterStateType.Run, runState),
+                (CharacterStateType.Idle, IdleState),
+                (CharacterStateType.Run, RunState),
                 (CharacterStateType.Dead, DeadState),
                 (CharacterStateType.Gathering, gatherState)
             );

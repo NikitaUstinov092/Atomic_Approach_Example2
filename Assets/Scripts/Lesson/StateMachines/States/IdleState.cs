@@ -18,9 +18,9 @@ using Lessons.StateMachines.States;
         }
         
         [Construct]
-        public void ConstructSubStates(HeroModel_Core core)
+        public void ConstructSubStates(HeroModel_Core core, HeroModel_View view)
         {
-            ShootState.Construct(core.EntityTarget, core.ShootComp.ShootController);
+            ShootState.Construct(core.EntityTarget, core.ShootComp.ShootController, view.AnimMachine);
             RotateToEnemyState.Construct(core.EntityTarget, core.CharacterMoveComp.Transform, core.CharacterMoveComp.RotateInDirectionEngine);
         }
         

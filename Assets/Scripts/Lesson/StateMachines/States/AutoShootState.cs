@@ -1,4 +1,5 @@
 using System;
+using Game.GameEngine.Animation;
 using GamePlay.Custom.Engines;
 using Lessons.StateMachines.States;
 
@@ -7,16 +8,32 @@ public class AutoShootState : UpdateState
 {
     private TargetEntitySection _entitySection;
     private ShootController _shootController;
+
+    private AnimatorState_ListenEvent _shootListener;
     
     private const float RotationPause = 1f; //TO DO вычислять дельту между углом поворота к противнику и скоростью героя, пока по KISS
     private float _timer;
     
     public void Construct(TargetEntitySection entitySection,
-        ShootController shootController)
+        ShootController shootController, AnimatorStateMachine<AnimatorStateType> animStateMachine)
     {
         _entitySection = entitySection;
         _shootController = shootController;
+
+        ConstructShootListener(animStateMachine);
     }
+
+    private void ConstructShootListener(AnimatorStateMachine<AnimatorStateType> animStateMachine)
+    {
+        _shootListener.ConstructAnimEvents("Shoot");
+        _shootListener.ConstructAnimMachine(animStateMachine);
+        _shootListener.ConstructAction(() =>
+        {
+            //звук и изменение анимации
+        });
+    }
+    
+    
     protected override void OnUpdate(float deltaTime)
     {
         if (_entitySection.TargetEntity.Value == null)
