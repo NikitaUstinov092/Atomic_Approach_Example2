@@ -41,10 +41,13 @@ namespace GamePlay.Hero
                 coreFSM.CurrentState == CharacterStateType.Idle);
 
             AnimMachine.AddTransition(AnimatorStateType.Run,
-                () => coreFSM.CurrentState == CharacterStateType.Run);
+                () => coreFSM.CurrentState == CharacterStateType.Move);
 
             AnimMachine.AddTransition(AnimatorStateType.Dead,
-                () => coreFSM.CurrentState == CharacterStateType.Dead);
+                () => coreFSM.CurrentState == CharacterStateType.Death);
+
+            AnimMachine.AddTransition(AnimatorStateType.Attack,
+                () => coreFSM.CurrentState == CharacterStateType.StandShoot);
         }
 
 

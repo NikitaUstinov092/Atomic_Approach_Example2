@@ -3,7 +3,9 @@ namespace Lessons.StateMachines.States
     public enum CharacterStateType
     {
         Idle,
-        Run,
-        Dead,
+        Move,
+        Death,
+        RunShoot,
+        StandShoot
     }
 }

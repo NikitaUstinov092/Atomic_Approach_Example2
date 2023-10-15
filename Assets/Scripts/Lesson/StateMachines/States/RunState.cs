@@ -5,7 +5,7 @@ using Lessons.StateMachines.States;
 
 
 [Serializable]
-    public sealed class RunState : CompositeState
+    public class RunState : CompositeState
     {
         public MoveState MoveState;
         

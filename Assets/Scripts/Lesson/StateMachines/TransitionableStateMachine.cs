@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Declarative.Scripts;
-using GamePlay.Custom.GameMachine;
 
     public class TransitionableStateMachine<T> : StateMachine<T>, IUpdate
     {

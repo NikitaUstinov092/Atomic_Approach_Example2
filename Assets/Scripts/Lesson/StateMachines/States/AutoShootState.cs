@@ -44,7 +44,7 @@ public class AutoShootState : UpdateState
         if (_timer < RotationPause)
             return;
         
-        _shootController.OnGetPressedFire.Invoke();
+        _shootController.FireRequest.Invoke();
         _timer = 0;
     }
 

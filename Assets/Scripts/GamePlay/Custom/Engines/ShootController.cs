@@ -8,8 +8,9 @@ namespace GamePlay.Custom.Engines
     [Serializable]
     public class ShootController: IFixedUpdate
     {
-        public AtomicEvent OnGetPressedFire = new();
-        public AtomicEvent OnBulletCreated = new();
+        public AtomicEvent FireRequest = new();
+        public AtomicEvent OnStartShoot = new();
+        public AtomicEvent OnEndShoot = new();
         
         private AtomicVariable<float> _coolDownDelay = new();
         private ShootEngine _shootEngine;
@@ -26,21 +27,28 @@ namespace GamePlay.Custom.Engines
             ammoCount.Subscribe((count) => _canShoot = (count > 0));
             death.Subscribe((data) => _canShoot = !data);
             
-            OnGetPressedFire.Subscribe(Fire);
+            FireRequest.Subscribe(RequestFire);
         }
         
         void IFixedUpdate.FixedUpdate(float deltaTime)
         {
             CoolDownTimer(deltaTime);
         }
-        private void Fire()
+        private void RequestFire()
         {
             if(_coolDown || !_canShoot)
                 return;
                     
             _coolDown = true;
+            
+            OnStartShoot?.Invoke();
+            Shoot();
+            OnEndShoot?.Invoke();
+        }
+
+        private void Shoot()
+        {
             _shootEngine.CreateBullet();
-            OnBulletCreated?.Invoke();
         }
         private void CoolDownTimer(float deltaTime)
         {

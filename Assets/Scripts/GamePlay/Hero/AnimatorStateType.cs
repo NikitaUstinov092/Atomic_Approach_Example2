@@ -3,6 +3,6 @@
     {
         Idle = 0,
         Run = 1,
-        Attack = 2,
+        Attack = 6,
         Dead = 5
     }

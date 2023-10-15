@@ -1,14 +1,11 @@
 using System;
-using System.Declarative.Scripts.Attributes;
-using GamePlay.Hero;
-using Lesson.StateMachines.States;
 using Lessons.StateMachines.States;
 
 
     [Serializable]
     public sealed class IdleState : CompositeState
     {
-        public AutoShootState ShootState = new();
+        /*public AutoShootState ShootState = new();
         public RotateToEnemyState RotateToEnemyState = new();
         
         [Construct]
@@ -22,6 +19,6 @@ using Lessons.StateMachines.States;
         {
             ShootState.Construct(core.EntityTarget, core.ShootComp.ShootController, view.AnimMachine);
             RotateToEnemyState.Construct(core.EntityTarget, core.CharacterMoveComp.Transform, core.CharacterMoveComp.RotateInDirectionEngine);
-        }
+        }*/
         
     }
