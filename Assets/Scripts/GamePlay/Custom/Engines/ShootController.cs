@@ -2,7 +2,6 @@ using System;
 using System.Atomic.Implementations;
 using System.Declarative.Scripts;
 using GamePlay.Hero;
-using Sample;
 
 namespace GamePlay.Custom.Engines
 {

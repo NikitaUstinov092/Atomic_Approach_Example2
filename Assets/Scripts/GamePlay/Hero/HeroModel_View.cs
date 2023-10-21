@@ -12,31 +12,33 @@ namespace GamePlay.Hero
     {
         [Section] 
         [SerializeField] 
-        public Animation Animations = new();
+        public Animation_View Animation = new();
         
         [Section] 
         [SerializeField] 
-        public VFX Vfx = new();
-
+        public VFX_View VFX = new();
+        
         [Section] 
         [SerializeField] 
-        public HP_View HpView = new();
-
+        public Sound_View Sound = new();
+        
         [Section] 
         [SerializeField] 
-        public Ammo_View AmmoView = new();
+        public HP_View Hp = new();
         
-        private static readonly int SHOOT_TRIGGER = UnityEngine.Animator.StringToHash("Shoot");
-        private static readonly int DAMAGE_TRIGGER = UnityEngine.Animator.StringToHash("DAMAGE"); //TO DO
+        [Section] 
+        [SerializeField] 
+        public Ammo_View Ammo = new();
         
-
+        private static readonly int SHOOT_TRIGGER = Animator.StringToHash("Shoot");
+        
         [Serializable]
-        public class Animation
+        public class Animation_View
         {
             [Section]
             public HeroAnimatorStateMachine<AnimatorStateType> AnimMachine = new();
             
-            private CharacterAnimationListener _animationListener;
+            private AnimationListener _animationListener;
         
             [Construct]
             public void ConstructStates()
@@ -63,19 +65,21 @@ namespace GamePlay.Hero
 
                 AnimMachine.AddTransition(AnimatorStateType.Dead,
                     () => coreFSM.CurrentState == CharacterStateType.Death);
-            
-                shoot.ShootController.OnShootApplied.Subscribe(OnShoot);
-
-                _animationListener = new(AnimMachine.Dispatcher,shoot.ShootController.OnShoot, "Shoot");
+                
+                ConstructTriggeredEvents(shoot);
             }
-            private void OnShoot()
+
+            public void ConstructTriggeredEvents(HeroModel_Core.Shoot shoot)
             {
-                AnimMachine.PullTrigger(SHOOT_TRIGGER);
+                _animationListener = new AnimationListener(AnimMachine.Dispatcher.OnStringReceived, 
+                    shoot.ShootController.OnShoot, "Shoot");
+               
+                shoot.ShootController.OnShootApplied.Subscribe(() => AnimMachine.PullTrigger(SHOOT_TRIGGER));
             }
         }
 
         [Serializable]
-        public class VFX
+        public class VFX_View
         {
             [SerializeField]
             private ParticleSystem _shootEffect;
@@ -85,7 +89,7 @@ namespace GamePlay.Hero
             [Construct]
             public void Construct(HeroModel_Core.Shoot shoot)
             {
-                shoot.ShootController.OnShootApplied.Subscribe(OnShoot);
+                shoot.ShootController.OnShoot.Subscribe(OnShoot);
                 _spawnPointShoot = shoot.SpawnPointShoot;
             }
 
@@ -96,20 +100,23 @@ namespace GamePlay.Hero
             }
         }
 
-        /*private void UpdateBodyLayer()
+        [Serializable]
+        public class Sound_View
         {
-            var weight = this.isAlive.Value ? 1 : 0;
-            this.animator.SetLayerWeight(this.bodyLayer, weight);
-        }*/
-        
-        /*private void OnTakeDamage(TakeDamageArgs args)
-        {
-            if (args.damage > 0)
-            {
-                this.animator.SetTrigger(TAKE_DAMAGE_TRIGGER);
-            }
-        }*/
+            [SerializeField] 
+            private AudioSource _audioSource;
+            
+            [SerializeField] 
+            private AudioClip _shootClip;
 
+            [Construct]
+            public void Construct(HeroModel_Core.Shoot shoot)
+            {
+                shoot.ShootController.OnShoot.Subscribe(()=>_audioSource.PlayOneShot(_shootClip));
+            }
+            
+        }
+        
         [Serializable]
         public sealed class HP_View
         {
@@ -132,23 +139,26 @@ namespace GamePlay.Hero
         public sealed class Ammo_View
         {
             public AtomicVariable<TextMeshProUGUI> TextAmmo = new();
-
+            private const string Slash = "/";
+            
             [SerializeField] 
             private string Title = "BULLETS: ";
 
             [Construct]
-            public void Construct(HeroModel_Core core)
+            public void Construct(HeroModel_Core.Ammo ammoComp)
             {
-                var hitPoints = core.AmmoComp.AmmoCount;
-                var maxValue = "/" + core.AmmoComp.MaxAmmo.Value;
+                var hitPoints = ammoComp.AmmoCount;
+                var maxValue = Slash + ammoComp.MaxAmmo.Value;
                 TextAmmo.Value.text = Title + hitPoints.Value + maxValue;
                 hitPoints.Subscribe((newValue) => TextAmmo.Value.text = Title + newValue + maxValue);
             }
         }
+        
+       
+        
     }
 
     
-   
 }
     
 

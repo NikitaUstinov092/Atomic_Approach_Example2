@@ -823,18 +823,21 @@ MonoBehaviour:
       TargetEntity:
         value: {fileID: 0}
   View:
-    Animations:
+    Animation:
       AnimMachine:
         currentStateType: 0
         animator: {fileID: 4180867637412833433}
-        dispatcher: {fileID: 1673106210}
-    Vfx:
+        Dispatcher: {fileID: 1673106210}
+    VFX:
       _shootEffect: {fileID: 1141581191476010123}
-    HpView:
+    Sound:
+      _audioSource: {fileID: 534102189052670437}
+      _shootClip: {fileID: 8300000, guid: 321feb9f51af885488e5ed433aecd467, type: 3}
+    Hp:
       TextHp:
         value: {fileID: 6615131717051902429}
       Title: 'HIT POINTS: '
-    AmmoView:
+    Ammo:
       TextAmmo:
         value: {fileID: 1625409112}
       Title: 'BULLETS: '
@@ -1022,6 +1025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1060751499}
   - component: {fileID: 1060751498}
+  - component: {fileID: 1060751500}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1087,6 +1091,14 @@ Transform:
   m_Father: {fileID: 862641158}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!81 &1060751500
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060751495}
+  m_Enabled: 1
 --- !u!1 &1130414450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,7 +1783,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -26159,27 +26171,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7883165847813471628}
-  - component: {fileID: 3168659139147182146}
   - component: {fileID: 534102189052670437}
   m_Layer: 0
-  m_Name: '[Audio]'
+  m_Name: AudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3168659139147182146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2668773459869158878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a3290cdd3b644f39434ce8532f364a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &3921481626537001966
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27560,18 +27559,6 @@ Transform:
   m_Father: {fileID: 1141581191324640666}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7663549865424602614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8367752639554660465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c638559c214119b7083e41b703e848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7883165847813471628
 Transform:
   m_ObjectHideFlags: 0
@@ -27604,7 +27591,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5879035635106554407}
-  - component: {fileID: 7663549865424602614}
   m_Layer: 0
   m_Name: '[Visual]'
   m_TagString: Untagged
