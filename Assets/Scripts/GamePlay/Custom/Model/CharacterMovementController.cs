@@ -10,6 +10,7 @@ using UnityEngine;
         [SerializeField] private Entity.Entity character;
 
         private MoveInDirectionComponent _moveInDirection;
+        
         void IInitListener.OnInit()
         {
             _moveInDirection = character.Get<MoveInDirectionComponent>();

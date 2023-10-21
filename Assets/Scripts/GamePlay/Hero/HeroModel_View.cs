@@ -12,51 +12,111 @@ namespace GamePlay.Hero
     {
         [Section] 
         [SerializeField] 
-        public AnimatorStateMachine<AnimatorStateType> AnimMachine = new();
+        public Animation Animations = new();
+        
+        [Section] 
+        [SerializeField] 
+        public VFX Vfx = new();
 
         [Section] 
-        [SerializeField] public HP_View HpView = new();
+        [SerializeField] 
+        public HP_View HpView = new();
 
         [Section] 
-        [SerializeField] public Ammo_View AmmoView = new();
+        [SerializeField] 
+        public Ammo_View AmmoView = new();
+        
+        private static readonly int SHOOT_TRIGGER = UnityEngine.Animator.StringToHash("Shoot");
+        private static readonly int DAMAGE_TRIGGER = UnityEngine.Animator.StringToHash("DAMAGE"); //TO DO
+        
 
-        [Construct]
-        public void ConstructStates()
+        [Serializable]
+        public class Animation
         {
-            AnimMachine.Construct(
-                (AnimatorStateType.Idle, null),
+            [Section]
+            public HeroAnimatorStateMachine<AnimatorStateType> AnimMachine = new();
+            
+            private CharacterAnimationListener _animationListener;
+        
+            [Construct]
+            public void ConstructStates()
+            {
+                AnimMachine.Construct(
+                    (AnimatorStateType.Idle, null),
 
-                (AnimatorStateType.Run, null),
+                    (AnimatorStateType.Run, null),
 
-                (AnimatorStateType.Dead, null)
-            );
+                    (AnimatorStateType.Dead, null)
+                );
+            }
+
+            [Construct]
+            public void ConstructTransitions(HeroModel_Core.CharacterStates states, HeroModel_Core.Shoot shoot)
+            {
+                var coreFSM = states.StateMachine;
+
+                AnimMachine.AddTransition(AnimatorStateType.Idle, () =>
+                    coreFSM.CurrentState == CharacterStateType.Idle);
+
+                AnimMachine.AddTransition(AnimatorStateType.Run,
+                    () => coreFSM.CurrentState == CharacterStateType.Move);
+
+                AnimMachine.AddTransition(AnimatorStateType.Dead,
+                    () => coreFSM.CurrentState == CharacterStateType.Death);
+            
+                shoot.ShootController.OnShootApplied.Subscribe(OnShoot);
+
+                _animationListener = new(AnimMachine.Dispatcher,shoot.ShootController.OnShoot, "Shoot");
+            }
+            private void OnShoot()
+            {
+                AnimMachine.PullTrigger(SHOOT_TRIGGER);
+            }
         }
 
-        [Construct]
-        public void ConstructTransitions(HeroModel_Core.CharacterStates states)
+        [Serializable]
+        public class VFX
         {
-            var coreFSM = states.StateMachine;
+            [SerializeField]
+            private ParticleSystem _shootEffect;
 
-            AnimMachine.AddTransition(AnimatorStateType.Idle, () =>
-                coreFSM.CurrentState == CharacterStateType.Idle);
+            private AtomicVariable<Transform> _spawnPointShoot;
+            
+            [Construct]
+            public void Construct(HeroModel_Core.Shoot shoot)
+            {
+                shoot.ShootController.OnShootApplied.Subscribe(OnShoot);
+                _spawnPointShoot = shoot.SpawnPointShoot;
+            }
 
-            AnimMachine.AddTransition(AnimatorStateType.Run,
-                () => coreFSM.CurrentState == CharacterStateType.Move);
-
-            AnimMachine.AddTransition(AnimatorStateType.Dead,
-                () => coreFSM.CurrentState == CharacterStateType.Death);
-
-            AnimMachine.AddTransition(AnimatorStateType.Attack,
-                () => coreFSM.CurrentState == CharacterStateType.StandShoot);
+            private void OnShoot()
+            {
+                _shootEffect.transform.position = _spawnPointShoot.Value.position;
+                _shootEffect.Play();
+            }
         }
 
+        /*private void UpdateBodyLayer()
+        {
+            var weight = this.isAlive.Value ? 1 : 0;
+            this.animator.SetLayerWeight(this.bodyLayer, weight);
+        }*/
+        
+        /*private void OnTakeDamage(TakeDamageArgs args)
+        {
+            if (args.damage > 0)
+            {
+                this.animator.SetTrigger(TAKE_DAMAGE_TRIGGER);
+            }
+        }*/
 
         [Serializable]
         public sealed class HP_View
         {
             public AtomicVariable<TextMeshProUGUI> TextHp = new();
 
-            private const string Title = "HIT POINTS: ";
+            [SerializeField] 
+            private string Title = "HIT POINTS: ";
 
             [Construct]
             public void Construct(HeroModel_Core core)
@@ -73,7 +133,8 @@ namespace GamePlay.Hero
         {
             public AtomicVariable<TextMeshProUGUI> TextAmmo = new();
 
-            private const string Title = "BULLETS: ";
+            [SerializeField] 
+            private string Title = "BULLETS: ";
 
             [Construct]
             public void Construct(HeroModel_Core core)
@@ -85,6 +146,9 @@ namespace GamePlay.Hero
             }
         }
     }
+
+    
+   
 }
     
 

@@ -84,7 +84,7 @@ namespace GamePlay.Hero
             public void Construct(Shoot shootComp, LifeSection lifeSectionComp)
             {
                 var isDead = lifeSectionComp.IsDead;
-                var shoot = shootComp.ShootController.OnEndShoot;
+                var shoot = shootComp.ShootController.OnShootApplied;
 
                 isDead.Subscribe((data) => _canReload = !data);
 
@@ -128,11 +128,7 @@ namespace GamePlay.Hero
             [Section] public RunState RunState;
 
             [Section] public DeadState DeadState;
-
-            [Section] public RunShootState RunAndShoot;
-
-            [Section] public ShootState StandAndShoot;
-
+            
             [Construct]
             public void Construct(HeroModel root)
             {
@@ -141,9 +137,7 @@ namespace GamePlay.Hero
                 StateMachine.Construct(
                     (CharacterStateType.Idle, IdleState),
                     (CharacterStateType.Move, RunState),
-                    (CharacterStateType.Death, DeadState),
-                    (CharacterStateType.RunShoot, RunAndShoot),
-                    (CharacterStateType.StandShoot, StandAndShoot)
+                    (CharacterStateType.Death, DeadState)
                 );
             }
 
@@ -164,28 +158,12 @@ namespace GamePlay.Hero
 
                 movement.MovementDirection.MovementFinished.Subscribe(() =>
                 {
-                    if (!life.IsDead.Value && StateMachine.CurrentState == CharacterStateType.Move ||
-                        StateMachine.CurrentState == CharacterStateType.RunShoot)
+                    if (!life.IsDead.Value && StateMachine.CurrentState == CharacterStateType.Move)
                     {
                         StateMachine.SwitchState(CharacterStateType.Idle);
                     }
                 });
-
-                shoot.ShootController.OnStartShoot.Subscribe(() =>
-                {
-                    if (!life.IsDead.Value && StateMachine.CurrentState == CharacterStateType.Move)
-                    {
-                        StateMachine.SwitchState(CharacterStateType.RunShoot);
-                    }
-
-                });
-                shoot.ShootController.OnStartShoot.Subscribe(() =>
-                {
-                    if (!life.IsDead.Value && StateMachine.CurrentState == CharacterStateType.Idle)
-                    {
-                        StateMachine.SwitchState(CharacterStateType.StandShoot);
-                    }
-                });
+                
             }
         }
     }

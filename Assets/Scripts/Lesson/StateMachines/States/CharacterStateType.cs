@@ -5,7 +5,5 @@ namespace Lessons.StateMachines.States
         Idle,
         Move,
         Death,
-        RunShoot,
-        StandShoot
     }
 }

@@ -1,28 +1,27 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-
-    
-    [Serializable]
-    public sealed class AnimatorStateMachine<T> : TransitionableStateMachine<T> where T : Enum
+[Serializable]
+    public class AnimatorStateMachine<T> : TransitionableStateMachine<T> where T : Enum
     {
         private static readonly int State = Animator.StringToHash("State");
 
         public event Action<string> OnMessageReceived
         {
-            add { this.dispatcher.OnMessageReceived += value; }
-            remove { this.dispatcher.OnMessageReceived -= value; }
+            add { Dispatcher.OnMessageReceived += value; }
+            remove { Dispatcher.OnMessageReceived -= value; }
         }
 
         [SerializeField]
-        private Animator animator;
+        protected Animator animator;
 
         [SerializeField]
-        private AnimatorDispatcher dispatcher;
+        public AnimatorDispatcher Dispatcher;
 
         public override void SwitchState(T stateType)
         {
             base.SwitchState(stateType);
-            this.animator.SetInteger(State, Convert.ToInt32(stateType));
+            animator.SetInteger(State, Convert.ToInt32(stateType));
         }
     }

@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 
 
-    internal sealed class AnimatorDispatcher : MonoBehaviour
+public sealed class AnimatorDispatcher : MonoBehaviour
     {
         internal event Action<string> OnMessageReceived; 
 

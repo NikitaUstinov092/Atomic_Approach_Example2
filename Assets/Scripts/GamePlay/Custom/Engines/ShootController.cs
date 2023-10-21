@@ -2,6 +2,7 @@ using System;
 using System.Atomic.Implementations;
 using System.Declarative.Scripts;
 using GamePlay.Hero;
+using Sample;
 
 namespace GamePlay.Custom.Engines
 {
@@ -9,9 +10,10 @@ namespace GamePlay.Custom.Engines
     public class ShootController: IFixedUpdate
     {
         public AtomicEvent FireRequest = new();
-        public AtomicEvent OnStartShoot = new();
-        public AtomicEvent OnEndShoot = new();
+        public AtomicEvent OnShootApplied = new();
+        public AtomicEvent OnShoot = new();
         
+       
         private AtomicVariable<float> _coolDownDelay = new();
         private ShootEngine _shootEngine;
         
@@ -26,6 +28,7 @@ namespace GamePlay.Custom.Engines
             
             ammoCount.Subscribe((count) => _canShoot = (count > 0));
             death.Subscribe((data) => _canShoot = !data);
+            OnShoot.Subscribe(Shoot);
             
             FireRequest.Subscribe(RequestFire);
         }
@@ -41,9 +44,7 @@ namespace GamePlay.Custom.Engines
                     
             _coolDown = true;
             
-            OnStartShoot?.Invoke();
-            Shoot();
-            OnEndShoot?.Invoke();
+            OnShootApplied?.Invoke();
         }
 
         private void Shoot()
