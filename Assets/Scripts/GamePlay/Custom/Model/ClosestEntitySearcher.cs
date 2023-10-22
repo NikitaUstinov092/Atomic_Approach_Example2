@@ -1,43 +1,38 @@
 using System;
+using System.Atomic.Implementations;
 using System.Collections.Generic;
 using System.Linq;
-using Entity;
 using GamePlay.Components;
 using GamePlay.Custom;
 using GamePlay.Custom.GameMachine;
+using UnityEngine;
 using Zenject;
 
-public class ClosestEntitySearcher : IInitListener, IDisableListener, IUpdateListener
+public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListener
 {
-    public event Action <Entity.Entity> OnClosestEntityChanged;
+    public AtomicEvent <Entity.Entity> OnClosestEntityChanged;
+    
+    [SerializeField] private Entity.Entity _sourceEntity;
     
     private readonly Dictionary<Entity.Entity, float> _entitiesDistanceData = new();
-    
     private IEntityFactory<Entity.Entity> _entityFactory;
-    private IGetEntityComponent _getEntityComp;
-    private Entity.Entity _sourceEntity;
     private Entity.Entity _closestEntity;
-    
+
     [Inject]
-    private void Construct(IEntityFactory<Entity.Entity> entityFactory, IGetEntityComponent entitySource)
+    private void Construct(IEntityFactory<Entity.Entity> entityFactory)
     {
-        _getEntityComp = entitySource;
         _entityFactory = entityFactory;
     }
     void IInitListener.OnInit()
     {
         _entityFactory.OnEntityCreated += AddEntity;
-        _sourceEntity = _getEntityComp.GetEntity();
     }
     void IDisableListener.Disable()
     {
         _entityFactory.OnEntityCreated -= AddEntity;
     }
-    void IUpdateListener.Update()
+    public void Update()
     {
-        if(EntityNull(_sourceEntity))
-            return;
-        
         UpdateDistance();
         FindClosest();
     }

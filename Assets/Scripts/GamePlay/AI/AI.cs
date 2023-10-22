@@ -13,13 +13,16 @@ public class AI : DeclarativeModel
 {
    public HeroModel Character;
    public bool Activate;
+
+   [SerializeField] 
+   private ClosestEntitySearcher _closestEntitySearcher;
    
    private RotateToEnemyMechanics _rotateToEnemyMechanics = new();
    private ShootEnemyMechanics _shootEnemyMechanics = new();
 
    private readonly FixedUpdateMechanics _fixedUpdate = new();
   
-   private AtomicVariable<Entity.Entity> _entityEnemy; //Переделать, убрать из core
+   public AtomicVariable<Entity.Entity> _entityEnemy; 
    
    [Construct]
    public void Construct()
@@ -28,22 +31,27 @@ public class AI : DeclarativeModel
       var moveComp = Character.Core.CharacterMoveComp;
       
       core.States.OnStateChanged.Subscribe((value) => { Activate = value == CharacterStateType.Idle; });
+      _closestEntitySearcher.OnClosestEntityChanged.Subscribe((entity) => _entityEnemy.Value = entity);
       
       _rotateToEnemyMechanics.Construct(moveComp.Transform, moveComp.RotateInDirectionEngine);
       _shootEnemyMechanics.Construct(core.ShootComp.ShootController);
-
-      _entityEnemy = core.EntityTarget.TargetEntity;
+       
       
       _fixedUpdate.Construct((_) =>
       {
-         if(!Activate || _entityEnemy.Value == null)
+         if(Activate)
+            _closestEntitySearcher.Update();
+            
+         if(_entityEnemy.Value == null || !Activate)
             return;
+         
          _rotateToEnemyMechanics.SetDirection(_entityEnemy.Value.transform.position);
          _shootEnemyMechanics.Update();
          
       });
    }
 }
+
 [Serializable]
 public sealed class RotateToEnemyMechanics
 {

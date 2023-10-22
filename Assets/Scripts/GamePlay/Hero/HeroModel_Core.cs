@@ -25,9 +25,6 @@ namespace GamePlay.Hero
 
         [Section] [SerializeField] public Ammo AmmoComp = new();
 
-        [Section] [SerializeField] public TargetEntitySection EntityTarget = new();
-
-
         [Serializable]
         public sealed class CharacterMovement
         {
