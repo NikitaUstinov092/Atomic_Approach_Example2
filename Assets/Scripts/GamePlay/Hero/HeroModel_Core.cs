@@ -122,17 +122,25 @@ namespace GamePlay.Hero
         public sealed class CharacterStates
         {
             public StateMachine<CharacterStateType> StateMachine;
+            public AtomicEvent<CharacterStateType> OnStateChanged;
 
-            [Section] public IdleState IdleState;
+            [Section] 
+            public IdleState IdleState;
 
-            [Section] public RunState RunState;
+            [Section] 
+            public RunState RunState;
 
-            [Section] public DeadState DeadState;
+            [Section] 
+            public DeadState DeadState;
             
             [Construct]
             public void Construct(HeroModel root)
             {
-                root.onStart += () => StateMachine.Enter();
+                root.onStart += () =>
+                {
+                    StateMachine.Enter();
+                    OnStateChanged?.Invoke(CharacterStateType.Idle);
+                };
 
                 StateMachine.Construct(
                     (CharacterStateType.Idle, IdleState),
@@ -145,25 +153,30 @@ namespace GamePlay.Hero
             public void ConstructTransitions(LifeSection life, CharacterMovement movement, Shoot shoot)
             {
                 var isDead = life.DeathEvent;
-                isDead.Subscribe(() => StateMachine.SwitchState(CharacterStateType.Death));
-
-
+                isDead.Subscribe(() =>
+                {
+                    const CharacterStateType deathState = CharacterStateType.Death;
+                    StateMachine.SwitchState(deathState);
+                    OnStateChanged?.Invoke(deathState);
+                });
+                
                 movement.MovementDirection.MovementStarted.Subscribe(() =>
                 {
-                    if (!life.IsDead.Value)
-                    {
-                        StateMachine.SwitchState(CharacterStateType.Move);
-                    }
+                    if (life.IsDead.Value)
+                        return;
+                    const CharacterStateType moveState = CharacterStateType.Move;
+                    StateMachine.SwitchState(moveState);
+                    OnStateChanged?.Invoke(moveState);
                 });
 
                 movement.MovementDirection.MovementFinished.Subscribe(() =>
                 {
-                    if (!life.IsDead.Value && StateMachine.CurrentState == CharacterStateType.Move)
-                    {
-                        StateMachine.SwitchState(CharacterStateType.Idle);
-                    }
+                    if (life.IsDead.Value || StateMachine.CurrentState != CharacterStateType.Move) 
+                        return;
+                    const CharacterStateType idleState = CharacterStateType.Idle;
+                    StateMachine.SwitchState(idleState);
+                    OnStateChanged?.Invoke(idleState);
                 });
-                
             }
         }
     }

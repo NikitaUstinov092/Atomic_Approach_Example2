@@ -19,19 +19,8 @@ public class AutoShootState : UpdateState
     {
         _entitySection = entitySection;
         _shootController = shootController;
-
-        ConstructShootListener(animStateMachine);
     }
-
-    private void ConstructShootListener(AnimatorStateMachine<AnimatorStateType> animStateMachine)
-    {
-        _shootListener.ConstructAnimEvents("Shoot");
-        _shootListener.ConstructAnimMachine(animStateMachine);
-        _shootListener.ConstructAction(() =>
-        {
-            //звук и изменение анимации
-        });
-    }
+    
     
     
     protected override void OnUpdate(float deltaTime)
@@ -46,17 +35,6 @@ public class AutoShootState : UpdateState
         
         _shootController.FireRequest.Invoke();
         _timer = 0;
-    }
-
-    protected override void OnEnter()
-    {
-        UpdateShootTimer();
-        _entitySection.TargetEntity.Subscribe(_=> UpdateShootTimer());
-    }
-    
-    protected override void OnExit()
-    {
-        _entitySection.TargetEntity.Unsubscribe(_=> UpdateShootTimer());
     }
 
     private void UpdateShootTimer()
