@@ -1,7 +1,7 @@
 using System;
-using Lessons.StateMachines.States;
 
-
+namespace GamePlay.StateMachines.States
+{
     [Serializable]
     public sealed class IdleState : CompositeState
     {
@@ -22,3 +22,4 @@ using Lessons.StateMachines.States;
         }*/
         
     }
+}

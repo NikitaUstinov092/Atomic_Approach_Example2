@@ -1,9 +1,8 @@
 using System;
-using Elementary;
-using Lessons.StateMachines.States;
-using UnityEditorInternal;
+using GamePlay.StateMachines;
+using GamePlay.StateMachines.States;
 
-namespace Game.GameEngine.Animation
+namespace GamePlay.Hero
 {
     public sealed class AnimatorState_ListenEvent : IState
     {

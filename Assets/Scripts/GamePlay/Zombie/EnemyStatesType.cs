@@ -1,7 +1,10 @@
-public enum EnemyStatesType 
+namespace GamePlay.Zombie
 {
-    Chase,
-    Attack,
-    Death,
-    Idle,
+    public enum EnemyStatesType 
+    {
+        Chase,
+        Attack,
+        Death,
+        Idle,
+    }
 }

@@ -2,7 +2,7 @@ using System;
 using GamePlay.Custom.GameMachine;
 using UnityEngine;
 
-namespace Lessons
+namespace GamePlay.Custom.Input
 {
     public sealed class MovementInput : MonoBehaviour, IUpdateListener
     {
@@ -26,22 +26,22 @@ namespace Lessons
         {
             var movement = new Vector3();
             
-            if (Input.GetKey(_forwardKey))
+            if (UnityEngine.Input.GetKey(_forwardKey))
             {
                 movement.z += 1;
             }
             
-            if (Input.GetKey(_backKey))
+            if (UnityEngine.Input.GetKey(_backKey))
             {
                 movement.z -= 1;
             }
             
-            if (Input.GetKey(_rightKey))
+            if (UnityEngine.Input.GetKey(_rightKey))
             {
                 movement.x += 1;
             }
             
-            if (Input.GetKey(_leftKey))
+            if (UnityEngine.Input.GetKey(_leftKey))
             {
                 movement.x -= 1;
             }

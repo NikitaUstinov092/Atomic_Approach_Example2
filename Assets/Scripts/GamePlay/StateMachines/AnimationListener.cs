@@ -1,7 +1,8 @@
 using System;
 using System.Atomic.Implementations;
 
-
+namespace GamePlay.StateMachines
+{
     [Serializable]
     public sealed class AnimationListener
     {
@@ -25,3 +26,4 @@ using System.Atomic.Implementations;
             }
         }
     }
+}

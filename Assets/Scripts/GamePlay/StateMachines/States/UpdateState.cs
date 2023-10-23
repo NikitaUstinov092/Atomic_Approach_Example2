@@ -1,6 +1,6 @@
 using System.Declarative.Scripts;
 
-namespace Lessons.StateMachines.States
+namespace GamePlay.StateMachines.States
 {
     public abstract class UpdateState : IState, IUpdate
     {

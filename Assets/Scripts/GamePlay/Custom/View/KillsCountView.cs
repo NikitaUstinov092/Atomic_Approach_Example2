@@ -1,4 +1,5 @@
 using GamePlay.Custom.GameMachine;
+using GamePlay.Custom.Model;
 using TMPro;
 using UnityEngine;
 using Zenject;

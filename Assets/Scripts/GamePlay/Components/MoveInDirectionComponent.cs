@@ -1,7 +1,7 @@
-using Lesson;
 using UnityEngine;
 
-
+namespace GamePlay.Components
+{
     public sealed class MoveInDirectionComponent
     {
         private readonly MovementDirectionVariable _movementDirection;
@@ -16,3 +16,4 @@ using UnityEngine;
             _movementDirection.Value = direction;
         }
     }
+}

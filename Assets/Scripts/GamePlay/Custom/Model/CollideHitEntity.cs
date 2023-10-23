@@ -1,7 +1,7 @@
 using GamePlay.Components.Interfaces;
 using UnityEngine;
 
-namespace GamePlay.Custom
+namespace GamePlay.Custom.Model
 {
    public class CollideHitEntity : MonoBehaviour
    {

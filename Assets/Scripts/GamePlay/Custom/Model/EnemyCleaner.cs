@@ -4,7 +4,7 @@ using GamePlay.Custom.GameMachine;
 using UnityEngine;
 using Zenject;
 
-namespace GamePlay.Custom
+namespace GamePlay.Custom.Model
 {
     public class EnemyCleaner: MonoBehaviour, IInitListener, IDisableListener
     {

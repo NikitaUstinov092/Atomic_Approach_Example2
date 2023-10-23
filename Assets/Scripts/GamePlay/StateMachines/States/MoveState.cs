@@ -1,9 +1,9 @@
 using System;
-using Lesson;
-using Lessons.Character.Engines;
+using GamePlay.Components;
+using GamePlay.Custom.Engines;
 using UnityEngine;
 
-namespace Lessons.StateMachines.States
+namespace GamePlay.StateMachines.States
 {
     [Serializable]
     public sealed class MoveState : IState

@@ -1,8 +1,11 @@
 
-    public enum AnimatorStateType
+    namespace GamePlay.Hero
     {
-        Idle = 0,
-        Run = 1,
-        Attack = 6,
-        Dead = 5
+        public enum AnimatorStateType
+        {
+            Idle = 0,
+            Run = 1,
+            Attack = 6,
+            Dead = 5
+        }
     }

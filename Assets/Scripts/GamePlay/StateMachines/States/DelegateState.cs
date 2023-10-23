@@ -1,6 +1,6 @@
 using System;
 
-namespace Lessons.StateMachines.States
+namespace GamePlay.StateMachines.States
 {
     public sealed class DelegateState : IState
     {

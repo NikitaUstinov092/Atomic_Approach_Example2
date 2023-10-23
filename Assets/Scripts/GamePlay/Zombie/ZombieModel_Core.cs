@@ -2,8 +2,10 @@
 using System.Atomic.Implementations;
 using System.Declarative.Scripts.Attributes;
 using GamePlay.Components;
+using GamePlay.Custom.Engines;
 using GamePlay.Custom.Sections;
-using Lessons.StateMachines.States;
+using GamePlay.StateMachines;
+using GamePlay.StateMachines.States;
 using UnityEngine;
 using UpdateMechanics;
 

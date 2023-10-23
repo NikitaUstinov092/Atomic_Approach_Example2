@@ -1,7 +1,6 @@
 using System;
 
-
-namespace Lessons.StateMachines.States
+namespace GamePlay.StateMachines.States
 {
     [Serializable]
     public sealed class DeadState : CompositeState

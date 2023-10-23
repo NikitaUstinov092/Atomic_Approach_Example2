@@ -3,7 +3,8 @@ using System.Atomic.Implementations;
 using System.Declarative.Scripts;
 using UnityEngine;
 
-
+namespace GamePlay.Custom.Engines
+{
     [Serializable]
     public sealed class MoveInDirectionEngine: IUpdate
     {
@@ -27,3 +28,4 @@ using UnityEngine;
             _direction = direction;
         }
     }
+}

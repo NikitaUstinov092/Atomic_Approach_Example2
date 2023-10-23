@@ -1,4 +1,4 @@
-namespace Elementary
+namespace GamePlay.Hero
 {
     public interface IAction
     {

@@ -1,7 +1,8 @@
 using System;
 using System.Atomic.Implementations;
 using System.Declarative.Scripts.Attributes;
-using Lessons.StateMachines.States;
+using GamePlay.StateMachines;
+using GamePlay.StateMachines.States;
 using TMPro;
 using UnityEngine;
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Declarative.Scripts.Attributes;
+using GamePlay.Hero;
+using GamePlay.StateMachines;
 using UnityEngine;
 
 namespace GamePlay.Zombie

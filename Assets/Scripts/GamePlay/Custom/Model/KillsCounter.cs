@@ -1,13 +1,11 @@
 using System;
-using System.Atomic.Implementations;
 using System.Atomic.Interfaces;
 using GamePlay.Components;
 using GamePlay.Custom.GameMachine;
-using GamePlay.Hero;
 using UnityEngine;
 using Zenject;
 
-namespace GamePlay.Custom
+namespace GamePlay.Custom.Model
 {
     public class KillsCounter<T>: IInitListener, IStartListener, IDisableListener, IKillCounterPM where T: Entity.Entity
     {

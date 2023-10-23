@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IShootable
+namespace GamePlay.Components.Interfaces
 {
-    void PressedFireButton();
+    public interface IShootable
+    {
+        void PressedFireButton();
+    }
 }

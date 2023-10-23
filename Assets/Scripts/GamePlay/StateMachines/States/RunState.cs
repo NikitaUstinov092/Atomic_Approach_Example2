@@ -1,10 +1,10 @@
 using System;
 using System.Declarative.Scripts.Attributes;
 using GamePlay.Hero;
-using Lessons.StateMachines.States;
 
-
-[Serializable]
+namespace GamePlay.StateMachines.States
+{
+    [Serializable]
     public class RunState : CompositeState
     {
         public MoveState MoveState;
@@ -22,3 +22,4 @@ using Lessons.StateMachines.States;
                 movement.RotateInDirectionEngine);
         }
     }
+}

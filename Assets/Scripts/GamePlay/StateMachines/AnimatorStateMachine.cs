@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-[Serializable]
+namespace GamePlay.StateMachines
+{
+    [Serializable]
     public class AnimatorStateMachine<T> : TransitionableStateMachine<T> where T : Enum
     {
         private static readonly int State = Animator.StringToHash("State");
@@ -25,3 +26,4 @@ using UnityEngine.Serialization;
             animator.SetInteger(State, Convert.ToInt32(stateType));
         }
     }
+}

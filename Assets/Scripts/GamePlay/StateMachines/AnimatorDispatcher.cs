@@ -3,8 +3,9 @@ using System.Atomic.Implementations;
 using JetBrains.Annotations;
 using UnityEngine;
 
-
-public sealed class AnimatorDispatcher : MonoBehaviour
+namespace GamePlay.StateMachines
+{
+    public sealed class AnimatorDispatcher : MonoBehaviour
     {
         internal event Action<string> OnMessageReceived;
         public AtomicEvent<string> OnStringReceived;
@@ -17,3 +18,4 @@ public sealed class AnimatorDispatcher : MonoBehaviour
             OnStringReceived?.Invoke(message);
         }
     }
+}

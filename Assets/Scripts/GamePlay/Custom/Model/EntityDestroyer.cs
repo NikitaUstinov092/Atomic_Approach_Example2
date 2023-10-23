@@ -2,19 +2,22 @@ using GamePlay.Components;
 using GamePlay.Custom.GameMachine;
 using UnityEngine;
 
-public class EntityDestroyer : MonoBehaviour, IStartListener
+namespace GamePlay.Custom.Model
 {
-    [SerializeField]
-    private Entity.Entity _entity;
-    void IStartListener.StartGame()
+    public class EntityDestroyer : MonoBehaviour, IStartListener
     {
-        if(_entity.TryGet(out IGetDeathEventComponent deathEventComponent))
+        [SerializeField]
+        private Entity.Entity _entity;
+        void IStartListener.StartGame()
         {
-            deathEventComponent.GetDeathEvent().Subscribe(DestroyEntity);
+            if(_entity.TryGet(out IGetDeathEventComponent deathEventComponent))
+            {
+                deathEventComponent.GetDeathEvent().Subscribe(DestroyEntity);
+            }
         }
-    }
-    private void DestroyEntity()
-    {
-        Destroy(_entity);
+        private void DestroyEntity()
+        {
+            Destroy(_entity);
+        }
     }
 }

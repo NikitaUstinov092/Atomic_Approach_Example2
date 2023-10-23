@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Lessons.StateMachines.States
+namespace GamePlay.StateMachines.States
 {
     [Serializable]
     public class CompositeState : IState

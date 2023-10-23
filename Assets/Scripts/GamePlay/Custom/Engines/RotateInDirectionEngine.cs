@@ -3,7 +3,7 @@ using System.Atomic.Implementations;
 using System.Declarative.Scripts;
 using UnityEngine;
 
-namespace Lessons.Character.Engines
+namespace GamePlay.Custom.Engines
 {
     [Serializable]
     public sealed class RotateInDirectionEngine : IUpdate

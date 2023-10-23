@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Lessons.StateMachines.States;
+using GamePlay.StateMachines.States;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-
+namespace GamePlay.StateMachines
+{
     [Serializable]
     public class StateMachine<T> : IState
     {
@@ -58,3 +59,4 @@ using UnityEngine;
             return null;
         }
     }
+}

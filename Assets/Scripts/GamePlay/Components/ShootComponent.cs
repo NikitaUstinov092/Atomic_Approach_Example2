@@ -1,16 +1,20 @@
 using System.Atomic.Interfaces;
+using GamePlay.Components.Interfaces;
 
-public class ShootComponent : IShootable
+namespace GamePlay.Components
 {
-    private readonly IAtomicAction OnPressedShootButton;
-    
-    public ShootComponent(IAtomicAction onPressedShootButton)
+    public class ShootComponent : IShootable
     {
-        OnPressedShootButton = onPressedShootButton;
-    }
+        private readonly IAtomicAction OnPressedShootButton;
     
-    void IShootable.PressedFireButton()
-    {
-        OnPressedShootButton?.Invoke();
+        public ShootComponent(IAtomicAction onPressedShootButton)
+        {
+            OnPressedShootButton = onPressedShootButton;
+        }
+    
+        void IShootable.PressedFireButton()
+        {
+            OnPressedShootButton?.Invoke();
+        }
     }
 }

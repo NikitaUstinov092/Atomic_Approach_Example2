@@ -1,6 +1,6 @@
 using System;
 
-namespace Elementary
+namespace GamePlay.Hero
 {
     public sealed class ActionDelegate : IAction
     {

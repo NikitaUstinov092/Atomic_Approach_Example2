@@ -7,7 +7,7 @@ using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace GamePlay.Custom
+namespace GamePlay.Custom.Model
 {
     public class EnemyFactory : MonoBehaviour, IStartListener, IEntityFactory<Entity.Entity>
     {

@@ -1,8 +1,10 @@
-
+using GamePlay.Components;
 using GamePlay.Custom.GameMachine;
-using Lessons;
+using GamePlay.Custom.Input;
 using UnityEngine;
 
+namespace GamePlay.Custom.Model
+{
     public sealed class CharacterMovementController : MonoBehaviour, IInitListener, IDisableListener
     {
         [SerializeField] private MovementInput movementInput;
@@ -25,3 +27,4 @@ using UnityEngine;
             _moveInDirection.MoveInDirection(direction);
         }
     }
+}

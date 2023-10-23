@@ -2,7 +2,7 @@ using System;
 using System.Atomic.Implementations;
 using UnityEngine;
 
-namespace Lesson
+namespace GamePlay.Components
 {
     [Serializable]
     public sealed class MovementDirectionVariable : AtomicVariable<Vector3>

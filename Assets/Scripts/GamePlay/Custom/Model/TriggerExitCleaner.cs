@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GamePlay.Custom
+namespace GamePlay.Custom.Model
 {
    public class TriggerExitCleaner : MonoBehaviour
    {

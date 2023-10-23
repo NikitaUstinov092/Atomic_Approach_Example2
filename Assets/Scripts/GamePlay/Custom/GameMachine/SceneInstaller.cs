@@ -1,7 +1,7 @@
 using Entity;
 using GamePlay.Custom.Input;
+using GamePlay.Custom.Model;
 using GamePlay.Custom.View;
-using Lessons;
 using Zenject;
 
 namespace GamePlay.Custom.GameMachine

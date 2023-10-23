@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Declarative.Scripts;
 
+namespace GamePlay.StateMachines
+{
     public class TransitionableStateMachine<T> : StateMachine<T>, IUpdate
     {
         public delegate bool Predicate();
@@ -24,3 +26,4 @@ using System.Declarative.Scripts;
             }
         }
     }
+}

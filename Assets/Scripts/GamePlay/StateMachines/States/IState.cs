@@ -1,4 +1,4 @@
-namespace Lessons.StateMachines.States
+namespace GamePlay.StateMachines.States
 {
     public interface IState
     {
