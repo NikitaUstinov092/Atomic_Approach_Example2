@@ -13,17 +13,27 @@ using UpdateMechanics;
 namespace GamePlay.Hero
 {
     [Serializable]
-    public sealed class HeroModel_Core
+    public sealed class HeroModel_Core 
     {
-        [Section] [SerializeField] public LifeSection LifeSectionComp = new();
+        [Section] //Оставил приставку Comp, иначе редактор ругается
+        [SerializeField] 
+        public LifeSection LifeSectionComp = new();
 
-        [Section] [SerializeField] public CharacterMovement CharacterMoveComp = new();
+        [Section] 
+        [SerializeField] 
+        public CharacterMovement CharacterMoveComp = new();
+        
+        [Section] 
+        [SerializeField] 
+        public CharacterStates StatesComp = new();
 
-        [Section] [SerializeField] public CharacterStates States = new();
+        [Section] 
+        [SerializeField] 
+        public Shoot ShootComp = new();
 
-        [Section] [SerializeField] public Shoot ShootComp = new();
-
-        [Section] [SerializeField] public Ammo AmmoComp = new();
+        [Section] 
+        [SerializeField] 
+        public Ammo AmmoComp = new();
 
         [Serializable]
         public sealed class CharacterMovement

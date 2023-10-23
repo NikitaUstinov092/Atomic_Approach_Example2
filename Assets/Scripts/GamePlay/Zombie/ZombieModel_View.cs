@@ -11,10 +11,6 @@ namespace GamePlay.Zombie
         [SerializeField] 
         public AnimatorStateMachine<AnimatorStateType> AnimMachine = new();
         
-        [SerializeField]
-        public Animator Animator;
-        
-
         [Construct]
         public void ConstructStates()
         {

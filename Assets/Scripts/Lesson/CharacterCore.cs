@@ -6,7 +6,7 @@ using Game.GameEngine.Mechanics;
 using Lessons.Character.Engines;
 using Lessons.Gameplay.Interaction;
 using Lessons.StateMachines;
-using Lessons.StateMachines.States;
+using Lessons.StateMachines.StatesComp;
 using Lessons.Utils;
 using UnityEngine;
 using TransformSynchronizer = Lessons.Utils.TransformSynchronizer;

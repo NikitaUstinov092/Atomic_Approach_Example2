@@ -12,9 +12,11 @@ public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListe
 {
     public AtomicEvent <Entity.Entity> OnClosestEntityChanged;
     
-    [SerializeField] private Entity.Entity _sourceEntity;
+    [SerializeField] 
+    private Entity.Entity _sourceEntity;
     
     private readonly Dictionary<Entity.Entity, float> _entitiesDistanceData = new();
+    
     private IEntityFactory<Entity.Entity> _entityFactory;
     private Entity.Entity _closestEntity;
 

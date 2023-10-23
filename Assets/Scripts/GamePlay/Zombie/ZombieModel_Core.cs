@@ -80,7 +80,6 @@ using UpdateMechanics;
             {
                 public AtomicVariable<int> Damage = new();
                 public AtomicVariable<float> AttackDelay = new();
-                public AtomicVariable<bool> StopAttack = new();
                 public AttackEngine AttackEngine = new();
                 
                 [Construct]

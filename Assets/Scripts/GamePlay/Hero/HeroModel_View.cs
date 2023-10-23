@@ -30,11 +30,11 @@ namespace GamePlay.Hero
         [SerializeField] 
         public Ammo_View Ammo = new();
         
-        private static readonly int SHOOT_TRIGGER = Animator.StringToHash("Shoot");
         
         [Serializable]
         public class Animation_View
         {
+            private static readonly int SHOOT_TRIGGER = Animator.StringToHash("Shoot");
             [Section]
             public HeroAnimatorStateMachine<AnimatorStateType> AnimMachine = new();
             
@@ -153,12 +153,7 @@ namespace GamePlay.Hero
                 hitPoints.Subscribe((newValue) => TextAmmo.Value.text = Title + newValue + maxValue);
             }
         }
-        
-       
-        
     }
-
-    
 }
     
 

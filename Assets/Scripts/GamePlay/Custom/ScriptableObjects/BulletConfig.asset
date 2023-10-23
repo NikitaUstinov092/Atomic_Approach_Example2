@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: BulletConfig
   m_EditorClassIdentifier: 
   Bullet: {fileID: -3060281794613722148, guid: bd9798ebb6dcdea41b6339b73aface59, type: 3}
-  SpeedShoot: 10
-  CoolDown: 1
+  SpeedShoot: 20

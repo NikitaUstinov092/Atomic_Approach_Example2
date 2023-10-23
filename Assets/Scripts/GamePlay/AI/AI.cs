@@ -30,7 +30,7 @@ public class AI : DeclarativeModel
       var core = Character.Core;
       var moveComp = Character.Core.CharacterMoveComp;
       
-      core.States.OnStateChanged.Subscribe((value) => { Activate = value == CharacterStateType.Idle; });
+      core.StatesComp.OnStateChanged.Subscribe((value) => { Activate = value == CharacterStateType.Idle; });
       _closestEntitySearcher.OnClosestEntityChanged.Subscribe((entity) => _entityEnemy.Value = entity);
       
       _rotateToEnemyMechanics.Construct(moveComp.Transform, moveComp.RotateInDirectionEngine);

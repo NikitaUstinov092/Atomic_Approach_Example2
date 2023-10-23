@@ -1,4 +1,3 @@
-using System.Atomic.Implementations;
 using GamePlay.Components;
 using GamePlay.Custom.GameMachine;
 using GamePlay.Hero;
@@ -10,6 +9,7 @@ namespace Entity
     {
         [SerializeField]
         private HeroModel model;
+        
         void IInitListener.OnInit()
         {
             Add(new MoveInDirectionComponent(model.Core.CharacterMoveComp.MovementDirection));
