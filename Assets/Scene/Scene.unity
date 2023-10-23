@@ -480,7 +480,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187743644}
-  m_LocalRotation: {x: 0.49874103, y: 0.00000006082473, z: -0.000000034999424, w: 0.8667511}
+  m_LocalRotation: {x: 0.49874103, y: 0.0000000011701302, z: -6.733109e-10, w: 0.8667511}
   m_LocalPosition: {x: 37.1679, y: 1.9500008, z: -7.8377852}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -885,11 +885,11 @@ MonoBehaviour:
       ShootEngine: {fileID: 1586887916}
     AmmoComp:
       AmmoCount:
-        value: 1
+        value: 10
       MaxAmmo:
         value: 10
       ReloadTime:
-        value: 2
+        value: 1
   View:
     Animation:
       AnimMachine:
@@ -1154,7 +1154,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060751495}
-  m_LocalRotation: {x: 0.49874103, y: 0.00000006082473, z: -0.000000034999424, w: 0.8667511}
+  m_LocalRotation: {x: 0.49874103, y: 0.0000000011701302, z: -6.733109e-10, w: 0.8667511}
   m_LocalPosition: {x: 37.1679, y: 1.9500008, z: -7.8377852}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17058,6 +17058,7 @@ GameObject:
   - component: {fileID: 4180867637405665109}
   - component: {fileID: 4180867637412833433}
   - component: {fileID: 1673106210}
+  - component: {fileID: 4180867637412833434}
   m_Layer: 0
   m_Name: StickMan
   m_TagString: Untagged
@@ -17999,6 +18000,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4180867637412833434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180867637405440823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d22ce09c493f52c44b5592791a72f632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 4180867637412833433}
 --- !u!1 &4180867638602589892
 GameObject:
   m_ObjectHideFlags: 0
