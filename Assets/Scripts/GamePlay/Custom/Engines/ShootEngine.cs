@@ -1,12 +1,10 @@
-﻿using System;
-using GamePlay.Custom.ScriptableObjects;
+﻿using GamePlay.Custom.ScriptableObjects;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GamePlay.Custom.Engines
 {
-    [Serializable]
-    public class ShootEngine: MonoBehaviour
+    public class ShootEngine
     {
         private Transform _spawnPoint;
         private Rigidbody _bullet;
@@ -30,7 +28,7 @@ namespace GamePlay.Custom.Engines
         [Button]
         public void CreateBullet()
         {
-            var bullet = Instantiate(_bullet,_spawnPoint.position, _spawnPoint.rotation);
+            var bullet = Object.Instantiate(_bullet,_spawnPoint.position, _spawnPoint.rotation);
             bullet.transform.parent = _parent.transform;
             Shoot(bullet);
         }

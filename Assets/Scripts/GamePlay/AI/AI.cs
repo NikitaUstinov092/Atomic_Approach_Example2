@@ -7,6 +7,7 @@ using GamePlay.Custom.Model;
 using GamePlay.Hero;
 using GamePlay.StateMachines.States;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UpdateMechanics;
 
 namespace GamePlay.AI
@@ -16,8 +17,8 @@ namespace GamePlay.AI
       public HeroModel Character;
       public bool Activate;
 
-      [SerializeField] 
-      private ClosestEntitySearcher _closestEntitySearcher;
+      [FormerlySerializedAs("_closestEntitySearcher")] [SerializeField] 
+      private ClosestEnemySearcher closestEnemySearcher;
    
       private RotateToEnemyMechanics _rotateToEnemyMechanics = new();
       private ShootEnemyMechanics _shootEnemyMechanics = new();
@@ -33,16 +34,16 @@ namespace GamePlay.AI
          var moveComp = Character.Core.CharacterMoveComp;
       
          core.StatesComp.OnStateChanged.Subscribe((value) => { Activate = value == CharacterStateType.Idle; });
-         _closestEntitySearcher.OnClosestEntityChanged.Subscribe((entity) => _entityEnemy.Value = entity);
+         closestEnemySearcher.OnClosestEntityChanged.Subscribe((entity) => _entityEnemy.Value = entity);
       
          _rotateToEnemyMechanics.Construct(moveComp.Transform, moveComp.RotateInDirectionEngine);
-         _shootEnemyMechanics.Construct(core.ShootComp.ShootController);
+        // _shootEnemyMechanics.Construct(core.ShootComp.ShootMechanics);
        
       
          _fixedUpdate.Construct((_) =>
          {
             if(Activate)
-               _closestEntitySearcher.Update();
+               closestEnemySearcher.Update();
             
             if(_entityEnemy.Value == null || !Activate)
                return;
@@ -78,15 +79,15 @@ namespace GamePlay.AI
    [Serializable]
    public sealed class ShootEnemyMechanics
    {
-      private ShootController _shootController;
+      private ShootMechanics _shootMechanics;
     
-      public void Construct(ShootController shootController)
+      public void Construct(ShootMechanics shootMechanics)
       {
-         _shootController = shootController;
+         _shootMechanics = shootMechanics;
       }
       public void Update()
       {
-         _shootController.FireRequest.Invoke();
+        // _shootMechanics.FireRequest.Invoke();
       }
    }
 }

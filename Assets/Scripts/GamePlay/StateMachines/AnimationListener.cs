@@ -1,5 +1,6 @@
 using System;
 using System.Atomic.Implementations;
+using UnityEngine;
 
 namespace GamePlay.StateMachines
 {
@@ -15,7 +16,6 @@ namespace GamePlay.StateMachines
             _receivedStringEvent = receivedStringEvent;
             _pullTriggeredEvent = pullTriggeredEvent;
             _eventName = eventName;
-            
             _receivedStringEvent.Subscribe(OnAnimationEvent);
         }
         private void OnAnimationEvent(string animEvent)

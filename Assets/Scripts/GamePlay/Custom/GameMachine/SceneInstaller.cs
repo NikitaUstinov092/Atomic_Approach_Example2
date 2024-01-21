@@ -19,7 +19,7 @@ namespace GamePlay.Custom.GameMachine
             Container.BindInterfacesTo<EntityDestroyer>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<MovementInput>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<CharacterMovementController>().FromComponentsInHierarchy().AsSingle();
-            Container.BindInterfacesAndSelfTo<ClosestEntitySearcher>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesAndSelfTo<ClosestEnemySearcher>().FromComponentsInHierarchy().AsSingle();
         }
     }
 }

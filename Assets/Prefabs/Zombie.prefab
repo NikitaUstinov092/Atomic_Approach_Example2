@@ -445,7 +445,6 @@ GameObject:
   - component: {fileID: 479581115975753025}
   - component: {fileID: 479581115975753027}
   - component: {fileID: 479581115975753026}
-  - component: {fileID: 6590083029345534755}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -533,8 +532,6 @@ MonoBehaviour:
         value: 1
       AttackDelay:
         value: 2
-      StopAttack:
-        value: 0
     ZombieState:
       StateMachine:
         currentStateType: 0
@@ -542,8 +539,7 @@ MonoBehaviour:
     AnimMachine:
       currentStateType: 0
       animator: {fileID: 479581115975753030}
-      dispatcher: {fileID: 6590083029345534755}
-    Animator: {fileID: 479581115975753030}
+      Dispatcher: {fileID: 0}
 --- !u!114 &479581115975753025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,18 +583,6 @@ CapsuleCollider:
   m_Height: 1.92
   m_Direction: 1
   m_Center: {x: 0, y: 0.93, z: 0}
---- !u!114 &6590083029345534755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572204958625563332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bec6642ef6c7b34d8ddb2fbaddfc148, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &572224697449779722
 GameObject:
   m_ObjectHideFlags: 0

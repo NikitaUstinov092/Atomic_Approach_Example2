@@ -8,14 +8,13 @@ namespace GamePlay.StateMachines
     public sealed class AnimatorDispatcher : MonoBehaviour
     {
         internal event Action<string> OnMessageReceived;
-        public AtomicEvent<string> OnStringReceived;
+        public AtomicEvent<string> StringReceived;
 
         [UsedImplicitly]
-        //Called from animator: don't remove!
-        public void ReceiveString(string message)
+        private void ReceiveString(string message)
         {
-            this.OnMessageReceived?.Invoke(message);
-            OnStringReceived?.Invoke(message);
+            OnMessageReceived?.Invoke(message);
+            StringReceived?.Invoke(message);
         }
     }
 }

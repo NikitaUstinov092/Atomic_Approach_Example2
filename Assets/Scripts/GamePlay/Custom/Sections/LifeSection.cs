@@ -9,15 +9,15 @@ namespace GamePlay.Custom.Sections
     public class LifeSection
     {
         public AtomicAction<int> TakeDamageRequest = new();
-        public TakeDamageEngine TakeDamageEngine = new();
+       
         public AtomicEvent<int> TakeDamageEvent = new();
         public AtomicEvent DeathEvent = new();
-       
         public AtomicEvent<Entity.Entity> DeathEventData = new();
         public AtomicVariable<Entity.Entity> Entity = new();
-        
         public AtomicVariable<int> HitPoints = new();
         public AtomicVariable<bool> IsDead= new();
+        
+        private TakeDamageEngine _takeDamageEngine = new();
             
         [Construct]
         public void Construct()
@@ -27,10 +27,10 @@ namespace GamePlay.Custom.Sections
                     if (IsDead.Value)
                         return;
                             
-                    TakeDamageEngine.Invoke(damage);
+                    _takeDamageEngine.Invoke(damage);
                 }
             );
-            TakeDamageEngine.Use(HitPoints, TakeDamageEvent, IsDead, DeathEvent, Entity, DeathEventData);
+            _takeDamageEngine.Use(HitPoints, TakeDamageEvent, IsDead, DeathEvent, Entity, DeathEventData);
         }
     }
 }

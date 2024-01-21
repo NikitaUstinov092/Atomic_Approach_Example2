@@ -8,14 +8,13 @@ using GamePlay.Custom.Sections;
 using GamePlay.StateMachines;
 using GamePlay.StateMachines.States;
 using UnityEngine;
-using UpdateMechanics;
 
 namespace GamePlay.Hero
 {
     [Serializable]
     public sealed class HeroModel_Core 
     {
-        [Section] //Оставил приставку Comp, иначе редактор ругается
+        [Section] 
         [SerializeField] 
         public LifeSection LifeSectionComp = new();
 
@@ -42,8 +41,8 @@ namespace GamePlay.Hero
 
             public AtomicVariable<float> MovementSpeed = new(6f);
             public AtomicVariable<float> RotationSpeed = new(10f);
-
             public MovementDirectionVariable MovementDirection = new();
+            
             public MoveInDirectionEngine MoveInDirectionEngine = new();
             public RotateInDirectionEngine RotateInDirectionEngine = new();
 
@@ -59,17 +58,28 @@ namespace GamePlay.Hero
         public sealed class Shoot
         {
             public AtomicVariable<BulletConfig> BulletConfig = new();
-            public AtomicVariable<float> CoolDown = new();
-
+            public AtomicVariable<float> CoolDownDelay = new();
+            public AtomicVariable<bool> WeaponCooled = true;
+            public AtomicVariable<bool> CanShoot = new();
             public AtomicVariable<Transform> SpawnPointShoot = new();
-            public ShootController ShootController;
-            public ShootEngine ShootEngine = new();
+          
+            public AtomicEvent FireRequest = new();
+            public AtomicEvent ShootApplied = new();
+            public AtomicEvent OnShoot = new();
+            
+            private readonly ShootMechanics _shootMechanics = new();
+            private readonly ShootEngine _shootEngine = new();
+            private readonly CoolDownMechanics _coolDownMechanics = new();
 
             [Construct]
             public void Construct(Ammo ammo, LifeSection life)
             {
-                ShootEngine.Construct(BulletConfig.Value, SpawnPointShoot.Value);
-                ShootController.Construct(this, ammo.AmmoCount, life.IsDead);
+                WeaponCooled.Value = true;
+                CanShoot.Value = true;
+                
+                _shootEngine.Construct(BulletConfig.Value, SpawnPointShoot.Value);
+                _shootMechanics.Construct(_shootEngine, FireRequest, ShootApplied, OnShoot, ammo.AmmoCount, life.IsDead, WeaponCooled, CanShoot);
+                _coolDownMechanics.Construct(CoolDownDelay, WeaponCooled, OnShoot, null);
             }
         }
 
@@ -77,51 +87,36 @@ namespace GamePlay.Hero
         [Serializable]
         public sealed class Ammo
         {
+            public AtomicEvent OnReloadComplete = new(); 
+            public AtomicEvent ReloadRequest= new(); 
+            
             public AtomicVariable<int> AmmoCount = new();
             public AtomicVariable<int> MaxAmmo = new();
             public AtomicVariable<float> ReloadTime = new();
-
-            private readonly FixedUpdateMechanics _fixedUpdate = new();
-
-            private bool _reloadRequired;
-            private bool _canReload = true;
-            private float _timer;
+            
+            private AtomicVariable<bool> _reloading = new();
+           
+            private readonly ReloadMechanics _reloadMechanics = new();
+            private readonly CoolDownMechanics _coolDownMechanics = new();
 
             [Construct]
             public void Construct(Shoot shootComp, LifeSection lifeSectionComp)
             {
+                _reloading.Value = true;
+                
                 var isDead = lifeSectionComp.IsDead;
-                var shoot = shootComp.ShootController.OnShootApplied;
-
-                isDead.Subscribe((data) => _canReload = !data);
-
-                AmmoCount.Subscribe(count => _reloadRequired = count < MaxAmmo.Value);
-
-                if (AmmoCount.Value < MaxAmmo.Value)
-                    _reloadRequired = true;
+                var shoot = shootComp.OnShoot;
+                
+                isDead.Subscribe((data) => _reloading.Value = data);
 
                 shoot.Subscribe(() =>
                 {
-                    if (AmmoCount.Value <= 0 || !_canReload)
-                        return;
-
-                    AmmoCount.Value--;
+                    if (AmmoCount.Value > 0)
+                        AmmoCount.Value--;
                 });
-
-                _fixedUpdate.Construct(deltaTime =>
-                {
-                    if (!_reloadRequired || !_canReload)
-                        return;
-
-                    _timer += deltaTime;
-
-                    if (_timer <= ReloadTime.Value || !_canReload)
-                        return;
-
-                    AmmoCount.Value++;
-
-                    _timer = 0;
-                });
+               
+                _coolDownMechanics.Construct(ReloadTime, _reloading, ReloadRequest, OnReloadComplete);
+                _reloadMechanics.Construct(AmmoCount, MaxAmmo, ReloadRequest, OnReloadComplete);
             }
         }
 
@@ -157,7 +152,7 @@ namespace GamePlay.Hero
             }
 
             [Construct]
-            public void ConstructTransitions(LifeSection life, CharacterMovement movement, Shoot shoot)
+            public void ConstructTransitions(LifeSection life, CharacterMovement movement)
             {
                 var isDead = life.DeathEvent;
                 isDead.Subscribe(() =>
@@ -171,6 +166,7 @@ namespace GamePlay.Hero
                 {
                     if (life.IsDead.Value)
                         return;
+                    
                     const CharacterStateType moveState = CharacterStateType.Move;
                     StateMachine.SwitchState(moveState);
                     OnStateChanged?.Invoke(moveState);
@@ -180,6 +176,7 @@ namespace GamePlay.Hero
                 {
                     if (life.IsDead.Value || StateMachine.CurrentState != CharacterStateType.Move) 
                         return;
+                    
                     const CharacterStateType idleState = CharacterStateType.Idle;
                     StateMachine.SwitchState(idleState);
                     OnStateChanged?.Invoke(idleState);

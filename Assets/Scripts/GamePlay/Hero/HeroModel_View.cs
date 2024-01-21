@@ -35,7 +35,9 @@ namespace GamePlay.Hero
         [Serializable]
         public class Animation_View
         {
-            private static readonly int SHOOT_TRIGGER = Animator.StringToHash("Shoot");
+            private const string ShootName = "Shoot";
+            private static readonly int SHOOT_TRIGGER = Animator.StringToHash(ShootName);
+            
             [Section]
             public HeroAnimatorStateMachine<AnimatorStateType> AnimMachine = new();
             
@@ -72,10 +74,10 @@ namespace GamePlay.Hero
 
             public void ConstructTriggeredEvents(HeroModel_Core.Shoot shoot)
             {
-                _animationListener = new AnimationListener(AnimMachine.Dispatcher.OnStringReceived, 
-                    shoot.ShootController.OnShoot, "Shoot");
+                _animationListener = new AnimationListener(AnimMachine.Dispatcher.StringReceived, 
+                    shoot.OnShoot, ShootName);
                
-                shoot.ShootController.OnShootApplied.Subscribe(() => AnimMachine.PullTrigger(SHOOT_TRIGGER));
+                shoot.ShootApplied.Subscribe(() => AnimMachine.PullTrigger(SHOOT_TRIGGER));
             }
         }
 
@@ -90,7 +92,7 @@ namespace GamePlay.Hero
             [Construct]
             public void Construct(HeroModel_Core.Shoot shoot)
             {
-                shoot.ShootController.OnShoot.Subscribe(OnShoot);
+                shoot.OnShoot.Subscribe(OnShoot);
                 _spawnPointShoot = shoot.SpawnPointShoot;
             }
 
@@ -113,7 +115,7 @@ namespace GamePlay.Hero
             [Construct]
             public void Construct(HeroModel_Core.Shoot shoot)
             {
-                shoot.ShootController.OnShoot.Subscribe(()=>_audioSource.PlayOneShot(_shootClip));
+                shoot.OnShoot.Subscribe(()=>_audioSource.PlayOneShot(_shootClip));
             }
             
         }
@@ -148,10 +150,13 @@ namespace GamePlay.Hero
             [Construct]
             public void Construct(HeroModel_Core.Ammo ammoComp)
             {
-                var hitPoints = ammoComp.AmmoCount;
+                var ammoCount = ammoComp.AmmoCount;
+                
                 var maxValue = Slash + ammoComp.MaxAmmo.Value;
-                TextAmmo.Value.text = Title + hitPoints.Value + maxValue;
-                hitPoints.Subscribe((newValue) => TextAmmo.Value.text = Title + newValue + maxValue);
+                
+                TextAmmo.Value.text = Title + ammoCount.Value + maxValue;
+                
+                ammoCount.Subscribe((newValue) => TextAmmo.Value.text = Title + newValue + maxValue);
             }
         }
     }

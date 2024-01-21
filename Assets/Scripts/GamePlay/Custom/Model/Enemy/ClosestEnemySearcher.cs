@@ -9,7 +9,7 @@ using Zenject;
 
 namespace GamePlay.Custom.Model
 {
-    public class ClosestEntitySearcher : MonoBehaviour, IInitListener, IDisableListener
+    public class ClosestEnemySearcher : MonoBehaviour, IInitListener, IDisableListener
     {
         public AtomicEvent <Entity.Entity> OnClosestEntityChanged;
     
