@@ -12,7 +12,7 @@ public class UICanvasManager : MonoBehaviour {
 	public Text PENameText;
 	public Text ToolTipText;
 
-	// Use this for initialization
+	// Construct this for initialization
 	void Start () {
 		if (PENameText != null)
 			PENameText.text = ParticleEffectsLibrary.GlobalAccess.GetCurrentPENameString();

@@ -1357,7 +1357,7 @@
         </member>
         <member name="M:Sirenix.Utilities.StringExtensions.CalculateLevenshteinDistance(System.String,System.String)">
             <summary>
-            O(n*m) - Use with care.
+            O(n*m) - Construct with care.
             </summary>
         </member>
         <member name="T:Sirenix.Utilities.TypeExtensions">
@@ -1903,7 +1903,7 @@
             <summary>
             Provides utilities for using the <see cref="N:System.Reflection.Emit"/> namespace.
             <para />
-            This class is due for refactoring. Use at your own peril.
+            This class is due for refactoring. Construct at your own peril.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.EmitUtilities.CanEmit">

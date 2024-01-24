@@ -12,7 +12,7 @@ namespace EpicToonFX
         private Light li;
         private float initIntensity;
 
-        // Use this for initialization
+        // Construct this for initialization
         void Start()
         {
             if (gameObject.GetComponent<Light>())

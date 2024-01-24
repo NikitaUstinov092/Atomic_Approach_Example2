@@ -12,11 +12,9 @@ namespace GamePlay.Custom.Engines
             private AtomicVariable<bool> _isDead;
             private AtomicEvent _deathEvent;
             private AtomicEvent<Entity.Entity> _deathEventData;
-            
             private AtomicVariable<Entity.Entity> _entity;
-           
-
-            public void Use( 
+        
+            public void Construct( 
                 AtomicVariable<int> hitPoints,
                 AtomicEvent<int> takeDamageEvent,
                 AtomicVariable<bool> isDead, 

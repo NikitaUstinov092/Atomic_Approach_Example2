@@ -10,9 +10,9 @@ namespace GamePlay.StateMachines.States
     {
         private MovementDirectionVariable _movementDirectionVariable;
         private MoveInDirectionEngine _moveInDirectionEngine;
-        private RotateInDirectionEngine _rotateInDirection;
+        private RotateInDirectionMechanics _rotateInDirection;
         
-        public void Construct(MovementDirectionVariable movementDirection, MoveInDirectionEngine moveInDirectionEngine, RotateInDirectionEngine rotateInDirection)
+        public void Construct(MovementDirectionVariable movementDirection, MoveInDirectionEngine moveInDirectionEngine, RotateInDirectionMechanics rotateInDirection)
         {
             _movementDirectionVariable = movementDirection;
             _moveInDirectionEngine = moveInDirectionEngine;

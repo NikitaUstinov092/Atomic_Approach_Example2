@@ -6,7 +6,7 @@ using UnityEngine;
 namespace GamePlay.Custom.Engines
 {
     [Serializable]
-    public sealed class RotateInDirectionEngine : IUpdate
+    public sealed class RotateInDirectionMechanics : IUpdate
     {
         private Transform _targetTransform;
         private AtomicVariable<float> _speed;

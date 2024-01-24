@@ -19,7 +19,7 @@ public class ETFXMouseOrbit : MonoBehaviour
     float rotationXAxis = 0.0f;
     float velocityX = 0.0f;
     float velocityY = 0.0f;
-    // Use this for initialization
+    // Construct this for initialization
     void Start()
     {
         Vector3 angles = transform.eulerAngles;

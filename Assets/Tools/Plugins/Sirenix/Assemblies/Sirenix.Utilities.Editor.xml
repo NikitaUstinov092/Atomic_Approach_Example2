@@ -1005,7 +1005,7 @@
         </member>
         <member name="T:Sirenix.Utilities.Editor.DragAndDropManager">
             <summary>
-            <para>This class is due to undergo refactoring. Use the new DragAndDropUtilities instead.</para>
+            <para>This class is due to undergo refactoring. Construct the new DragAndDropUtilities instead.</para>
             </summary>
             <seealso cref="T:Sirenix.Utilities.Editor.DragAndDropUtilities"/>
         </member>
@@ -1405,7 +1405,7 @@
             </summary>
             <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
             <param name="mouseButton">The mouse button the user has to press.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Construct"/> on the event.</param>
             <returns><c>true</c> on mouse down events with the specified button. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnMouseDown(UnityEngine.Event,UnityEngine.Rect,System.Int32,System.Boolean)">
@@ -1415,7 +1415,7 @@
             <param name="current">The event.</param>
             <param name="rect">The rect the user can click on.</param>
             <param name="mouseButton">The button the user has to press.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Construct"/> on the event.</param>
             <returns><c>true</c> on mouse down events with the specified button. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnMouseUp(UnityEngine.Event,System.Int32,System.Boolean)">
@@ -1424,7 +1424,7 @@
             </summary>
             <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
             <param name="mouseButton">The mouse button the user has to release.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Construct"/> on the event.</param>
             <returns><c>true</c> on mouse up events, with the specified button. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnMouseUp(UnityEngine.Event,UnityEngine.Rect,System.Int32,System.Boolean)">
@@ -1434,7 +1434,7 @@
             <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
             <param name="rect">The rect the user has to release the mouse button over.</param>
             <param name="mouseButton">The mouse button the user has to release.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Construct"/> on the event.</param>
             <returns><c>true</c> on mouse up events, with the specified button and over the specified rect. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnLeftClick(UnityEngine.Event,UnityEngine.Rect,System.Boolean)">
@@ -1443,7 +1443,7 @@
             </summary>
             <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
             <param name="rect">The rect the user can click.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Construct"/> on the event.</param>
             <returns><c>true</c> on left click events, on the specified rect. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnContextClick(UnityEngine.Event,UnityEngine.Rect,System.Boolean)">
@@ -1452,7 +1452,7 @@
             </summary>
             <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
             <param name="rect">The rect the user can right click.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Construct"/> on the event.</param>
             <returns><c>true</c> on context click events, on the specified rect. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnKeyDown(UnityEngine.Event,UnityEngine.KeyCode,System.Boolean)">
@@ -1461,7 +1461,7 @@
             </summary>
             <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
             <param name="key">The key the user has to press.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Construct"/> on the event.</param>
             <returns><c>true</c> on key down events with the specified key code. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnKeyUp(UnityEngine.Event,UnityEngine.KeyCode,System.Boolean)">
@@ -1470,7 +1470,7 @@
             </summary>
             <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
             <param name="key">The key the user has to release.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Construct"/> on the event.</param>
             <returns><c>true</c> on key up events with the specified key code. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.OnMouseMoveDrag(UnityEngine.Event,System.Boolean)">
@@ -1478,7 +1478,7 @@
             Returns <c>true</c> whene the user moves or drags the mouse.
             </summary>
             <param name="current">The <see cref="T:UnityEngine.Event"/>.</param>
-            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Use"/> on the event.</param>
+            <param name="useEvent">If <c>true</c> then the method will call <see cref="M:UnityEngine.Event.Construct"/> on the event.</param>
             <returns><c>true</c> on mouse MoveComp or mouse drag events. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.EventExtensions.IsHovering(UnityEngine.Event,UnityEngine.Rect)">
@@ -1677,7 +1677,7 @@
         <member name="P:Sirenix.Utilities.Editor.GUIHelper.ContextWidth">
             <summary>
             Gets the current editor gui context width. Only set these if you know what it does.
-            Setting this has been removed. Use PushContextWidth and PopContextWidth instead.
+            Setting this has been removed. Construct PushContextWidth and PopContextWidth instead.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.Editor.GUIHelper.BetterLabelWidth">
@@ -2245,7 +2245,7 @@
         <member name="P:Sirenix.Utilities.Editor.GUIPagingHelper.ElementCount">
             <summary>
             Gets the total number of elements.
-            Use <see cref="M:Sirenix.Utilities.Editor.GUIPagingHelper.Update(System.Int32)"/> to change the value.
+            Construct <see cref="M:Sirenix.Utilities.Editor.GUIPagingHelper.Update(System.Int32)"/> to change the value.
             </summary>
         </member>
         <member name="M:Sirenix.Utilities.Editor.GUIPagingHelper.DrawToolbarPagingButtons(UnityEngine.Rect@,System.Boolean,System.Boolean,System.Int32)">
@@ -4451,8 +4451,8 @@
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="path">The current value.</param>
-            <param name="parentPath">A parent path the path needs to be relative to. Use <c>null</c> for Unity project directory.</param>
-            <param name="extensions">Comma separated list of allowed file extensions. Use <c>null</c> to allow any file extension.</param>
+            <param name="parentPath">A parent path the path needs to be relative to. Construct <c>null</c> for Unity project directory.</param>
+            <param name="extensions">Comma separated list of allowed file extensions. Construct <c>null</c> to allow any file extension.</param>
             <param name="absolutePath">If <c>true</c> the path will be absolute. Otherwise the path will be relative to parentPath or to the Unity project directory.</param>
             <param name="useBackslashes">If <c>true</c> the path will be enforced to use backslashes. Otherwise the path will be enforced to use forward slashes.</param>
             <returns>A path to a file.</returns>
@@ -4463,8 +4463,8 @@
             </summary>
             <param name="rect">Position and size of the field.</param>
             <param name="path">The current value.</param>
-            <param name="parentPath">A parent path the path needs to be relative to. Use <c>null</c> for Unity project directory.</param>
-            <param name="extensions">Comma separated list of allowed file extensions. Use <c>null</c> to allow any file extension.</param>
+            <param name="parentPath">A parent path the path needs to be relative to. Construct <c>null</c> for Unity project directory.</param>
+            <param name="extensions">Comma separated list of allowed file extensions. Construct <c>null</c> to allow any file extension.</param>
             <param name="absolutePath">If <c>true</c> the path will be absolute. Otherwise the path will be relative to parentPath or to the Unity project directory.</param>
             <param name="useBackslashes">If <c>true</c> the path will be enforced to use backslashes. Otherwise the path will be enforced to use forward slashes.</param>
             <returns>A path to a file.</returns>
@@ -4475,8 +4475,8 @@
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="path">The current value.</param>
-            <param name="parentPath">A parent path the path needs to be relative to. Use <c>null</c> for Unity project directory.</param>
-            <param name="extensions">Comma separated list of allowed file extensions. Use <c>null</c> to allow any file extension.</param>
+            <param name="parentPath">A parent path the path needs to be relative to. Construct <c>null</c> for Unity project directory.</param>
+            <param name="extensions">Comma separated list of allowed file extensions. Construct <c>null</c> to allow any file extension.</param>
             <param name="absolutePath">If <c>true</c> the path will be absolute. Otherwise the path will be relative to parentPath or to the Unity project directory.</param>
             <param name="useBackslashes">If <c>true</c> the path will be enforced to use backslashes. Otherwise the path will be enforced to use forward slashes.</param>
             <param name="options">Layout options.</param>
@@ -4487,8 +4487,8 @@
             Draws a field that lets the user select a path to a file.
             </summary>
             <param name="path">The current value.</param>
-            <param name="parentPath">A parent path the path needs to be relative to. Use <c>null</c> for Unity project directory.</param>
-            <param name="extensions">Comma separated list of allowed file extensions. Use <c>null</c> to allow any file extension.</param>
+            <param name="parentPath">A parent path the path needs to be relative to. Construct <c>null</c> for Unity project directory.</param>
+            <param name="extensions">Comma separated list of allowed file extensions. Construct <c>null</c> to allow any file extension.</param>
             <param name="absolutePath">If <c>true</c> the path will be absolute. Otherwise the path will be relative to parentPath or to the Unity project directory.</param>
             <param name="useBackslashes">If <c>true</c> the path will be enforced to use backslashes. Otherwise the path will be enforced to use forward slashes.</param>
             <param name="options">Layout options.</param>
@@ -4501,7 +4501,7 @@
             <param name="rect">Position and size of the field.</param>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="path">The current value.</param>
-            <param name="parentPath">A parent path the path needs to be relative to. Use <c>null</c> for Unity project directory.</param>
+            <param name="parentPath">A parent path the path needs to be relative to. Construct <c>null</c> for Unity project directory.</param>
             <param name="absolutePath">If <c>true</c> the path will be absolute. Otherwise the path will be relative to parentPath or to the Unity project directory.</param>
             <param name="useBackslashes">If <c>true</c> the path will be enforced to use backslashes. Otherwise the path will be enforced to use forward slashes.</param>
             <returns>A path to a folder.</returns>
@@ -4512,7 +4512,7 @@
             </summary>
             <param name="rect">Position and size of the field.</param>
             <param name="path">The current value.</param>
-            <param name="parentPath">A parent path the path needs to be relative to. Use <c>null</c> for Unity project directory.</param>
+            <param name="parentPath">A parent path the path needs to be relative to. Construct <c>null</c> for Unity project directory.</param>
             <param name="absolutePath">If <c>true</c> the path will be absolute. Otherwise the path will be relative to parentPath or to the Unity project directory.</param>
             <param name="useBackslashes">If <c>true</c> the path will be enforced to use backslashes. Otherwise the path will be enforced to use forward slashes.</param>
             <returns>A path to a folder.</returns>
@@ -4523,7 +4523,7 @@
             </summary>
             <param name="label">Label of field. Set to <c>null</c> for no label.</param>
             <param name="path">The current value.</param>
-            <param name="parentPath">A parent path the path needs to be relative to. Use <c>null</c> for Unity project directory.</param>
+            <param name="parentPath">A parent path the path needs to be relative to. Construct <c>null</c> for Unity project directory.</param>
             <param name="absolutePath">If <c>true</c> the path will be absolute. Otherwise the path will be relative to parentPath or to the Unity project directory.</param>
             <param name="useBackslashes">If <c>true</c> the path will be enforced to use backslashes. Otherwise the path will be enforced to use forward slashes.</param>
             <param name="options">Layout options.</param>
@@ -4534,7 +4534,7 @@
             Draws a field that lets the user select a path to a folder.
             </summary>
             <param name="path">The current value.</param>
-            <param name="parentPath">A parent path the path needs to be relative to. Use <c>null</c> for Unity project directory.</param>
+            <param name="parentPath">A parent path the path needs to be relative to. Construct <c>null</c> for Unity project directory.</param>
             <param name="absolutePath">If <c>true</c> the path will be absolute. Otherwise the path will be relative to parentPath or to the Unity project directory.</param>
             <param name="useBackslashes">If <c>true</c> the path will be enforced to use backslashes. Otherwise the path will be enforced to use forward slashes.</param>
             <param name="options">Layout options.</param>
@@ -6855,12 +6855,12 @@
         </member>
         <member name="P:Sirenix.Utilities.Editor.SirenixGUIStyles.ListItemEven">
             <summary>
-            List item background color for every other item. OBSOLETE: Use ListItemColorEven instead.
+            List item background color for every other item. OBSOLETE: Construct ListItemColorEven instead.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.Editor.SirenixGUIStyles.ListItemOdd">
             <summary>
-            List item background color for every other item. OBSOLETE: Use ListItemColorOdd instead.
+            List item background color for every other item. OBSOLETE: Construct ListItemColorOdd instead.
             </summary>
         </member>
         <member name="P:Sirenix.Utilities.Editor.SirenixGUIStyles.ListItemColorEven">
@@ -7671,7 +7671,7 @@
             Creates a new texture with no mimapping, linier colors, and calls texture.LoadImage(bytes), DontDestroyOnLoad(tex) and sets hideFlags = DontUnloadUnusedAsset | DontSaveInEditor.
             
             Old description no longer relevant as we've moved past version 2017.
-            Loads an image from bytes with the specified width and height. Use this instead of someTexture.LoadImage() if you're compiling to an assembly. Unity has moved the method in 2017, 
+            Loads an image from bytes with the specified width and height. Construct this instead of someTexture.LoadImage() if you're compiling to an assembly. Unity has moved the method in 2017, 
             and Unity's assembly updater is not able to fix it for you. This searches for a proper LoadImage method in multiple locations, and also handles type name conflicts.
             </summary>
         </member>
@@ -7838,7 +7838,7 @@
         <member name="T:Sirenix.Utilities.MemberFinder">
             <summary>
             MemberFinder is obsolete, and has been replacted by <see cref="!:Sirenix.OdinInspector.Editor.ValueResolvers.ValueResolver" /> and <see cref="!:Sirenix.OdinInspector.Editor.ActionResolvers.ActionResolver" />. 
-            Use cases that do not fit those utlities should use manual reflection that is hand-optimized for the best performance in the given case.
+            Construct cases that do not fit those utlities should use manual reflection that is hand-optimized for the best performance in the given case.
             <para />
             MemberFinder was a utility class often used by Odin drawers to find fields, methods, and
             properties while providing good user-friendly error messages based on the search criteria.

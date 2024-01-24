@@ -22,7 +22,7 @@ namespace GamePlay.Custom.Sections
         [Construct]
         public void Construct()
         {
-            TakeDamageRequest.Use(damage =>
+            TakeDamageRequest.Construct(damage =>
                 {
                     if (IsDead.Value)
                         return;
@@ -30,7 +30,7 @@ namespace GamePlay.Custom.Sections
                     _takeDamageEngine.Invoke(damage);
                 }
             );
-            _takeDamageEngine.Use(HitPoints, TakeDamageEvent, IsDead, DeathEvent, Entity, DeathEventData);
+            _takeDamageEngine.Construct(HitPoints, TakeDamageEvent, IsDead, DeathEvent, Entity, DeathEventData);
         }
     }
 }

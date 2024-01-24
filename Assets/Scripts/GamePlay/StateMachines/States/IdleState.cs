@@ -18,7 +18,7 @@ namespace GamePlay.StateMachines.States
         public void ConstructSubStates(HeroModel_Core core, HeroModel_View view)
         {
             ShootState.Construct(core.EntityTarget, core.ShootComp.ShootMechanics, view.AnimMachine);
-            RotateToEnemyState.Construct(core.EntityTarget, core.CharacterMoveComp.Transform, core.CharacterMoveComp.RotateInDirectionEngine);
+            RotateToEnemyState.Construct(core.EntityTarget, core.CharacterMoveComp.Transform, core.CharacterMoveComp.RotateInDirectionMechanics);
         }*/
         
     }

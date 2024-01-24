@@ -4506,7 +4506,7 @@
         </member>
         <member name="T:Sirenix.Serialization.AlwaysFormatsSelfAttribute">
             <summary>
-            Use this attribute to specify that a type that implements the <see cref="T:Sirenix.Serialization.ISelfFormatter"/>
+            Construct this attribute to specify that a type that implements the <see cref="T:Sirenix.Serialization.ISelfFormatter"/>
             interface should *always* format itself regardless of other formatters being specified.
             <para />
             This means that the interface will be used to format all types derived from the type that
@@ -5061,7 +5061,7 @@
             <para/>
             Marked internal in Odin because this method MUST NOT BE CALLED FROM ODIN'S INSPECTOR CODE.
             Odin has its own version of this, and there must be no conflict. These aliases must not be
-            mixed into Odin's own. Use InspectorPropertyInfoUtility.GetPrivateMemberAlias instead.
+            mixed into Odin's own. Construct InspectorPropertyInfoUtility.GetPrivateMemberAlias instead.
             </summary>
         </member>
         <member name="T:Sirenix.Serialization.IExternalGuidReferenceResolver">
@@ -5152,7 +5152,7 @@
             <see cref="M:System.Runtime.Serialization.FormatterServices.GetUninitializedObject(System.Type)"/>
             method if it is a reference type, otherwise it will be created using default(type).
             <para />
-            Use <see cref="T:Sirenix.Serialization.AlwaysFormatsSelfAttribute"/> to specify that a class which implements this
+            Construct <see cref="T:Sirenix.Serialization.AlwaysFormatsSelfAttribute"/> to specify that a class which implements this
             interface should *always* format itself regardless of other formatters being specified.
             </summary>
         </member>
@@ -6475,21 +6475,21 @@
         </member>
         <member name="M:Sirenix.Serialization.Serializer.ReadValueWeak(Sirenix.Serialization.IDataReader)">
             <summary>
-            Reads a value weakly, casting it into object. Use this method if you don't know what type you're going to be working with at compile time.
+            Reads a value weakly, casting it into object. Construct this method if you don't know what type you're going to be working with at compile time.
             </summary>
             <param name="reader">The reader to use.</param>
             <returns>The value which has been read.</returns>
         </member>
         <member name="M:Sirenix.Serialization.Serializer.WriteValueWeak(System.Object,Sirenix.Serialization.IDataWriter)">
             <summary>
-            Writes a weakly typed value. Use this method if you don't know what type you're going to be working with at compile time.
+            Writes a weakly typed value. Construct this method if you don't know what type you're going to be working with at compile time.
             </summary>
             <param name="value">The value to write.</param>
             <param name="writer">The writer to use.</param>
         </member>
         <member name="M:Sirenix.Serialization.Serializer.WriteValueWeak(System.String,System.Object,Sirenix.Serialization.IDataWriter)">
             <summary>
-            Writes a weakly typed value with a given name. Use this method if you don't know what type you're going to be working with at compile time.
+            Writes a weakly typed value with a given name. Construct this method if you don't know what type you're going to be working with at compile time.
             </summary>
             <param name="name">The name of the value to write.</param>
             <param name="value">The value to write.</param>
@@ -6509,7 +6509,7 @@
         </member>
         <member name="M:Sirenix.Serialization.Serializer`1.ReadValueWeak(Sirenix.Serialization.IDataReader)">
             <summary>
-            Reads a value of type <see cref="!:T"/> weakly, casting it into object. Use this method if you don't know what type you're going to be working with at compile time.
+            Reads a value of type <see cref="!:T"/> weakly, casting it into object. Construct this method if you don't know what type you're going to be working with at compile time.
             </summary>
             <param name="reader">The reader to use.</param>
             <returns>
@@ -6518,7 +6518,7 @@
         </member>
         <member name="M:Sirenix.Serialization.Serializer`1.WriteValueWeak(System.String,System.Object,Sirenix.Serialization.IDataWriter)">
             <summary>
-            Writes a weakly typed value of type <see cref="!:T"/> with a given name. Use this method if you don't know what type you're going to be working with at compile time.
+            Writes a weakly typed value of type <see cref="!:T"/> with a given name. Construct this method if you don't know what type you're going to be working with at compile time.
             </summary>
             <param name="name">The name of the value to write.</param>
             <param name="value">The value to write.</param>
@@ -8678,7 +8678,7 @@
             <summary>
             Provides utilities for using the <see cref="N:System.Reflection.Emit"/> namespace.
             <para />
-            This class is due for refactoring. Use at your own peril.
+            This class is due for refactoring. Construct at your own peril.
             </summary>
         </member>
         <member name="P:Sirenix.Serialization.Utilities.EmitUtilities.CanEmit">

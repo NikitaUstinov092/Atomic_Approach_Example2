@@ -12,7 +12,7 @@ namespace EpicToonFX
         public enum spaceEnum { Local, World };
         public spaceEnum rotateSpace;
  
-        // Use this for initialization
+        // Construct this for initialization
         void Start()
         {
  

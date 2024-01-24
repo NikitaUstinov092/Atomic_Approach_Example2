@@ -107,7 +107,7 @@
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.ActionResolvers.ActionResolverContext.NamedValues">
             <summary>
-            The named values that are available to the action resolver. Use this field only to get and set named values - once the ValueResolver has been created, new named values will have no effect.
+            The named values that are available to the action resolver. Construct this field only to get and set named values - once the ValueResolver has been created, new named values will have no effect.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.ActionResolvers.ActionResolverContext.ErrorMessageIsDueToException">
@@ -754,7 +754,7 @@
         <member name="T:Sirenix.OdinInspector.Editor.PropertyContextContainer">
             <summary>
             <para>Contains a context for an <see cref="T:Sirenix.OdinInspector.Editor.InspectorProperty"/>, which offers the ability to address persistent values by key across several editor GUI frames.</para>
-            <para>Use this in drawers to store contextual editor-only values such as the state of a foldout.</para>
+            <para>Construct this in drawers to store contextual editor-only values such as the state of a foldout.</para>
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.PropertyContextContainer.#ctor(Sirenix.OdinInspector.Editor.InspectorProperty)">
@@ -2302,7 +2302,7 @@
         <member name="F:Sirenix.OdinInspector.Editor.PropertyValueState.ReferencePathConflict">
             <summary>
             <para>The value entry has a reference path conflict across selected indices.</para>
-            <para>A reference path conflict is when the property consists of references to many conflicting paths. Use <see cref="M:Sirenix.OdinInspector.Editor.PropertyTree.ObjectIsReferenced(System.Object,System.String@)"/> to get paths to all referenced objects.</para>
+            <para>A reference path conflict is when the property consists of references to many conflicting paths. Construct <see cref="M:Sirenix.OdinInspector.Editor.PropertyTree.ObjectIsReferenced(System.Object,System.String@)"/> to get paths to all referenced objects.</para>
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.PropertyValueState.CollectionLengthConflict">
@@ -2491,7 +2491,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.OdinPropertyResolverLocator">
             <summary>
-            Base class for locator of <see cref="T:Sirenix.OdinInspector.Editor.OdinPropertyResolver"/>. Use <see cref="T:Sirenix.OdinInspector.Editor.DefaultOdinPropertyResolverLocator"/> for default implementation.
+            Base class for locator of <see cref="T:Sirenix.OdinInspector.Editor.OdinPropertyResolver"/>. Construct <see cref="T:Sirenix.OdinInspector.Editor.DefaultOdinPropertyResolverLocator"/> for default implementation.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.OdinPropertyResolverLocator.GetResolver(Sirenix.OdinInspector.Editor.InspectorProperty)">
@@ -6321,7 +6321,7 @@
         <member name="T:Sirenix.OdinInspector.Editor.OdinAttributeDrawer`1">
              <summary>
              <para>
-             Base class for attribute drawers. Use this class to create your own custom attribute drawers that will work for all types.
+             Base class for attribute drawers. Construct this class to create your own custom attribute drawers that will work for all types.
              Alternatively you can derive from <see cref="T:Sirenix.OdinInspector.Editor.OdinAttributeDrawer`2"/> if you want to only support specific types.
              </para>
             
@@ -6805,7 +6805,7 @@
         <member name="T:Sirenix.OdinInspector.Editor.OdinGroupDrawer`1">
              <summary>
              <para>
-             Base class for all group drawers. Use this class to create your own custom group drawers. OdinGroupDrawer are used to group multiple properties together using an attribute.
+             Base class for all group drawers. Construct this class to create your own custom group drawers. OdinGroupDrawer are used to group multiple properties together using an attribute.
              </para>
             
              <para>
@@ -6884,7 +6884,7 @@
         <member name="T:Sirenix.OdinInspector.Editor.OdinValueDrawer`1">
              <summary>
              <para>
-             Base class for all value drawers. Use this class to create your own custom drawers for any specific type.
+             Base class for all value drawers. Construct this class to create your own custom drawers for any specific type.
              </para>
             
              <para>
@@ -7129,7 +7129,7 @@
         <member name="T:Sirenix.OdinInspector.Editor.AllowGUIEnabledForReadonlyAttribute">
              <summary>
              Some drawers don't want to have its GUI disabled, even if the property is read-only or a ReadOnly attribute is defined on the property.
-             Use this attribute on any drawer to force GUI being enabled in these cases.
+             Construct this attribute on any drawer to force GUI being enabled in these cases.
              </summary>
              <example>
              <code>
@@ -7395,7 +7395,7 @@
         <member name="T:Sirenix.OdinInspector.Editor.DrawerPriorityAttribute">
              <summary>
              <para>DrawerPriority is used on inspector drawers and indicates the priority of the drawer.</para>
-             <para>Use this to make your custom drawer to come before or after other drawers, and potentially hide other drawers.</para>
+             <para>Construct this to make your custom drawer to come before or after other drawers, and potentially hide other drawers.</para>
              </summary>
              <example>
              <para>The following example shows how DrawerPriority could be apply to a value drawer.</para>
@@ -7793,7 +7793,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.OdinDontRegisterAttribute">
             <summary>
-            Use this attribute to prevent a type from being included in Odin systems.
+            Construct this attribute to prevent a type from being included in Odin systems.
             The attribute can be applied to Odin drawers, Odin property resolvers and Odin attribute processor types.
             </summary>
         </member>
@@ -7913,12 +7913,12 @@
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.StringMemberHelper.#ctor(System.Type,System.String,System.Boolean,System.Boolean)">
             <summary>
-            Obsolete. Use other constructor.
+            Obsolete. Construct other constructor.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.StringMemberHelper.#ctor(System.Type,System.String,System.String@,System.Boolean,System.Boolean)">
             <summary>
-            Obsolete. Use other constructor.
+            Obsolete. Construct other constructor.
             </summary>
         </member>
         <member name="M:Sirenix.OdinInspector.Editor.StringMemberHelper.#ctor(Sirenix.OdinInspector.Editor.InspectorProperty,System.String)">
@@ -9516,7 +9516,7 @@
              [OnInspectorGUI]
              void OnInspectorGUI()
              {
-                 // Use the selector manually. See the documentation for OdinSelector for more information.
+                 // Construct the selector manually. See the documentation for OdinSelector for more information.
                  if (GUILayout.Button("Open Enum Selector"))
                  {
                      EnumSelector&lt;KeyCode&gt; selector = new EnumSelector&lt;KeyCode&gt;();
@@ -9982,7 +9982,7 @@
             
              void OnGUI()
              {
-                 // Use the selector manually. See the documentation for OdinSelector for more information.
+                 // Construct the selector manually. See the documentation for OdinSelector for more information.
                  if (GUILayout.Button("Open My Selector"))
                  {
                      TypeSelector selector = new TypeSelector(customListOfTypes);
@@ -10440,7 +10440,7 @@
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.Validation.ValidationSetup">
             <summary>
-            Use <see cref="M:Sirenix.OdinInspector.Editor.Validation.Validator.InitializeResult(Sirenix.OdinInspector.Editor.Validation.ValidationResult@)"/> to initialize an empty <see cref="T:Sirenix.OdinInspector.Editor.Validation.ValidationResult"/>. 
+            Construct <see cref="M:Sirenix.OdinInspector.Editor.Validation.Validator.InitializeResult(Sirenix.OdinInspector.Editor.Validation.ValidationResult@)"/> to initialize an empty <see cref="T:Sirenix.OdinInspector.Editor.Validation.ValidationResult"/>. 
             </summary>
         </member>
         <member name="T:Sirenix.OdinInspector.Editor.ValueResolvers.RegisterDefaultValueResolverCreatorAttribute">
@@ -10672,7 +10672,7 @@
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.ValueResolvers.ValueResolverContext.NamedValues">
             <summary>
-            The named values that are available to the value resolver. Use this field only to get and set named values - once the ValueResolver has been created, new named values will have no effect.
+            The named values that are available to the value resolver. Construct this field only to get and set named values - once the ValueResolver has been created, new named values will have no effect.
             </summary>
         </member>
         <member name="F:Sirenix.OdinInspector.Editor.ValueResolvers.ValueResolverContext.FallbackValue">

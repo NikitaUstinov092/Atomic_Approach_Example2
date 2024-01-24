@@ -8,6 +8,7 @@ using GamePlay.Custom.Sections;
 using GamePlay.StateMachines;
 using GamePlay.StateMachines.States;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GamePlay.Hero
 {
@@ -44,13 +45,13 @@ namespace GamePlay.Hero
             public MovementDirectionVariable MovementDirection = new();
             
             public MoveInDirectionEngine MoveInDirectionEngine = new();
-            public RotateInDirectionEngine RotateInDirectionEngine = new();
+            [FormerlySerializedAs("RotateInDirectionEngine")] public RotateInDirectionMechanics rotateInDirectionMechanics = new();
 
             [Construct]
             public void Construct()
             {
                 MoveInDirectionEngine.Construct(Transform, MovementSpeed);
-                RotateInDirectionEngine.Construct(Transform, RotationSpeed);
+                rotateInDirectionMechanics.Construct(Transform, RotationSpeed);
             }
         }
 
@@ -66,7 +67,7 @@ namespace GamePlay.Hero
             public AtomicEvent FireRequest = new();
             public AtomicEvent ShootApplied = new();
             public AtomicEvent OnShoot = new();
-            
+             
             private readonly ShootMechanics _shootMechanics = new();
             private readonly ShootEngine _shootEngine = new();
             private readonly CoolDownMechanics _coolDownMechanics = new();

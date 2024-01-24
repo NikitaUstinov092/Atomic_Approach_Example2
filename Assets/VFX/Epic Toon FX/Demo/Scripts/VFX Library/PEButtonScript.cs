@@ -15,7 +15,7 @@ public class PEButtonScript : MonoBehaviour, IEventSystemHandler, IPointerEnterH
 	#pragma warning disable 414
 	public ButtonTypes ButtonType = ButtonTypes.NotDefined;
 
-	// Use this for initialization
+	// Construct this for initialization
 	void Start () {
 		myButton = gameObject.GetComponent<Button> ();
 	}

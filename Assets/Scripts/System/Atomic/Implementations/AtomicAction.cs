@@ -43,7 +43,7 @@ namespace System.Atomic.Implementations
             this.action = action;
         }
         
-        public void Use(Action<T> action)
+        public void Construct(Action<T> action)
         {
             this.action = action;
         }
