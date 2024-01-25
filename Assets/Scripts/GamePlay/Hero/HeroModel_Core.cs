@@ -8,7 +8,6 @@ using GamePlay.Custom.Sections;
 using GamePlay.StateMachines;
 using GamePlay.StateMachines.States;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GamePlay.Hero
 {
