@@ -10,20 +10,20 @@ namespace GamePlay.AI
         private AtomicVariable<bool> _autoMode;
         private AtomicVariable<Transform> _heroTransform;
         private AtomicVariable<Entity.Entity> _targetEnemy;
-        private AtomicVariable<float> _dotProduct;
+        private AtomicVariable<float> _angleThreshold;
         private AtomicEvent _shootRequest;
         private RotateInDirectionMechanics _rotateInDirectionMechanics;
         
         public void Construct(AtomicVariable<bool> autoMode, AtomicVariable<Transform> heroTransform, 
             AtomicEvent shootRequest, AtomicVariable<Entity.Entity> targetEnemy, 
-            RotateInDirectionMechanics rotateInDirectionMechanics,  AtomicVariable<float> dotProduct)
+            RotateInDirectionMechanics rotateInDirectionMechanics,  AtomicVariable<float> angleThreshold)
         {
             _autoMode = autoMode;
             _heroTransform = heroTransform;
             _shootRequest = shootRequest;
             _targetEnemy = targetEnemy;
             _rotateInDirectionMechanics = rotateInDirectionMechanics;
-            _dotProduct = dotProduct;
+            _angleThreshold = angleThreshold;
         }
 
 
@@ -34,22 +34,24 @@ namespace GamePlay.AI
 
            if (_targetEnemy.Value.TryGet(out IGetHealth hp))
            {
-               if(hp.GetHealth().Value <= 0)
+               if (hp.GetHealth().Value < 0)
+               {
                    return;
+               }
            }
            
            var positionEnemy =  _targetEnemy.Value.transform.position - _heroTransform.Value.position;
            
            _rotateInDirectionMechanics.SetDirection(positionEnemy);
-           
+            
            var directionToEnemy = positionEnemy.normalized;
            var heroForward = _heroTransform.Value.forward;
            
            var dotProduct = Vector3.Dot(directionToEnemy, heroForward);
-
-           if (!(dotProduct > _dotProduct.Value)) 
-               return;
            
+           if (!(dotProduct > _angleThreshold.Value)) 
+                return;
+            
            _rotateInDirectionMechanics.SetDirection(directionToEnemy);
            _shootRequest.Invoke();
         }

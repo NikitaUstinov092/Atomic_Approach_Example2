@@ -41,8 +41,8 @@ namespace GamePlay.Hero
 
             public AtomicVariable<float> MovementSpeed = new(6f);
             public AtomicVariable<float> RotationSpeed = new(10f);
+           
             public MovementDirectionVariable MovementDirection = new();
-            
             public MoveInDirectionEngine MoveInDirectionEngine = new();
             public RotateInDirectionMechanics RotateInDirectionMechanics = new();
 
@@ -59,7 +59,7 @@ namespace GamePlay.Hero
         {
             public AtomicVariable<BulletConfig> BulletConfig = new();
             public AtomicVariable<float> CoolDownDelay = new();
-            public AtomicVariable<bool> WeaponCooled = true;
+            public AtomicVariable<bool> WeaponCooled = new ();
             public AtomicVariable<bool> CanShoot = new();
             public AtomicVariable<Transform> SpawnPointShoot = new();
           
@@ -79,7 +79,7 @@ namespace GamePlay.Hero
                 
                 _shootEngine.Construct(BulletConfig.Value, SpawnPointShoot.Value);
                 _shootMechanics.Construct(_shootEngine, FireRequest, ShootApplied, OnShoot, ammo.AmmoCount, life.IsDead, WeaponCooled, CanShoot);
-                _coolDownMechanics.Construct(CoolDownDelay, WeaponCooled, OnShoot, null);
+                _coolDownMechanics.Construct(CoolDownDelay, WeaponCooled, ShootApplied, null);
             }
         }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Atomic.Implementations;
 using System.Declarative.Scripts.Attributes;
+using GamePlay.Custom.Engines;
 using GamePlay.StateMachines;
 using GamePlay.StateMachines.States;
 using TMPro;
@@ -35,6 +36,9 @@ namespace GamePlay.Hero
         [Serializable]
         public class Animation_View
         {
+            public AtomicVariable<Animator> PlayerAnimator;
+            public AtomicVariable<string> BodyLayer;
+            
             private const string ShootName = "Shoot";
             private static readonly int SHOOT_TRIGGER = Animator.StringToHash(ShootName);
             
@@ -42,7 +46,15 @@ namespace GamePlay.Hero
             public HeroAnimatorStateMachine<AnimatorStateType> AnimMachine = new();
             
             private AnimationListener _animationListener;
+            
+            private AnimatorLayerWeightMechanics _animatorLayerWeightMechanics = new();
         
+            [Construct]
+            public void ConstructLayerWeight(HeroModel_Core core)
+            {
+                _animatorLayerWeightMechanics.Construct(PlayerAnimator,core.LifeSectionComp.IsDead, BodyLayer);
+            }
+            
             [Construct]
             public void ConstructStates()
             {
@@ -79,6 +91,8 @@ namespace GamePlay.Hero
                
                 shoot.ShootApplied.Subscribe(() => AnimMachine.PullTrigger(SHOOT_TRIGGER));
             }
+
+            
         }
 
         [Serializable]
