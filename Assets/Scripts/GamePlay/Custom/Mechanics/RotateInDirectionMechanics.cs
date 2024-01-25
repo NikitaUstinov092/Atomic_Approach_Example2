@@ -25,7 +25,7 @@ namespace GamePlay.Custom.Engines
             
             var currentRotation = _targetTransform.rotation;
             var targetRotation = Quaternion.LookRotation(_direction);
-            _targetTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _speed * deltaTime);
+            _targetTransform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _speed.Value * deltaTime);
         }
         public void SetDirection(Vector3 direction)
         {

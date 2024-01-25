@@ -38,20 +38,20 @@ namespace GamePlay.Hero
         [Serializable]
         public sealed class CharacterMovement
         {
-            public Transform Transform;
+            public AtomicVariable<Transform> Transform;
 
             public AtomicVariable<float> MovementSpeed = new(6f);
             public AtomicVariable<float> RotationSpeed = new(10f);
             public MovementDirectionVariable MovementDirection = new();
             
             public MoveInDirectionEngine MoveInDirectionEngine = new();
-            [FormerlySerializedAs("RotateInDirectionEngine")] public RotateInDirectionMechanics rotateInDirectionMechanics = new();
+            public RotateInDirectionMechanics RotateInDirectionMechanics = new();
 
             [Construct]
             public void Construct()
             {
-                MoveInDirectionEngine.Construct(Transform, MovementSpeed);
-                rotateInDirectionMechanics.Construct(Transform, RotationSpeed);
+                MoveInDirectionEngine.Construct(Transform.Value, MovementSpeed);
+                RotateInDirectionMechanics.Construct(Transform.Value, RotationSpeed);
             }
         }
 
