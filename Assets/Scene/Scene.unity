@@ -192,7 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7546984}
-  m_LocalRotation: {x: 0.2820071, y: 0.52812207, z: -0.1914946, w: 0.7777461}
+  m_LocalRotation: {x: 0.28200716, y: 0.52812207, z: -0.19149461, w: 0.7777461}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_LockStageInInspector: 00000000
   m_StreamingVersion: 20170927
   m_Priority: 10
-  m_StandbyUpdate: 0
+  m_StandbyUpdate: 1
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -270,7 +270,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42454539}
-  m_LocalRotation: {x: 0.3263771, y: 0.5162036, z: -0.22162366, w: 0.760194}
+  m_LocalRotation: {x: 0.3263771, y: 0.51620346, z: -0.22162367, w: 0.76019406}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_LockStageInInspector: 00000000
   m_StreamingVersion: 20170927
   m_Priority: 10
-  m_StandbyUpdate: 0
+  m_StandbyUpdate: 1
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -1071,7 +1071,7 @@ MonoBehaviour:
       Entity:
         value: {fileID: 750691883}
       HitPoints:
-        value: 2147483647
+        value: 20
       IsDead:
         value: 0
     CharacterMoveComp:
@@ -1104,7 +1104,7 @@ MonoBehaviour:
       MaxAmmo:
         value: 10
       ReloadTime:
-        value: 2
+        value: 1
   View:
     Animation:
       PlayerAnimator:
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
   m_Priority: 1
-  m_StandbyUpdate: 0
+  m_StandbyUpdate: 1
   m_LookAt: {fileID: 1141581191324640666}
   m_Follow: {fileID: 1141581191324640666}
   m_CommonLens: 1
@@ -1510,7 +1510,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060751495}
-  m_LocalRotation: {x: 0.32637715, y: 0.5162037, z: -0.2216238, w: 0.7601939}
+  m_LocalRotation: {x: 0.32637715, y: 0.5162035, z: -0.2216237, w: 0.76019394}
   m_LocalPosition: {x: 32.520424, y: -8.554837, z: 0.31804597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2211,7 +2211,7 @@ MonoBehaviour:
   m_LockStageInInspector: 00000000
   m_StreamingVersion: 20170927
   m_Priority: 10
-  m_StandbyUpdate: 0
+  m_StandbyUpdate: 1
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
