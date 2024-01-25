@@ -112,7 +112,7 @@ namespace GamePlay.Hero
                 shoot.Subscribe(() =>
                 {
                     if (AmmoCount.Value > 0)
-                        AmmoCount.Value--;
+                        --AmmoCount.Value;
                 });
                
                 _coolDownMechanics.Construct(ReloadTime, _reloading, ReloadRequest, OnReloadComplete);

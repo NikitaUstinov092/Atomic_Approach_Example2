@@ -506,7 +506,7 @@ MonoBehaviour:
       Entity:
         value: {fileID: 479581115975753025}
       HitPoints:
-        value: 0
+        value: 1
       IsDead:
         value: 0
     ZombieChase:

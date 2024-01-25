@@ -11,6 +11,7 @@ namespace Entity
         private void Awake()
         {
             Add(new DeathEventComponent(model.Core.LifeSection.DeathEvent, model.Core.LifeSection.DeathEventData));
+            Add(new HealthComponent(model.Core.LifeSection.HitPoints));
             Add(new TakeDamageRequestComponent(model.Core.LifeSection.TakeDamageRequest));
             Add(new SetTargetEntityComponent(model.Core.TargetSection));
         }

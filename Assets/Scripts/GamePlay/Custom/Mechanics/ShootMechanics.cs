@@ -49,7 +49,6 @@ namespace GamePlay.Custom.Engines
             
             if (!_weaponCooled.Value)
             {
-               
                 _canShoot.Value = false;
                 return;
             }
@@ -58,9 +57,10 @@ namespace GamePlay.Custom.Engines
         }
         private void RequestFire()
         {
-            if(!_canShoot.Value)
+            if (!_canShoot.Value) 
                 return;
             _shootApplied?.Invoke();
+           
         }
         private void Shoot()
         {

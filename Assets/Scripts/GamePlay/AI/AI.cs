@@ -20,6 +20,7 @@ namespace GamePlay.AI
       public AtomicVariable<HeroModel> Hero = new();
       public AtomicVariable<Entity.Entity> TargetEnemy = new();
       public AtomicVariable<float> RotationSpeed = new();
+      public AtomicVariable<float> DotProduct = new();
 
       private RotateInDirectionMechanics _rotateInDirectionMechanics = new();
       private EnemySelectMechanics _enemySelectMechanics = new();
@@ -41,7 +42,7 @@ namespace GamePlay.AI
          
          _rotateInDirectionMechanics.Construct(core.CharacterMoveComp.Transform, RotationSpeed);
          _enemySelectMechanics.Construct(EnemyService, TargetEnemy, Hero, AutoMode);
-         _autoAttackMechanics.Construct(AutoMode, core.CharacterMoveComp.Transform, core.ShootComp.FireRequest, TargetEnemy, _rotateInDirectionMechanics);
+         _autoAttackMechanics.Construct(AutoMode, core.CharacterMoveComp.Transform, core.ShootComp.FireRequest, TargetEnemy, _rotateInDirectionMechanics, DotProduct);
       }
    }
 }

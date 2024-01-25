@@ -192,7 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7546984}
-  m_LocalRotation: {x: 0.28200728, y: 0.52812135, z: -0.1914943, w: 0.77774656}
+  m_LocalRotation: {x: 0.28200725, y: 0.52812153, z: -0.19149439, w: 0.77774644}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -270,7 +270,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42454539}
-  m_LocalRotation: {x: 0.32637724, y: 0.5162028, z: -0.2216234, w: 0.7601945}
+  m_LocalRotation: {x: 0.32637727, y: 0.516203, z: -0.22162344, w: 0.76019436}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1324,7 +1324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032854760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.520428, y: -8.554837, z: 0.31803787}
+  m_LocalPosition: {x: 32.520428, y: -8.554837, z: 0.31804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1507,8 +1507,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060751495}
-  m_LocalRotation: {x: 0.3263773, y: 0.51620275, z: -0.22162336, w: 0.7601945}
-  m_LocalPosition: {x: 32.520428, y: -8.554837, z: 0.31803787}
+  m_LocalRotation: {x: 0.3263772, y: 0.51620305, z: -0.2216235, w: 0.76019424}
+  m_LocalPosition: {x: 32.520428, y: -8.554837, z: 0.31804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2175,7 +2175,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488403636}
-  m_LocalRotation: {x: 0.37086263, y: 0.50215894, z: -0.25183073, w: 0.7395125}
+  m_LocalRotation: {x: 0.37086257, y: 0.50215906, z: -0.2518308, w: 0.7395124}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2552,6 +2552,8 @@ MonoBehaviour:
     value: {fileID: 0}
   RotationSpeed:
     value: 10
+  DotProduct:
+    value: 0.9
 --- !u!1 &1854756561
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ namespace GamePlay.Custom.Engines
             {
                 _hitPoints.Value -= damage;
 
-                if (_hitPoints.Value > 0)
+                if (_hitPoints.Value >= 0)
                 {
                     _takeDamageEvent.Invoke(damage);
                     return;
