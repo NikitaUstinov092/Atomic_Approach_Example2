@@ -7,14 +7,14 @@ using Zenject;
 
 namespace GamePlay.Custom.Model
 {
-    public class KillsCounter<T>: IInitListener, IStartListener, IDisableListener, IKillCounterPM where T: Entity.Entity
+    public class KillsCounter: IInitListener, IStartListener, IDisableListener, IKillCounterPM 
     {
         public event Action<int> OnValueChanged;
     
         [Inject]
-        private IEntityFactory<T> _enemyFactory;
+        private EnemyFactory _enemyFactory;
     
-        private T _enemy;
+        private Entity.Entity _enemy;
         private int _deathCount;
         void IInitListener.OnInit()
         {
@@ -28,7 +28,7 @@ namespace GamePlay.Custom.Model
         {
             _enemyFactory.OnEntityCreated -= CheckLifeComponent;
         }
-        private void CheckLifeComponent(T enemy)
+        private void CheckLifeComponent(Entity.Entity enemy)
         {
             if (enemy.TryGet(out IGetDeathEventComponent getDeathEventComponent))
             {

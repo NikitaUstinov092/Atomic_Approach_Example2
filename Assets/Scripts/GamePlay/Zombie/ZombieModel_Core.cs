@@ -88,7 +88,7 @@ using UpdateMechanics;
                 public void Construct(TargetChecker targetChecker)
                 {
                     var target =  targetChecker.Target;
-                    AttackEngine.Construct(AttackDelay, Damage, target);
+                    AttackEngine.Construct(AttackDelay, Damage, target, new AtomicVariable<bool>(), new AtomicVariable<float>());
                 }
             }
             

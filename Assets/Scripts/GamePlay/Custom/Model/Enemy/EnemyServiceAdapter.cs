@@ -5,11 +5,11 @@ namespace GamePlay.Custom.Model
 {
     public class EnemyServiceAdapter: IStartListener, IDisableListener
     {
-        private IEntityFactory<Entity.Entity> _enemyFactory;
+        private EnemyFactory _enemyFactory;
         private EnemyService _enemyService;
 
         [Inject]
-        private void Construct(IEntityFactory<Entity.Entity> enemyFactory, EnemyService enemyService)
+        private void Construct(EnemyFactory enemyFactory, EnemyService enemyService)
         {
             _enemyFactory = enemyFactory;
             _enemyService = enemyService;

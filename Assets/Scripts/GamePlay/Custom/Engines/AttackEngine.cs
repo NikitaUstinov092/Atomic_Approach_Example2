@@ -6,46 +6,47 @@ namespace GamePlay.Custom.Engines
 {
     public class AttackEngine : ILateUpdate
     {
-        public AtomicVariable<float> AttackDelay;
-        public AtomicVariable<int> Damage;
-        public AtomicVariable<Entity.Entity> Target;
+        private AtomicVariable<float> _attackDelay;
+        private AtomicVariable<int> _damage;
+        private AtomicVariable<Entity.Entity> _target;
+        private AtomicVariable<bool> _attack;
+        private AtomicVariable<float> _timer;
     
-        private bool _attack;
-    
-        private float _timer;
-    
-        public void Construct(AtomicVariable<float> attackDelay, AtomicVariable<int> damage, AtomicVariable<Entity.Entity> target)
+        public void Construct(AtomicVariable<float> attackDelay, AtomicVariable<int> damage, AtomicVariable<Entity.Entity> target, 
+            AtomicVariable<bool> attack, AtomicVariable<float> timer)
         {
-            AttackDelay = attackDelay;
-            Damage = damage;
-            Target = target;
+            _attackDelay = attackDelay;
+            _damage = damage;
+            _target = target;
+            _attack = attack;
+            _timer = timer;
         }
    
         void ILateUpdate.LateUpdate(float deltaTime)
         {
-            if(!_attack)
+            if(!_attack.Value)
                 return;
                       
-            _timer += deltaTime;
+            _timer.Value += deltaTime;
                         
-            if (!(_timer >= AttackDelay.Value || !_attack)) 
+            if (!(_timer.Value >= _attackDelay.Value || !_attack.Value)) 
                 return;
                         
-            if (Target.Value != null && 
-                Target.Value.TryGet(out ITakeDamageable damage))
-                damage.TakeDamage(Damage.Value);
+            if (_target.Value != null && 
+                _target.Value.TryGet(out ITakeDamageable damage))
+                damage.TakeDamage(_damage.Value);
                         
-            _timer = 0f;
+            _timer.Value = 0f;
         }
 
         public void Attack()
         {
-            _attack = true;
+            _attack.Value = true;
         }
     
         public void StopAttack()
         {
-            _attack = false;
+            _attack.Value = false;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace GamePlay.StateMachines.States
         public void ConstructSubStates(HeroModel_View visual, HeroModel_Core.CharacterMovement movement)
         {
             MoveState.Construct(movement.MovementDirection, movement.MoveInDirectionEngine,
-                movement.RotateInDirectionMechanics);
+                movement.RotateDirection);
         }
     }
 }

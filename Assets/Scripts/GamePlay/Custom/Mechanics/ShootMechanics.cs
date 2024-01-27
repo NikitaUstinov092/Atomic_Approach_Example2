@@ -1,4 +1,5 @@
 using System.Atomic.Implementations;
+using System.Atomic.Interfaces;
 using System.Declarative.Scripts;
 using UnityEngine;
 
@@ -15,9 +16,9 @@ namespace GamePlay.Custom.Engines
         private AtomicVariable<bool> _weaponCooled;
         private AtomicVariable<bool> _canShoot;
         
-        private ShootEngine _shootEngine;
+        private IAtomicAction _shootEngine;
         
-        public void Construct(ShootEngine shootEngine, AtomicEvent fireRequest,
+        public void Construct(IAtomicAction shootEngine, AtomicEvent fireRequest,
             AtomicEvent shootApplied, AtomicEvent onShoot, AtomicVariable<int> ammoCount, AtomicVariable<bool> death, AtomicVariable<bool> weaponCooled, AtomicVariable<bool> canShoot)
         {
             _shootEngine = shootEngine;
@@ -59,12 +60,13 @@ namespace GamePlay.Custom.Engines
         {
             if (!_canShoot.Value) 
                 return;
+            
             _shootApplied?.Invoke();
            
         }
         private void Shoot()
         {
-           _shootEngine.CreateBullet();
+           _shootEngine.Invoke();
         }
     }
 }

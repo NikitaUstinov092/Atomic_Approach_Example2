@@ -27,7 +27,12 @@ namespace GamePlay.AI
             {
                 return;
             }
-            
+
+            SearchClosest();
+        }
+
+        private void SearchClosest()
+        {
             var enemies = _enemyService.GetAllEnemies();
 
             var closestDistance = float.MaxValue;
@@ -45,7 +50,6 @@ namespace GamePlay.AI
                 closestDistance = distance;
                 _targetEnemy.Value = enemy;
             }
-            
         }
     }
 }

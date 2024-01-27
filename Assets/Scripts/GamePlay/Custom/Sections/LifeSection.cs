@@ -17,7 +17,7 @@ namespace GamePlay.Custom.Sections
         public AtomicVariable<int> HitPoints = new();
         public AtomicVariable<bool> IsDead= new();
         
-        private TakeDamageEngine _takeDamageEngine = new();
+        private TakeDamageAction _takeDamageAction = new();
             
         [Construct]
         public void Construct()
@@ -27,10 +27,10 @@ namespace GamePlay.Custom.Sections
                     if (IsDead.Value)
                         return;
                             
-                    _takeDamageEngine.Invoke(damage);
+                    _takeDamageAction.Invoke(damage);
                 }
             );
-            _takeDamageEngine.Construct(HitPoints, TakeDamageEvent, IsDead, DeathEvent, Entity, DeathEventData);
+            _takeDamageAction.Construct(HitPoints, TakeDamageEvent, IsDead, DeathEvent, Entity, DeathEventData);
         }
     }
 }

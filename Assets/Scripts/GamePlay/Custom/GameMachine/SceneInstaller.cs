@@ -11,11 +11,11 @@ namespace GamePlay.Custom.GameMachine
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<HeroEntity>().FromComponentsInHierarchy().AsSingle();
-            Container.BindInterfacesAndSelfTo<EnemyFactory>().FromComponentsInHierarchy().AsSingle();
+            Container.Bind<EnemyFactory>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyCleaner>().FromComponentsInHierarchy().AsSingle();
             Container.Bind<EnemyService>().AsSingle();
             Container.BindInterfacesAndSelfTo<EnemyServiceAdapter>().AsSingle();
-            Container.BindInterfacesTo<KillsCounter<Entity.Entity>>().AsSingle();
+            Container.BindInterfacesTo<KillsCounter>().AsSingle();
             Container.BindInterfacesTo<KillsCountView>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<ShootInput>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<EntityDestroyer>().FromComponentsInHierarchy().AsSingle();

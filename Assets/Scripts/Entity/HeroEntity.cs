@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Entity
 {
-    public class HeroEntity : Entity, IInitListener, IGetEntityComponent
+    public class HeroEntity : Entity, IInitListener
     {
         [SerializeField]
         private HeroModel model;
@@ -16,11 +16,7 @@ namespace Entity
             Add(new TakeDamageRequestComponent(model.Core.LifeSectionComp.TakeDamageRequest));
             Add(new DeathEventComponent(model.Core.LifeSectionComp.DeathEvent, model.Core.LifeSectionComp.DeathEventData));
             Add(new ShootComponent(model.Core.ShootComp.FireRequest));
-        }
-
-        Entity IGetEntityComponent.GetEntity()
-        {
-            return this;
+            Add(new HealthComponent(model.Core.LifeSectionComp.HitPoints));
         }
     }
 

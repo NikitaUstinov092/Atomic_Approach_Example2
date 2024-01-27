@@ -38,19 +38,19 @@ namespace GamePlay.Hero
         public sealed class CharacterMovement
         {
             public AtomicVariable<Transform> Transform;
-
+            public AtomicVariable<Vector3> RotateDirection;
             public AtomicVariable<float> MovementSpeed = new(6f);
             public AtomicVariable<float> RotationSpeed = new(10f);
            
             public MovementDirectionVariable MovementDirection = new();
             public MoveInDirectionEngine MoveInDirectionEngine = new();
-            public RotateInDirectionMechanics RotateInDirectionMechanics = new();
+            private RotateInDirectionMechanics _rotateInDirectionMechanics = new();
 
             [Construct]
             public void Construct()
             {
                 MoveInDirectionEngine.Construct(Transform.Value, MovementSpeed);
-                RotateInDirectionMechanics.Construct(Transform.Value, RotationSpeed);
+                _rotateInDirectionMechanics.Construct(Transform, RotateDirection, RotationSpeed);
             }
         }
 
@@ -68,7 +68,7 @@ namespace GamePlay.Hero
             public AtomicEvent OnShoot = new();
              
             private readonly ShootMechanics _shootMechanics = new();
-            private readonly ShootEngine _shootEngine = new();
+            private readonly SpawnBulletAction _spawnBulletAction = new();
             private readonly CoolDownMechanics _coolDownMechanics = new();
 
             [Construct]
@@ -77,8 +77,8 @@ namespace GamePlay.Hero
                 WeaponCooled.Value = true;
                 CanShoot.Value = true;
                 
-                _shootEngine.Construct(BulletConfig.Value, SpawnPointShoot.Value);
-                _shootMechanics.Construct(_shootEngine, FireRequest, ShootApplied, OnShoot, ammo.AmmoCount, life.IsDead, WeaponCooled, CanShoot);
+                _spawnBulletAction.Construct(BulletConfig.Value, SpawnPointShoot.Value);
+                _shootMechanics.Construct(_spawnBulletAction, FireRequest, ShootApplied, OnShoot, ammo.AmmoCount, life.IsDead, WeaponCooled, CanShoot);
                 _coolDownMechanics.Construct(CoolDownDelay, WeaponCooled, ShootApplied, null);
             }
         }

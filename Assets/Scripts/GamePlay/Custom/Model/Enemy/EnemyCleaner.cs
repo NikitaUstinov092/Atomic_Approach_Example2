@@ -9,7 +9,7 @@ namespace GamePlay.Custom.Model
     public class EnemyCleaner: MonoBehaviour, IInitListener, IDisableListener
     {
         [Inject]
-        private IEntityFactory<Entity.Entity> _enemyFactory;
+        private EnemyFactory _enemyFactory;
 
         [SerializeField]
         private float _destroyDelay = 2f;

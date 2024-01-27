@@ -5,7 +5,7 @@ using System.Atomic.Interfaces;
 namespace GamePlay.Custom.Engines
 {
     [Serializable]
-    public class TakeDamageEngine: IAtomicAction<int>
+    public class TakeDamageAction: IAtomicAction<int>
     {
             private AtomicVariable<int> _hitPoints;
             private AtomicEvent<int> _takeDamageEvent;

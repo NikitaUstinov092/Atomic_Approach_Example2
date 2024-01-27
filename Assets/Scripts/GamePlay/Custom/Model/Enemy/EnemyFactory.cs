@@ -1,77 +1,34 @@
 using System;
-using System.Collections;
-using Entity;
 using GamePlay.Components.Interfaces;
-using GamePlay.Custom.GameMachine;
 using UnityEngine;
-using Zenject;
-using Random = UnityEngine.Random;
+using Object = UnityEngine.Object;
+
 
 namespace GamePlay.Custom.Model
 {
-    public class EnemyFactory : MonoBehaviour, IStartListener, IEntityFactory<Entity.Entity>
+    public class EnemyFactory 
     {
         public event Action<Entity.Entity> OnEntityCreated;
-
-        [Inject]
-        private IGetEntityComponent _targetEntityComp;
-       
-        [SerializeField] 
-        private string _parentName = "Enemies";
         
-        [SerializeField] 
-        private Entity.Entity _enemy;
-
-        [SerializeField] 
-        private Transform[] _spawnPoints;
-
-        [SerializeField] 
-        private float _delaySpawn = 2;
-
-        private GameObject _parent;
-        
-        private Entity.Entity _targetEntity;
-
-        void IStartListener.StartGame()
+        public void CreateEnemy(Entity.Entity enemy, Entity.Entity target, Vector3 spawnPosition, Transform parent = null)
         {
-            _targetEntity = _targetEntityComp.GetEntity();
-            _parent = new GameObject(_parentName);
-            StartCoroutine(Spawn());
-        }
-        private IEnumerator Spawn()
-        {
-            yield return new WaitForSeconds(_delaySpawn);
+            var spawnEntity =  Object.Instantiate(enemy, spawnPosition, Quaternion.identity);
+            AddTarget(spawnEntity, target);
             
-            while (TargetState())
+            if (parent != null)
             {
-                var spawnPosition = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
-                var spawnEntity =  Instantiate(_enemy, spawnPosition.position,Quaternion.identity);
-                spawnEntity.transform.parent = _parent.transform;
-                
-                AddTarget(spawnEntity);
-                
-                OnEntityCreated?.Invoke(spawnEntity);
-                
-                yield return new WaitForSeconds(_delaySpawn);
+                spawnEntity.transform.parent = parent.transform;
             }
+            
+            OnEntityCreated?.Invoke(spawnEntity);
         }
         
-        private void AddTarget(Entity.Entity enemy)
+        private void AddTarget(Entity.Entity enemy, Entity.Entity target)
         {
             if(enemy.TryGet(out ISetEntityTargetComponent setEntityComp))
-                setEntityComp.SetEntityTarget(_targetEntity);
+                setEntityComp.SetEntityTarget(target);
             else
                 throw new NullReferenceException();
         }
-
-        private bool TargetState()
-        {
-           return _targetEntity != null; 
-        }
-    }
-
-    public interface IEntityFactory<T>
-    {
-       event Action<T> OnEntityCreated;
     }
 }
